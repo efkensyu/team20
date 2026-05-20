@@ -13,6 +13,6 @@ import com.example.demo.entity.Bumon;
 public interface BumonRepository extends JpaRepository<Bumon, String>{
 	public List<Bumon> findByBumonCd(String code);
 	
-	@Query(value = "select * from bumon_tbl where bumon_cd = :code", nativeQuery = true)
+	@Query(value = "select * from bumon_tbl where bumon_cd = :cod", nativeQuery = true)
 	public List<Bumon> findBumonCd(@Param("code")String code);
 }
