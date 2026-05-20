@@ -13,4 +13,8 @@ public class Team20_Shain {
 	@Id
 	private String shainCd; 
 	private String shainNm; 
+	private String genre;
+	private String hobby;
+	private String hobbyRanking;
+	private String introduction;
 }		
