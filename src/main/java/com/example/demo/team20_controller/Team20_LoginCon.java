@@ -34,6 +34,7 @@ public class Team20_LoginCon {
 			return "team20/Team20_login";
 		}
 	}
+
 	
 	@PostMapping(value="/login", params="regist")
 	public String regist() {
