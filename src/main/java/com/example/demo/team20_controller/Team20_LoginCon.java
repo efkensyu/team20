@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class Team20_LoginCon {
 	
-	@GetMapping("/register")			
+	@GetMapping("/Team20_login")			
 	public String index() {
-		return "team20/Team20_register";	
+		return "team20/Team20_login";	
 	}
 	
-	@PostMapping("/register_result")
+	@PostMapping("/Team29_menyu")
 	public String send(@RequestParam("login.name") String name, @RequestParam("login.password") String pass, Model model) {
 		model.addAttribute("log.name", name);
 		model.addAttribute("log.pass", pass);
