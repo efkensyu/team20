@@ -14,9 +14,9 @@ import com.example.demo.team20_service.Team20_LoginSer;
 @Controller
 public class Team20_LoginCon {
 	
-	@GetMapping("/login")			
+	@GetMapping("/register")			
 	public String index() {
-		return "team20/Team20_Login";	
+		return "team20/Team20_register";	
 	}
 	
 	@PostMapping("")
