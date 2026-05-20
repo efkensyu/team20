@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class Team20_LoginCon {
 	private final Team20_LoginSer loginSer;
 	
+
 	@GetMapping("/login")			
 	public String index() {
 		return "team20/Team20_login";	

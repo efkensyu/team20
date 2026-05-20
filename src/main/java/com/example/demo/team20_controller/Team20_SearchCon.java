@@ -1,4 +1,4 @@
-package com.example.demo.team20_service;
+package com.example.demo.team20_controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class Team20_LoginCon {
+public class Team20_SearchCon {
 	
-	@GetMapping("/register")			
+	@GetMapping("/search")			
 	public String index() {
-		return "team20/Team20_register";	
+		return "team20/Team20_Search";	
 	}
 	
 	@PostMapping("/register_result")
