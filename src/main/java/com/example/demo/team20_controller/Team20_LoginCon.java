@@ -1,4 +1,4 @@
-/*package com.example.demo.team20_controller;
+package com.example.demo.team20_controller;
 
 import java.util.List;
 
@@ -34,13 +34,10 @@ public class Team20_LoginCon {
 			return "team20/Team20_login";
 		}
 	}
-<<<<<<< HEAD
-}*/
-=======
+
 	
 	@PostMapping(value="firstRegist", params="regist")
 	public String regist() {
 		return "team20/Team20_FirstRegister";	
 	}
 }
->>>>>>> 86b392fae51fcdc7298064cf303535e5340d88dc
