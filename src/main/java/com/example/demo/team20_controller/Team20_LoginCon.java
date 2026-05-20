@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.team20_entity.Team20_Shain;
 import com.example.demo.team20_service.Team20_LoginSer;
 
+import lombok.RequiredArgsConstructor;
+
 @Controller
+@RequiredArgsConstructor
 public class Team20_LoginCon {
+	private final Team20_LoginSer loginSer;
 	
 	@GetMapping("/register")			
 	public String index() {
@@ -20,14 +24,15 @@ public class Team20_LoginCon {
 	}
 	
 	@PostMapping("")
-	public String send(@RequestParam String loginName, @RequestParam String loginPass, Model model) {
+	public String send(@RequestParam String shainCd, Model model) {
 		List<Team20_Shain> userDataList;
-		userDataList = Team20_LoginSer.findByNameAndPass(loginName, loginPass);
+		userDataList = loginSer.findByName(shainCd);
 		if (userDataList.isEmpty()) {
 		
 		} else {
 			
 		}
+
 		return "team20/Team20_menyu";
 	}
 }
