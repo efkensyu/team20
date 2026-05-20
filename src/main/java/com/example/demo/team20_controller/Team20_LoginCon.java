@@ -24,7 +24,7 @@ public class Team20_LoginCon {
 		return "team20/Team20_login";	
 	}
 	
-	@PostMapping(value="menu", params="login")
+	@PostMapping(value="/login", params="login")
 	public String send(@RequestParam String shainCd,@RequestParam String loginPass, Model model) {
 		List<Team20_Shain> userDataList;
 		userDataList = loginSer.findByShainCd(shainCd);
@@ -35,8 +35,9 @@ public class Team20_LoginCon {
 		}
 	}
 	
-	@PostMapping(value="firstRegist", params="regist")
+	@PostMapping(value="/login", params="regist")
 	public String regist() {
+		System.out.println("ポストkidou");
 		return "team20/Team20_FirstRegister";	
 	}
 }

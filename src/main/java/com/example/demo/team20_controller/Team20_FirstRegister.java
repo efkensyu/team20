@@ -18,12 +18,13 @@ import lombok.RequiredArgsConstructor;
 public class Team20_FirstRegister {
 	private final Team20_FirstRegisterSer registerSer;
 	
-	@GetMapping("/fisrtRegister")			
+	@GetMapping("/firstRegister")			
 	public String index() {
+		System.out.println("ファーストkidou");
 		return "team20/Team20_FirstRegister";	
 	}
 	
-	@PostMapping(value="menu", params="regist")
+	@PostMapping(value="/menu", params="regist")
 	public String send(@RequestParam String shainNm,@RequestParam String shainCd, @RequestParam String loginPass, Model model) {
 		List<Team20_Shain> userDataList;
 		userDataList = registerSer.findByShainCd(shainCd);
@@ -35,8 +36,8 @@ public class Team20_FirstRegister {
 		}
 	}
 	
-	@PostMapping(value="login", params="back")
+	@GetMapping(value="/login", params="back")
 	public String back() {
-		return "team20/Team20_FirstRegister";	
+		return "team20/Team20_login";	
 	}
 }

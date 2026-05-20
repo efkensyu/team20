@@ -17,5 +17,4 @@ public class Team20_searchservice {
 		return repository.findmatch(name, genre, hobby);
 		
 	}
-
 }
