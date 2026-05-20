@@ -1,4 +1,4 @@
-package com.example.demo.team20_controller;
+package com.example.demo.team20_service;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
