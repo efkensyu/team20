@@ -23,18 +23,19 @@ public class Team20_LoginCon {
 		return "team20/Team20_login";	
 	}
 	
-	@PostMapping("")
+	@PostMapping(value="menu", params="login")
 	public String send(@RequestParam String shainCd,@RequestParam String loginPass, Model model) {
 		List<Team20_Shain> userDataList;
-		userDataList = loginSer.findByName(shainCd);
-		if (userDataList.isEmpty()) {
-			return "team20/Team20_login";
+		userDataList = loginSer.findByShainCd(shainCd);
+		if (userDataList.isEmpty() && userDataList.get(0).equals(loginPass)) {
+			return "team20/Team20_menyu";
 		} else {
-			if(userDataList.get(0).equals(loginPass)) {
-				return "team20/Team20_menyu";
-			} else {
-				return "team20/Team20_login";
-			}
+			return "team20/Team20_login";
 		}
+	}
+	
+	@PostMapping(value="firstRegist", params="regist")
+	public String regist() {
+		return "team20/Team20_FirstRegister";	
 	}
 }
