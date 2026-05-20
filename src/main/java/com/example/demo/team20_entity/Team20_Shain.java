@@ -12,6 +12,7 @@ import lombok.Data;
 public class Team20_Shain {
 	@Id
 	private String shainCd; 
+	private String loginPass; 
 	private String shainNm; 
 	private String genre;
 	private String hobby;
