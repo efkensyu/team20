@@ -1,10 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.ofg">
+
 <head>
-<meta charset="UTF-8">
-<title>登録画面</title>
+	<meta charset="UTF-8">
+	<title>登録画面</title>
 </head>
+
 <body>
 	<h1 id="register">プロフィール登録画面</h1>
+	<th:block>
+		<h2>趣味</h2>
+		<table border="1">
+			<tr>
+				<td>
+					<th:text class="rank1">１位</th:text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<th:text class="janru">ジャンル</th:text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="janru" value="スポーツ">スポーツ
+					<input type="radio" name="janru" value="アウトドア">アウトドア
+					<input type="radio" name="janru" value="インドア">インドア
+					<input type="radio" name="janru" value="クリエイティブ">クリエイティブ
+					<input type="radio" name="janru" value="学び・教養">学び・教養
+					<br>
+					<input type="radio" name="janru" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="hobby">
+						<option value="soccer">サッカー</option>
+						<option value="soccer">野球</option>
+						<option value="soccer">バスケ</option>
+						<option value="soccer">バレーボール</option>
+						<option value="soccer">卓球</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<br><br>
+		<table border="1">
+			<tr>
+				<td>
+					<th:text class="rank2">２位</th:text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<th:text class="janru">ジャンル</th:text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="janru" value="スポーツ">スポーツ
+					<input type="radio" name="janru" value="アウトドア">アウトドア
+					<input type="radio" name="janru" value="インドア">インドア
+					<input type="radio" name="janru" value="クリエイティブ">クリエイティブ
+					<input type="radio" name="janru" value="学び・教養">学び・教養
+					<br>
+					<input type="radio" name="janru" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="hobby">
+						<option value="soccer">サッカー</option>
+						<option value="soccer">野球</option>
+						<option value="soccer">バスケ</option>
+						<option value="soccer">バレーボール</option>
+						<option value="soccer">卓球</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<br><br>
+
+		<table border="3">
+			<tr>
+				<td>
+					<th:text class="rank3">３位</th:text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<th:text class="janru">ジャンル</th:text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="janru" value="スポーツ">スポーツ
+					<input type="radio" name="janru" value="アウトドア">アウトドア
+					<input type="radio" name="janru" value="インドア">インドア
+					<input type="radio" name="janru" value="クリエイティブ">クリエイティブ
+					<input type="radio" name="janru" value="学び・教養">学び・教養
+					<br>
+					<input type="radio" name="janru" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select name="hobby">
+						<option value="soccer">サッカー</option>
+						<option value="soccer">野球</option>
+						<option value="soccer">バスケ</option>
+						<option value="soccer">バレーボール</option>
+						<option value="soccer">卓球</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<br><br>
+	</th:block>
+	<h2>IT分野</h2>
+	<h3>開発分野</h3>
+	<select name="hobby" title="開発">
+		<option value="soccer">Java</option>
+		<option value="soccer">Oracle</option>
+		<option value="soccer">Python</option>
+		<option value="soccer">Javasclipt</option>
+		<option value="soccer">HTML</option>
+	</select>
+	<br>
+	<h3>インフラ分野</h3>
+	<select name="hobby" title="インフラ">
+		<option value="soccer">Linux</option>
+		<option value="soccer">AWS</option>
+		<option value="soccer">など</option>
+		<option value="soccer">Javasclipt</option>
+		<option value="soccer">HTML</option>
+	</select>
+	
+	<h2>自己紹介</h2>
+	<textarea name="intro" rows="10" cols="100">この中に入力</textarea>
 </body>
+
 </html>
