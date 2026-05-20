@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.team20_entity.Team20_Shain;
+import com.example.demo.team20_repository.Team20_searchserviceRepository;
 
 import lombok.RequiredArgsConstructor;
-import team20_repogitory.Team20_searchserviceRepository;
 
 @Service
 @RequiredArgsConstructor

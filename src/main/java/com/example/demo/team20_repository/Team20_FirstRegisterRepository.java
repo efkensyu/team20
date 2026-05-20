@@ -1,4 +1,4 @@
-package team20_repogitory;
+package com.example.demo.team20_repository;
 
 import java.util.List;
 
