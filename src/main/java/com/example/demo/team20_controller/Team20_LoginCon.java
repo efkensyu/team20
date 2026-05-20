@@ -18,23 +18,29 @@ import lombok.RequiredArgsConstructor;
 public class Team20_LoginCon {
 	private final Team20_LoginSer loginSer;
 	
+
 	@GetMapping("/login")			
 	public String index() {
 		return "team20/Team20_login";	
 	}
 	
-	@PostMapping("")
+	@PostMapping(value="menu", params="login")
 	public String send(@RequestParam String shainCd,@RequestParam String loginPass, Model model) {
 		List<Team20_Shain> userDataList;
-		userDataList = loginSer.findByName(shainCd);
-		if (userDataList.isEmpty()) {
-			return "team20/Team20_login";
+		userDataList = loginSer.findByShainCd(shainCd);
+		if (userDataList.isEmpty() && userDataList.get(0).equals(loginPass)) {
+			return "team20/Team20_menyu";
 		} else {
-			if(userDataList.get(0).equals(loginPass)) {
-				return "team20/Team20_menyu";
-			} else {
-				return "team20/Team20_login";
-			}
+			return "team20/Team20_login";
 		}
 	}
+<<<<<<< HEAD
 }*/
+=======
+	
+	@PostMapping(value="firstRegist", params="regist")
+	public String regist() {
+		return "team20/Team20_FirstRegister";	
+	}
+}
+>>>>>>> 86b392fae51fcdc7298064cf303535e5340d88dc
