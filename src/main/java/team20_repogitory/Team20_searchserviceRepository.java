@@ -1,4 +1,4 @@
-package team20_repogitory;
+/*package team20_repogitory;
 
 import java.util.List;
 
@@ -15,4 +15,4 @@ public interface Team20_searchserviceRepository extends JpaRepository<Team20_Sha
 		
 	
 
-}
+}*/

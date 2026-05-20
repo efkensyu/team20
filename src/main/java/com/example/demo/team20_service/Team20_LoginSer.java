@@ -1,4 +1,4 @@
-package com.example.demo.team20_service;
+/*package com.example.demo.team20_service;
 
 import java.util.List;
 
@@ -17,4 +17,4 @@ public class Team20_LoginSer {
 	public List<Team20_Shain> findByName(String shainCd) {
 		return repository.findByName(shainCd);
 	}
-}
+}*/
