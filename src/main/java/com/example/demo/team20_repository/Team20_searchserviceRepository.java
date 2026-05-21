@@ -9,9 +9,9 @@ import com.example.demo.team20_entity.Team20_Shain;
 
 @Repository
 public interface Team20_searchserviceRepository extends JpaRepository<Team20_Shain,String>{
-	@Query(value="select s from Team20_Shain s where (:name is null or s.shainNm like %:name%) and (:genre is null or s.genre = :genre) and (:hobby is null or s.hobby like %:hobby%)",nativeQuery=true)
+	@Query(value="select * from shain_tbl "+
+				" where (:name is null or shain_nm like %:name%)" +
+				"and (:janru is null or janru = :janru)" +
+				"and (:hobby is null or hobby like %:hobby%)",nativeQuery=true)
 	public List<Team20_Shain> findmatch(String name,String genre,String hobby);
-		
-	
-
 }

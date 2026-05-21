@@ -9,7 +9,7 @@ public class Team20_DetailsCon {
 	
 	@GetMapping("/detail")			
 	public String index() {
-		return "team20/Team20_Search";	
+		return "team20/Team20_Details";	
 	}
 	
 	@PostMapping("/detail")

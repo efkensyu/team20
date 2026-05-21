@@ -6,47 +6,84 @@
 </head>
 <body>
 <h1>検索</h1>
-<form method="post" th:action="@{/search}">
+<form method="post" th:action="@{/search}" th:object="${regForm}">
 名前
-<input type="text" name="name" size="20" value="名前">
+<input type="text" th:field="*{name}" size="20" value="名前">
 <br><br>
 
 <br><br>
 趣味ジャンル
-<select name="hobby genle">
+<select th:field="*{janru}" id="janru">
+	<option value="">ジャンルを選択してください</option>
 	<option value="スポーツ" selected="selected">スポーツ</option>
-	<option value="java">スポーツ</option>
-	<option value="vb">スポーツ</option>
-	<option value="スポー">スポーツ</option>
-	<option value="ス">スポーツ</option>
+	<option value="グルメ">グルメ</option>
+	<option value="インドア">インドア</option>
+	<option value="アウトドア">アウトドア</option>
+	<option value="料理">料理</option>
 </select>
-<br><br>
-趣味
-<input type="text" name="hobby" size="20" value="サッカー">
+<select th:field="*{hobby}" id="hobby" disabled="disabled">
+	<option value="">-- 趣味を選択してください --</option>
+	<option value="サッカー" data-val="スポーツ">サッカー</option>
+	<option value="バスケ" data-val="スポーツ">バスケ</option>
+	<option value="テニス" data-val="スポーツ">テニス</option>
+	<option value="スイーツ" data-val="グルメ">スイーツ</option>
+		<option value="カフェ" data-val="グルメ">カフェ</option>
+		<option value="ラーメン" data-val="グルメ">ラーメン</option>
+		<option value="キャンプ" data-val="アウトドア">キャンプ</option>
+		<option value="ゴルフ" data-val="アウトドア">ゴルフ</option>
+		<option value="イタリアン" data-val="料理">イタリアン</option>
+		<option value="中華" data-val="料理">中華</option>
+</select>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js">
+	</Script>
+	<script th:inline="javascript">
+		$(document).ready(function() {
+var $hobby=$('select[id="hobby"]');
+
+$('select[id="janru"]').change(function(){
+var val1=$(this).val();
+$hobby.val('');
+if (val1 === "") {
+            $hobby.prop('disabled', true); 
+        } else {
+            $hobby.prop('disabled', false); 
+        }
+$hobby.find('option').each(function(){
+	var val2 = $(this).data('val');
+	if(val1==val2){
+		$(this).show().prop('disabled', false);
+	}else{
+		$(this).hide().prop('disabled', true);
+	}
+})
+})
+})
+</script>
 <br><br>
 職種
 <br>
-開発分野<br>
-<select name="work1">
+
+<select th:field="*{job}">
 	<option value="no">登録なし</option>
+	<optgroup label="開発">
 	<option value="java">Java</option>
 	<option value="python">Python</option>
 	<option value="vb">VB</option>
+	</optgroup>
+	<optgroup label="インフラ">
+		<option value="linux">Linux</option>
+		<option value="aws">AWS</option>
+		<option value="windows">Windows</option>
+		</optgroup>
 </select>
+	
 <br><br>
-インフラ分野
-<br>
-<select name="work2">
-	<option value="no">登録なし</option>
-	<option value="linux">Linux</option>
-	<option value="aws">AWS</option>
-	<option value="windows">Windows</option>
-	</select>
-<br><br>
-<input type="submit" value="検索" />
+<input type="submit"  name="search" value="検索" />
+<input type="submit" name="back" value="メニューに戻る">
 
 </form>
 
+	
 </body>
 </html>
 
