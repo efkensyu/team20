@@ -1,5 +1,4 @@
 package com.example.demo.team20_service;
-
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,5 +16,4 @@ public class Team20_searchservice {
 		return repository.findmatch(name, genre, hobby);
 		
 	}
-
 }

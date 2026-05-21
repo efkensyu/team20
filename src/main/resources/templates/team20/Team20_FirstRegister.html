@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.ofg">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<h2>ユーザー登録</h2>
-	<form>
+	<form method="post" th:action="@{/firstRegister}">
 		<p>名前</p>
 		<input type="text" name="shainNm">
 		<p>社員コード</p>
@@ -14,8 +14,8 @@
 		<p>パスワード</p>
 		<input type="text" name="loginPass">
 		<br>
-		<input type="button" name="regist" value="登録">
-		<input type="button" name="back" value="戻る">
+		<input type="submit" name="regist" value="登録">
+		<input type="submit" name="back" value="戻る">
 	</form>
 </body>
 </html>
