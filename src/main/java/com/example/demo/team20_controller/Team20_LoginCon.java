@@ -23,7 +23,7 @@ public class Team20_LoginCon {
 
 	@GetMapping("/login")			
 	public String index() {
-		return "team20/Team20_login";	
+		return "team20/Team20_Login";	
 	}
 	
 	@PostMapping(value="/login", params="login")
@@ -37,7 +37,6 @@ public class Team20_LoginCon {
 		}
 	}
 
-	
 	@PostMapping(value="/login", params="regist")
 	public String regist() {
 		System.out.println("ポストkidou");

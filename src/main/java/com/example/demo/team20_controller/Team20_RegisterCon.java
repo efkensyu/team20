@@ -48,6 +48,4 @@ public class Team20_RegisterCon {
 	public String editor(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
 		return "team20/Team20_register";
 	}
-	
-	
 }
