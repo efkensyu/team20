@@ -1,5 +1,7 @@
 package com.example.demo.team20_controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.springframework.stereotype.Controller;
@@ -13,8 +15,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.example.demo.team20_service.Team20_RegisterSer;
 
 @Controller
+
 @SessionAttributes("regForm")
 public class Team20_RegisterCon {
+	@Autowired
 	private Team20_RegisterSer service;
 	
 	//	@ModelAttribute("regForm")
@@ -31,12 +35,12 @@ public class Team20_RegisterCon {
 		return"team20/Team20_register";
 	}
 
-	@PostMapping("/Team20_register_result")
-	public String send1(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
-		
-		return "team20/Team20_register_result";
-	}
-	
+//	@PostMapping("/Team20_register_result")
+//	public String send1(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
+//		
+//		return "team20/Team20_register_result";
+//	}
+//	
 	//登録ボタン
 		@PostMapping(value = "/Team20_register_result", params = "regit")
 		public String register(@ModelAttribute RegForm regForm) {
