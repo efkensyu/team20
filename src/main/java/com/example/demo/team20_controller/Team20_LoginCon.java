@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.team20_entity.Team20_Shain;
 import com.example.demo.team20_service.Team20_LoginSer;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+@SessionAttributes(names = "shainCd")
 public class Team20_LoginCon {
 	private final Team20_LoginSer loginSer;
 	

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.team20_entity.Team20_Shain;
 import com.example.demo.team20_service.Team20_FirstRegisterSer;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+@SessionAttributes(names = "shainCd")
 public class Team20_FirstRegister {
 	private final Team20_FirstRegisterSer registerSer;
 	
@@ -24,7 +26,7 @@ public class Team20_FirstRegister {
 		return "team20/Team20_FirstRegister";	
 	}
 	
-	@PostMapping(value="/menu", params="regist")
+	@PostMapping(value="/firstRegister", params="regist")
 	public String send(@RequestParam String shainNm,@RequestParam String shainCd, @RequestParam String loginPass, Model model) {
 		List<Team20_Shain> userDataList;
 		userDataList = registerSer.findByShainCd(shainCd);
@@ -36,8 +38,8 @@ public class Team20_FirstRegister {
 		}
 	}
 	
-	@GetMapping(value="/login", params="back")
+	@PostMapping(value="/firstRegister", params="back")
 	public String back() {
-		return "team20/Team20_login";	
+		return "team20/Team20_login";
 	}
 }
