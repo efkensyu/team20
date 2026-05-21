@@ -1,12 +1,13 @@
-th:text.rank1 {
+
+.rank1 {
 	color: red;
 }
 
-th:text.rank2 {
+.rank2 {
 	color: red;
 }
 
-th:text.rank3 {
+.rank3 {
 	color: red;
 }
 
