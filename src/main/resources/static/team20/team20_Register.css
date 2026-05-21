@@ -1,16 +1,67 @@
+:root {
+	--navy: #2c4a6e;
+	--navy-dark: #1e3350;
+	--green: #4a7c6e;
+	--green-light: #6aab99;
+	--green-pale: #e8f4f1;
+	--gray-bg: #f4f6f8;
+	--gray-light: #e8edf2;
+	--gray-border: #d0d8e0;
+	--text-dark: #1a2a3a;
+	--text-mid: #4a5a6a;
+	--text-light: #8a9aaa;
+	--white: #ffffff;
+	--shadow: 0 2px 8px rgba(44, 74, 110, 0.12);
+	--shadow-lg: 0 4px 20px rgba(44, 74, 110, 0.18);
+	--radius: 8px;
+	--radius-lg: 12px;
+}
+
+
+body{
+	background: #d0d8e0;
+}
+
+table{
+	background-color: white;
+}
+
+.rankingbar{
+	background-color:whitesmoke;
+}
 
 .rank1 {
-	color: red;
+	color: gold;
+	font-size:180%;
 }
 
 .rank2 {
-	color: red;
+	color: silver;
+	font-size:180%;
 }
 
 .rank3 {
-	color: red;
+	color: brown;
+	font-size:180%;
+}
+
+.janru{
+	font-size:120%;
+}
+
+
+.hobby{
+	font-size:120%;
+}
+
+select{
+	font-size:110%;
 }
 
 h1#register {
-	background-color: cyan;
+	font-weight: 700;
+	color: navy;
+	background-color: greenyellow;
+	text-align: center;
+	  
 }

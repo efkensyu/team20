@@ -15,14 +15,15 @@
 
 
 		<th:block>
-			<h2>氏名</h2>
+
+			<h3>氏名</h3>
 			<input type="text" th:field="*{name}" size="20" value="氏名" />
-			<h2>社員コード</h2>
+			<h3>社員コード</h3>
 			<input type="text" th:field="*{code}" size="20" value="code" />
-			<h2>趣味</h2>
+			<h3>趣味</h3>
 			<table border="1">
 				<tr>
-					<td>
+					<td class="rankingbar">
 						<th:text class="rank1">１位</th:text>
 					</td>
 				</tr>
@@ -44,6 +45,11 @@
 				</tr>
 				<tr>
 					<td>
+						<th:text class="hobby">趣味</th:text>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<select th:field="*{hobby}">
 							<option value="サッカー">サッカー</option>
 							<option value="野球">野球</option>
@@ -57,7 +63,7 @@
 			<br><br>
 			<table border="1">
 				<tr>
-					<td>
+					<td class="rankingbar">
 						<th:text class="rank2">２位</th:text>
 					</td>
 				</tr>
@@ -79,6 +85,11 @@
 				</tr>
 				<tr>
 					<td>
+						<th:text class="hobby">趣味</th:text>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<select th:field="*{hobby2}">
 							<option value="キャンプ">キャンプ</option>
 							<option value="ドライブ">ドライブ</option>
@@ -93,7 +104,7 @@
 
 			<table border="1">
 				<tr>
-					<td>
+					<td class="rankingbar">
 						<th:text class="rank3">３位</th:text>
 					</td>
 				</tr>
@@ -105,12 +116,17 @@
 				<tr>
 					<td>
 						<input type="radio" th:field="*{janru3}" value="スポーツ">スポーツ
-						<input type="radio" th:field="*{janru3}" value="アウトドア">アウトドア
-						<input type="radio" th:field="*{janru3}" value="インドア" checked="checked">インドア
-						<input type="radio" th:field="*{janru3}" value="クリエイティブ">クリエイティブ
-						<input type="radio" th:field="*{janru3}" value="学び・教養">学び・教養
-						<br>
-						<input type="radio" th:field="*{janru3}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
+							<input type="radio" th:field="*{janru3}" value="アウトドア">アウトドア
+							<input type="radio" th:field="*{janru3}" value="インドア" checked="checked">インドア
+							<input type="radio" th:field="*{janru3}" value="クリエイティブ">クリエイティブ
+							<input type="radio" th:field="*{janru3}" value="学び・教養">学び・教養
+							<br>
+							<input type="radio" th:field="*{janru3}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<th:text class="hobby">趣味</th:text>
 					</td>
 				</tr>
 				<tr>
@@ -128,10 +144,10 @@
 			<br><br>
 		</th:block>
 		<!--		分野ごとに決められるようにする-->
-		<h2>興味のあるIT分野を選択してください</h2>
+		<h3>興味のあるIT分野を選択してください</h3>
 
 
-		<select th:field="*{job}" title="開発">
+		<select class="itbunya" th:field="*{job}" title="開発">
 			<optgroup label="開発">
 				<option value="Java">Java</option>
 				<option value="Oracle">Oracle</option>
@@ -148,17 +164,9 @@
 			</optgroup>
 		</select>
 		<br>
-		<!--		<br>-->
-		<!--		<h3>インフラ分野</h3>-->
-		<!--		<select th:field="*{info}" title="インフラ">-->
-		<!--			<option value="soccer">Linux</option>-->
-		<!--			<option value="soccer">AWS</option>-->
-		<!--			<option value="soccer">など</option>-->
-		<!--			<option value="soccer">Javasclipt</option>-->
-		<!--			<option value="soccer">HTML</option>-->
-		<!--		</select>-->
+		
 
-		<h2>自己紹介</h2>
+		<h3>自己紹介</h3>
 		<textarea th:field="*{intro}" rows="10" cols="100">この中に入力</textarea>
 		<!--		編集ボタン-->
 		<input type="submit" value="編集" name="edit" />
