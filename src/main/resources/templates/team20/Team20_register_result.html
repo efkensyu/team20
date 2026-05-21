@@ -11,14 +11,14 @@
 		<h2>登録する内容に間違いはありませんか</h2>
 		<p th:text="名前： + *{name}"></p>
 		<br>
-		<p th:text="1番好きな趣味： + ジャンル+*{janru}+ *{hobby}"></p>
+		<p th:text="'1番好きな趣味：' + 'ジャンル'+'	'+*{janru}+'	'+ *{hobby}"></p>
 		<br>
-		<p th:text="2番好きな趣味： + ジャンル+*{janru2}+ *{hobby2}"></p>
+		<p th:text="'2番好きな趣味：' + 'ジャンル'+'	'+*{janru2}+'	'+ *{hobby2}"></p>
 		<br>
-		<p th:text="3番好きな趣味： + ジャンル+*{janru3}+ *{hobby3}"></p>
+		<p th:text="'3番好きな趣味：' + 'ジャンル'+'	'+*{janru3}+'	'+ *{hobby3}"></p>
 		<br>
 		<!--		分野別で指定したものが表示されるようにする-->
-		<p th:text="興味のあるIT分野： + *{info}"></p>
+		<p th:text="興味のあるIT分野： + *{job}"></p>
 		<br>
 		<p th:text="自己紹介： + *{intro}"></p>
 		<br>
