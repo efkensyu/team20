@@ -1,0 +1,15 @@
+th:text.rank1 {
+	color: red;
+}
+
+th:text.rank2 {
+	color: red;
+}
+
+th:text.rank3 {
+	color: red;
+}
+
+h1#register {
+	background-color: cyan;
+}

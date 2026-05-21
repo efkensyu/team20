@@ -1,7 +1,5 @@
 package com.example.demo.team20_repository;
 
-import java.util.List;
-
 import jakarta.transaction.Transactional;
 
 import org.springframework.data.jdbc.repository.query.Modifying;
@@ -15,12 +13,12 @@ import com.example.demo.team20_entity.Team20_Shain;
 @Repository
 public interface Team20_registerRepository extends JpaRepository<Team20_Shain, String> {
 
-//	@Query(value = "select loginPass from shain_tbl where shainCd = :shainCd", nativeQuery = true)
-//	public List<Team20_Shain> findByShainCd(@Param("shainCd") String shainCd);
-
 	@Modifying
 	@Transactional
 	@Query(value = "update shain_tbl set rank1=:rank1, rank2=:rank2, rank3=:rank3, job=:job, introduction=:introduction where shainCd=:shainCd", nativeQuery = true)
-	public List<Team20_Shain> regist(@Param("shainCd") String shainCm, @Param("rank1") String rank1,@Param("rank2") String rank2,@Param("rank3") String rank3,
+	public int update(@Param("shainCd") String shainCd, @Param("rank1") String rank1,@Param("rank2") String rank2,@Param("rank3") String rank3,
 			@Param("job") String job,@Param("introduction") String introduction);
+//	@Query(value = "update shain_tbl set rank1=:rank1, rank2=:rank2, rank3=:rank3, job=:job, introduction=:introduction where shainCd=:shainCd", nativeQuery = true)
+//	public List<Team20_Shain> update(@Param("shainCd") String shainCd, @Param("rank1") String rank1,@Param("rank2") String rank2,@Param("rank3") String rank3,
+//			@Param("job") String job,@Param("introduction") String introduction);
 }

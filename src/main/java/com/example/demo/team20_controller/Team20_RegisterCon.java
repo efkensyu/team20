@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.example.demo.team20_service.Team20_RegisterSer;
+
 @Controller
 @SessionAttributes("regForm")
 public class Team20_RegisterCon {
+	private Team20_RegisterSer service;
+	
 	//	@ModelAttribute("regForm")
 	//	public RegForm setup() {
 	//		return new RegForm();
@@ -29,13 +33,14 @@ public class Team20_RegisterCon {
 
 	@PostMapping("/Team20_register_result")
 	public String send1(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
-
+		
 		return "team20/Team20_register_result";
 	}
 	
 	//登録ボタン
 		@PostMapping(value = "/Team20_register_result", params = "regit")
-		public String add(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
+		public String register(@ModelAttribute RegForm regForm) {
+			service.Proupdate(regForm);
 			return "team20/Team20_register_result";
 		}
 	//編集ボタン
@@ -43,4 +48,6 @@ public class Team20_RegisterCon {
 	public String editor(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
 		return "team20/Team20_register";
 	}
+	
+	
 }
