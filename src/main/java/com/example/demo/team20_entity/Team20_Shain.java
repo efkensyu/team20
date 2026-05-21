@@ -12,10 +12,11 @@ import lombok.Data;
 public class Team20_Shain {
 	@Id
 	private String shainCd; 
-	private String loginPass; 
 	private String shainNm; 
-	private String genre;
-	private String hobby;
-	private String hobbyRanking;
-	private String introduction;
+	private String loginPass; 
+	private String rank1;
+	private String rank2;
+	private String rank3;
+	private String job;
+	private String intro;
 }		

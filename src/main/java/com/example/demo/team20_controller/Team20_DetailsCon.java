@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class Team20_SearchCon {
+public class Team20_DetailsCon {
 	
 	@GetMapping("/search")			
 	public String index() {
