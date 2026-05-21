@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>検索</h1>
-<form>
+<form method="post" th:action="@{/search}">
 名前
 <input type="text" name="name" size="20" value="名前">
 <br><br>
@@ -28,6 +28,7 @@
 <br>
 開発分野<br>
 <select name="work1">
+	<option value="no">登録なし</option>
 	<option value="java">Java</option>
 	<option value="python">Python</option>
 	<option value="vb">VB</option>
@@ -36,12 +37,13 @@
 インフラ分野
 <br>
 <select name="work2">
+	<option value="no">登録なし</option>
 	<option value="linux">Linux</option>
 	<option value="aws">AWS</option>
 	<option value="windows">Windows</option>
 	</select>
 <br><br>
-<input type="submit" value="登録" />
+<input type="submit" value="検索" />
 
 </form>
 

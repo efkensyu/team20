@@ -9,13 +9,11 @@ public class Team20_menyuCon {
 	
 	@GetMapping("/menyu")			
 	public String index() {
-		System.out.println("ゲット");
 		return "team20/Team20_menyu";	
 	}
 	
 	@PostMapping(value="/menyu", params="register")
 	public String send1() {
-		System.out.println("レジスタ");
 				return "team20/Team20_register";
 			}
 	@PostMapping(value="/menyu", params="search")
