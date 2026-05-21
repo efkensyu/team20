@@ -20,7 +20,7 @@ public interface Team20_register_repository extends JpaRepository<Team20_Shain, 
 
 	@Modifying
 	@Transactional
-	@Query(value = "update shain_tbl set hobbyRanking=:hobbyRanking,introduction=:introduction) where ", nativeQuery = true)
-	public List<Team20_Shain> regist(@Param("shainNm") String shainNm, @Param("hobbyRanking") String hobbyRanking,
-			@Param("introduction") String introduction);
+	@Query(value = "update shain_tbl set rank1=:rank1, rank2=:rank2, rank3=:rank3, job=:job, introduction=:introduction where shainCd=:shainCd", nativeQuery = true)
+	public List<Team20_Shain> regist(@Param("shainCd") String shainCm, @Param("rank1") String rank1,@Param("rank2") String rank2,@Param("rank3") String rank3,
+			@Param("job") String job,@Param("introduction") String introduction);
 }

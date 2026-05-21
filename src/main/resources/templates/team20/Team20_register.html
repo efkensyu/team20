@@ -15,6 +15,8 @@
 		<th:block>
 			<h2>氏名</h2>
 			<input type="text" th:field="*{name}" size="20" value="氏名" />
+			<h2>社員コード</h2>
+			<input type="text" th:field="*{code}" size="20" value="code" />
 			<h2>趣味</h2>
 			<table border="1">
 				<tr>
@@ -124,24 +126,35 @@
 			<br><br>
 		</th:block>
 		<!--		分野ごとに決められるようにする-->
-		<h2>IT分野</h2> 分野ごとに決められるようにする
-		<h3>開発分野</h3>
-		<select th:field="*{info}" title="開発">
-			<option value="soccer">Java</option>
-			<option value="soccer">Oracle</option>
-			<option value="soccer">Python</option>
-			<option value="soccer">Javasclipt</option>
-			<option value="soccer">HTML</option>
+		<h2>興味のあるIT分野を選択してください</h2>
+
+
+		<select th:field="*{job}" title="開発">
+			<optgroup label="開発">
+				<option value="soccer">Java</option>
+				<option value="soccer">Oracle</option>
+				<option value="soccer">Python</option>
+				<option value="soccer">Javasclipt</option>
+				<option value="soccer">HTML</option>
+			</optgroup>
+			<optgroup label="インフラ">
+				<option value="soccer">Linux</option>
+				<option value="soccer">AWS</option>
+				<option value="soccer">など</option>
+				<option value="soccer">Javasclipt</option>
+				<option value="soccer">HTML</option>
+			</optgroup>
 		</select>
 		<br>
-		<h3>インフラ分野</h3>
-		<select th:field="*{info}" title="インフラ">
-			<option value="soccer">Linux</option>
-			<option value="soccer">AWS</option>
-			<option value="soccer">など</option>
-			<option value="soccer">Javasclipt</option>
-			<option value="soccer">HTML</option>
-		</select>
+		<!--		<br>-->
+		<!--		<h3>インフラ分野</h3>-->
+		<!--		<select th:field="*{info}" title="インフラ">-->
+		<!--			<option value="soccer">Linux</option>-->
+		<!--			<option value="soccer">AWS</option>-->
+		<!--			<option value="soccer">など</option>-->
+		<!--			<option value="soccer">Javasclipt</option>-->
+		<!--			<option value="soccer">HTML</option>-->
+		<!--		</select>-->
 
 		<h2>自己紹介</h2>
 		<textarea th:field="*{intro}" rows="10" cols="100">この中に入力</textarea>
