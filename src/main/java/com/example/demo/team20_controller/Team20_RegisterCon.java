@@ -46,7 +46,7 @@ public class Team20_RegisterCon {
 	//編集ボタン
 	@PostMapping(value = "/Team20_register_result", params = "edit")
 	public String editor(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
-		return "team20/Team20_register";
+		return "redirect:/Team20_register";
 	}
 	
 	
