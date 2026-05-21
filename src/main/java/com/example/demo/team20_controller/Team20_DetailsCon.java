@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class Team20_DetailsCon {
 	
-	@GetMapping("/search")			
+	@GetMapping("/detail")			
 	public String index() {
 		return "team20/Team20_Search";	
 	}
 	
-	@PostMapping("/search")
+	@PostMapping("/detail")
 	public String send() {
 		return "team20/Team20_Result";
 	}
