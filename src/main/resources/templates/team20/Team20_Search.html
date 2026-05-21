@@ -35,11 +35,18 @@
 		<option value="中華" data-val="料理">中華</option>
 </select>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js">
-	</Script>
+	</script>
 	<script th:inline="javascript">
 		$(document).ready(function() {
-var $hobby=$('select[id="hobby"]');
-
+			var $hobby = $('#hobby');
+			var $janru = $('#janru');
+			$hobby.find('option').each(function() {
+			    var val2 = $(this).data('val');
+				
+			    if (val2 !== undefined) {
+			        $(this).hide().prop('disabled', true);
+			    }
+			});
 $('select[id="janru"]').change(function(){
 var val1=$(this).val();
 $hobby.val('');
@@ -50,6 +57,9 @@ if (val1 === "") {
         }
 $hobby.find('option').each(function(){
 	var val2 = $(this).data('val');
+	if (val2 === undefined) {
+					      return;
+					  }
 	if(val1==val2){
 		$(this).show().prop('disabled', false);
 	}else{
