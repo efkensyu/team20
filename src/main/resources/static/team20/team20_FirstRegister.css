@@ -1,0 +1,31 @@
+.content {
+	margin-top: 10%;
+	margin-left: 30%;
+	margin-right:30%;
+	background-color: white ;
+	border: 3px solid black;
+	border-radius: 10px;
+	text-align:center;
+}
+
+.content2 {
+	margin-top: 10%;
+	margin-left: 20%;
+	margin-right:20%;
+	margin-bottom: 10%;
+	text-align:center;
+}
+
+.textbox {
+	width: 200px;
+}
+
+.button {
+	width: 150px;
+	margin-top: 10px;
+}
+
+/*@media screen and (max-width 920px)*/
+/*.content {*/
+/*	border: 3px solid red;*/
+/*}*/

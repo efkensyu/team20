@@ -30,16 +30,21 @@ public class Team20_LoginCon {
 	public String send(@RequestParam String shainCd,@RequestParam String loginPass, Model model) {
 		List<Team20_Shain> userDataList;
 		userDataList = loginSer.findByShainCd(shainCd);
-		if (userDataList.isEmpty() && userDataList.get(0).equals(loginPass)) {
+		if (userDataList.isEmpty()) {
+			System.out.println("ログイン失敗");
+			return "team20/Team20_login";
+		} else if ( userDataList.get(0).equals(loginPass)) {
+			System.out.println("ログイン成功");
 			return "team20/Team20_menyu";
 		} else {
+			System.out.println("ログイン失敗");
 			return "team20/Team20_login";
 		}
 	}
 
 	@PostMapping(value="/login", params="regist")
 	public String regist() {
-		System.out.println("ポストkidou");
+		System.out.println("登録遷移");
 		return "team20/Team20_FirstRegister";	
 	}
 }

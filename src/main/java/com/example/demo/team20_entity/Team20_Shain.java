@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 public class Team20_Shain {
 	@Id
-	private String shainCd; 
-	private String shainNm; 
-	private String loginPass; 
+	private String shainCd;
+	private String shainNm;
+	private String loginPass;
 	private String rank1;
 	private String rank2;
 	private String rank3;

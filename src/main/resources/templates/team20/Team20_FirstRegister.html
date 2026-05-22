@@ -3,19 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{team20/team20_FirstRegister.css}">
 </head>
 <body>
-	<h2>ユーザー登録</h2>
-	<form method="post" th:action="@{/firstRegister}">
-		<p>名前</p>
-		<input type="text" name="shainNm">
-		<p>社員コード</p>
-		<input type="text" name="shainCd" >
-		<p>パスワード</p>
-		<input type="text" name="loginPass">
-		<br>
-		<input type="submit" name="regist" value="登録">
-		<input type="submit" name="back" value="戻る">
-	</form>
+	<diV class="content">
+	 	<diV class="content2">
+			<h2>ユーザー登録</h2>
+			<form method="post" th:action="@{/firstRegister}">
+				<a>名前</a>
+				<br>
+				<input class="textbox" type="text" name="shainNm">
+				<br>
+				<a>社員コード</a>
+				<br>
+				<input class="textbox" type="text" name="shainCd" >
+				<br>
+				<a>パスワード</a>
+				<br>
+				<input type="text" class="textbox" name="loginPass">
+				<br>
+				<input class="button" type="submit" name="regist" value="登録">
+				<br>
+				<input class="button" type="submit" name="back" value="戻る">
+			</form>
+		</diV>
+	</diV>
 </body>
 </html>
