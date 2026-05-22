@@ -30,8 +30,9 @@ public class Team20_LoginCon {
 	public String send(@RequestParam String shainCd,@RequestParam String loginPass, Model model) {
 		List<Team20_Shain> userDataList;
 		userDataList = loginSer.findByShainCd(shainCd);
+		System.out.println(userDataList.toString());
 		if (userDataList.isEmpty()) {
-			System.out.println("ログイン失敗");
+			System.out.println("ログイン失敗1");
 			return "team20/Team20_login";
 		} else if ( userDataList.get(0).equals(loginPass)) {
 			System.out.println("ログイン成功");

@@ -3,12 +3,12 @@ package com.example.demo.team20_entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 import lombok.Data;
 
 @Entity
 @Table(name="shain_tbl")
+
 @Data
 public class Team20_Shain {
 	@Id
@@ -21,6 +21,7 @@ public class Team20_Shain {
 	private String job;
 	private String intro;
 	
-	@Transient
-	private int totalScore; // DBに保存しないスコア格納用
-}		
+	public String getLoginPass() {
+		return loginPass;
+	}
+}

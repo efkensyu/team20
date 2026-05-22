@@ -15,6 +15,6 @@ public class Team20_LoginSer {
 	private final Team20_LoginRepository repository;
 	
 	public List<Team20_Shain> findByShainCd(String shainCd) {
-		return repository.findShainCd(shainCd);
+		return repository.findByShainCd(shainCd);
 	}
 }

@@ -44,7 +44,7 @@ public class Team20_RegisterResultSer {
 					me, other,
 					myHobby1, myHobby2, myHobby3,
 					otherHobby1, otherHobby2, otherHobby3);
-			other.setTotalScore(score); // Transientフィールドにセット
+			//ごめん//other.setTotalScore(score); // Transientフィールドにセット
 			scoreList.add(new ShainScore(other, score));
 		}
 
