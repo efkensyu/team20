@@ -17,51 +17,66 @@
 	--radius-lg: 12px;
 }
 
-
-body{
-	background: #d0d8e0;
+head {
+	
 }
 
-table{
+body {
+	background: #d0d8e0;
+
+}
+
+table {
 	background-color: white;
 }
 
-.rankingbar{
-	background-color:whitesmoke;
+.rankingbar {
+	background-color: whitesmoke;
 }
 
 .rank1 {
 	color: gold;
-	font-size:180%;
+	font-size: 180%;
 }
 
 .rank2 {
 	color: silver;
-	font-size:180%;
+	font-size: 180%;
 }
 
 .rank3 {
 	color: brown;
-	font-size:180%;
+	font-size: 180%;
 }
 
-.janru{
-	font-size:120%;
+.janru {
+	font-size: 120%;
 }
 
 
-.hobby{
-	font-size:120%;
+.hobby {
+	font-size: 120%;
 }
 
-select{
-	font-size:110%;
+select {
+	font-size: 110%;
 }
 
-h1#register {
-	font-weight: 700;
-	color: navy;
-	background-color: greenyellow;
-	text-align: center;
-	  
+
+.header {
+    background-color: blue;
+    display: flex;          /* 横並びにする */
+    align-items: center;    /* 縦方向中央揃え */
+    position: relative;     /* h1の絶対配置基準 */
 }
+
+.header h1 {
+    color: white;
+    font-weight: bold;
+    /* タイトルを画面全体の中央に見せる */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
