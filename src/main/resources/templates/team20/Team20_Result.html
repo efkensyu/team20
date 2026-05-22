@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.ofg">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <h1>検索結果</h1>
-<!--	<th:block th:each="">-->
-<!--		<div>-->
-<!--			<p th:text="名前"></p>-->
-<!--		</div>-->
-<!--	</th:block>-->
+<form>
+	<th:block th:each="data, i : ${resultList}">
+		<div>
+			<a th:text="*{i.count}"></a>
+			<br>
+			<a th:text="*{data.shainNm}"></a>
+			<br>
+			<a th:text="*{data.rank1}"></a>
+			<br>
+			<a th:text="*{data.rank2}"></a>
+			<br>				
+			<a th:text="*{data.rank3}"></a>
+			<br>
+			<input type="submit" name="button + *{i.count}">
+		</div>
+	</th:block>
+</form>
 </body>
 </html>
