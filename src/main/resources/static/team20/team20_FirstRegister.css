@@ -25,7 +25,13 @@
 	margin-top: 10px;
 }
 
-/*@media screen and (max-width 920px)*/
-/*.content {*/
-/*	border: 3px solid red;*/
-/*}*/
+@media screen and (max-width: 920px) {
+	.textbox {
+		width: 100%;
+	}
+
+	.button {
+		width: 100%;
+		margin-top: 10px;
+	}	
+}
