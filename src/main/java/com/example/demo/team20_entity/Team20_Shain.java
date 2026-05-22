@@ -3,6 +3,7 @@ package com.example.demo.team20_entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import lombok.Data;
 
@@ -19,4 +20,7 @@ public class Team20_Shain {
 	private String rank3;
 	private String job;
 	private String intro;
+	
+	@Transient
+	private int totalScore; // DBに保存しないスコア格納用
 }		
