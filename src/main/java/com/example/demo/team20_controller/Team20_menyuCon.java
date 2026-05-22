@@ -18,11 +18,11 @@ public class Team20_menyuCon {
 			}
 	@PostMapping(value="/menyu", params="search")
 	public String send2() {
-				return "redirect:/Team20_Search";
+				return "redirect:/search";
 			}
 	@PostMapping(value="/menyu", params="result")
 	public String send3() {
-				return "redirect:/Team20_Result";
+				return "redirect:/Result";
 			}
 		
 	}

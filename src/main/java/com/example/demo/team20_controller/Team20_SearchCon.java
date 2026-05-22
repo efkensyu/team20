@@ -19,12 +19,12 @@ public class Team20_SearchCon {
 	@GetMapping("/search")
 	public String index(Model model) {
 		model.addAttribute("regForm",new RegForm());
-		return "team20/Team20_Search";
+	 return "team20/Team20_Search";
 	}
 	
 	@PostMapping(value="/search",params="back")
 	public String send1() {
-		return "team20/Team20_menyu";
+		return "redirect:/menyu";
 	}
 	@PostMapping(value="/search",params="search")
 	public String send2(@RequestParam RegForm regForm,Model model) {
