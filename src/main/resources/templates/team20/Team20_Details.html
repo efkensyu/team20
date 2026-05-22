@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.ofg">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-プロフィール
+<table border="1" th:object="${userData}">
+	<tr>
+		<th>プロフィール</th>
+	</tr>
+	<tr>
+		<td>
+		<p th:text="名前：+*{name}"></p>
+		<p>趣味ランキング</p>
+		<p th:text="1位：+*{rank1}"></p>
+		<p th:text="2位：+*{rank2}"></p>
+		<p th:text="3位：+*{rank3}"></p>
+		<p th:text="職種：+*{job}"></p>
+		<p th:text="自己紹介：+*{intro}"></p>
+		</td>
+	</tr>
+</table>
+
 <br><br>
 </body>
 </html>
