@@ -46,7 +46,7 @@ public class Team20_RegisterCon {
 		public String register(@ModelAttribute RegForm regForm) {
 			
 			service.Proupdate(regForm);
-			return "team20/Team20_register_result";
+			return "team20/Team20_Register_Result";
 		}
 	//編集ボタン
 	@PostMapping(value = "/Team20_register_result", params = "edit")
