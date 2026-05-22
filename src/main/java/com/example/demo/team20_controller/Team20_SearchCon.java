@@ -30,6 +30,7 @@ public class Team20_SearchCon {
 	public String send2(@RequestParam RegForm regForm,Model model) {
 		List<Team20_Shain>userDataList =service.findmatch(regForm.getName(),regForm.getJanru(),regForm.getHobby(),regForm.getJob());
 		model.addAttribute("userDataList",userDataList);
+		System.out.println(regForm);
 		return "team20/Team20_Result";
 	}
 }
