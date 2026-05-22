@@ -44,6 +44,7 @@ public class Team20_RegisterCon {
 	//登録ボタン
 		@PostMapping(value = "/Team20_register_result", params = "regit")
 		public String register(@ModelAttribute RegForm regForm) {
+			
 			service.Proupdate(regForm);
 			return "team20/Team20_register_result";
 		}
