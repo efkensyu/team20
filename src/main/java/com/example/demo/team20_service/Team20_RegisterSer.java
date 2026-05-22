@@ -15,12 +15,12 @@ public class Team20_RegisterSer {
 	public void Proupdate(RegForm regForm) {
 		
 		repository.update(
-		        regForm.getCode(),        // shainCd
-		        regForm.getHobby(),       // rank1
-		        regForm.getHobby2(),      // rank2
-		        regForm.getHobby3(),      // rank3
-		        regForm.getJob(),         // job
-		        regForm.getIntro()        // introduction
-		    );
+				regForm.getCode(),// shainCd
+				regForm.getHobby(),// rank1
+				regForm.getHobby2(),// rank2
+				regForm.getHobby3(),// rank3
+				regForm.getJob(),// job
+				regForm.getIntro()// introduction
+				);
 	}
 }
