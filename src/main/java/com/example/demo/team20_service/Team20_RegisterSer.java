@@ -13,7 +13,7 @@ public class Team20_RegisterSer {
 	private final Team20_registerRepository repository;
 	
 	public void Proupdate(RegForm regForm) {
-		
+
 		repository.update(
 				regForm.getCode(),// shainCd
 				regForm.getHobby(),// rank1
