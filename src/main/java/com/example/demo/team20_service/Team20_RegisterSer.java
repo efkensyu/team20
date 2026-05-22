@@ -25,6 +25,7 @@ public class Team20_RegisterSer {
 	}
 
 	public void Proupdate(RegForm regForm) {
+
 		repository.update(
 				regForm.getCode(), // shainCd
 				this.rank1, // rank1

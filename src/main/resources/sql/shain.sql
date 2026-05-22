@@ -1,0 +1,1 @@
+INSERT INTO shain_tbl VALUES('A01', '田中', '123456789', '', '', '', '', '');
