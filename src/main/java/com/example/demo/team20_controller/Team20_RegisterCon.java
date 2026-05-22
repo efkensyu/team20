@@ -52,6 +52,4 @@ public class Team20_RegisterCon {
 	public String editor(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
 		return "redirect:/Team20_register";
 	}
-	
-	
 }
