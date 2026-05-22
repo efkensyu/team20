@@ -12,6 +12,6 @@ import com.example.demo.team20_entity.Team20_Shain;
 @Repository
 public interface Team20_LoginRepository extends JpaRepository<Team20_Shain, String> {
 	@Query(value="select loginPass from shain_tbl where shainCd = :shainCd" , nativeQuery = true)
-	public List<Team20_Shain> findByShainCd(@Param("shainCd")String shainCd);
+	public List<Team20_Shain> findShainCd(@Param("shainCd")String shainCd);
 }
 
