@@ -4,17 +4,26 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.team20_entity.Team20_Shain;
+import com.example.demo.team20_entity.Team20_Login;
 import com.example.demo.team20_repository.Team20_LoginRepository;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
 public class Team20_LoginSer {
-	private final Team20_LoginRepository repository;
+	private Team20_LoginRepository repository;
 	
-	public List<Team20_Shain> findByShainCd(String shainCd) {
-		return repository.findByShainCd(shainCd);
+	public Team20_LoginSer(Team20_LoginRepository repository) {
+		this.repository = repository;
 	}
+	
+	public Boolean isPass(Team20_Login login) {
+		List<Team20_Login> result = repository.findByUseridAndPassword(login.getUserid(), login.getPassword());
+		if(result.size() > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+//	public List<Team20_Shain> findByShainCd(String shainCd) {
+//		return repository.findByShainCd(shainCd);
+//	}
 }
