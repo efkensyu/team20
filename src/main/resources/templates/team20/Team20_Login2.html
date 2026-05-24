@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.ofg">
+<!--<html xmlns:th="https://www.thymeleaf.ofg">-->
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン</title>
+	<link rel="icon" href="/logo.png" type="image/png">	
+	<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Login.css}">
+</head>
+<header>
+	<h1>サービス名</h1>
+</header>
+<body>
+	<diV class="content">
+		 <diV class="content2">
+			<h2 class="gg">ログイン</h2>
+			<form method="post" th:action="@{/login2}">
+				<p>名前</p>
+				<input class="textbox" type="text" name="userid">
+				<p>パスワード</p>			
+				<input class="textbox" type="text" name="loginPass">
+				<br>
+				<input class="button" type="submit" name="login" value="ログイン"><br>
+				<input class="button" type="submit" name="regist" value="初回登録はこちら">
+			</form>
+		</diV>
+	</diV>
+</body>
+<footer>
+	
+</footer>
+</html>
