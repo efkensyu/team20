@@ -1,5 +1,6 @@
 package com.example.demo.team20_entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -19,6 +20,7 @@ public class Team20_Shain {
 	private String rank2;
 	private String rank3;
 	private String job;
+	@Column(name="intro")
 	private String intro;
 	
 	@Transient

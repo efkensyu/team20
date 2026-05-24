@@ -32,7 +32,7 @@ public class Team20_RegisterSer {
 				this.rank2, // rank2
 				this.rank3, // rank3
 				regForm.getJob(), // job
-				regForm.getIntro()// introduction
+				regForm.getIntro()// intro
 		);
 	}
 }
