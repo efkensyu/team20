@@ -1,7 +1,5 @@
 package com.example.demo.team20_controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.example.demo.team20_entity.Team20_Shain;
 import com.example.demo.team20_service.Team20_LoginSer;
 
 import lombok.RequiredArgsConstructor;
@@ -27,18 +24,14 @@ public class Team20_LoginCon {
 	}
 	
 	@PostMapping(value="/login", params="login")
-	public String send(@RequestParam String shainCd,@RequestParam String loginPass, Model model) {
-		List<Team20_Shain> userDataList;
-		userDataList = loginSer.findByShainCd(shainCd);
-		if (userDataList.isEmpty()) {
-			System.out.println("ログイン失敗");
-			return "team20/Team20_login";
-		} else if ( userDataList.get(0).equals(loginPass)) {
-			System.out.println("ログイン成功");
+	public String send(@RequestParam String userid, @RequestParam String loginPass, Model model) {
+		String userInfo = loginSer.find(userid).toString();
+		String pass = "password=" + loginPass;
+		if(userInfo.contains(pass) == true) {
 			return "team20/Team20_menyu";
 		} else {
 			System.out.println("ログイン失敗");
-			return "team20/Team20_login";
+			return "team20/Team20_Login";
 		}
 	}
 
