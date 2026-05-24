@@ -2,23 +2,43 @@ package com.example.demo.team20_service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.team20_entity.Team20_Login;
 import com.example.demo.team20_entity.Team20_Shain;
 import com.example.demo.team20_repository.Team20_FirstRegisterRepository;
-
-import lombok.RequiredArgsConstructor;
+import com.example.demo.team20_repository.Team20_LoginRepository;
 
 @Service
-@RequiredArgsConstructor
 public class Team20_FirstRegisterSer {
-	private final Team20_FirstRegisterRepository repository;
+	@Autowired
+	private Team20_FirstRegisterRepository firstRepository;
+	private Team20_LoginRepository loginRepository;
 	
-	public List<Team20_Shain> findByShainCd(String shainCd) {
-		return repository.findByShainCd(shainCd);
+	public Team20_FirstRegisterSer(Team20_FirstRegisterRepository firstRepository, Team20_LoginRepository loginRepository) {
+		this.firstRepository = firstRepository;
+		this.loginRepository = loginRepository;
+	}
+	public List<Team20_Login> find(String shainCd) {
+		return loginRepository.find2(shainCd);
 	}
 	
-	public List<Team20_Shain> regist(String shainNm, String shainCd, String loginPass) {
-		return repository.regist(shainNm, shainCd, loginPass);
+	public void registLogin(String userid, String password) {
+		Team20_Login login = new Team20_Login();
+        login.setUserid(userid);
+        login.setPassword(password);
+
+        // 2. Spring標準のsaveメソッドで安全にINSERTを実行
+        loginRepository.save(login);
+	}
+	
+	public void registShain(String shainCd, String shainNm) {
+		Team20_Shain shain = new Team20_Shain();
+        shain.setShainCd(shainCd);
+        shain.setShainNm(shainNm);
+
+        // 2. Spring標準のsaveメソッドで保存する（SQLは自動生成されます）
+        firstRepository.save(shain);
 	}
 }

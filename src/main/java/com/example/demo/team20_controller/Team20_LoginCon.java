@@ -23,15 +23,15 @@ public class Team20_LoginCon {
 		return "team20/Team20_Login";	
 	}
 	
-	@PostMapping(value="/login2", params="login")
+	@PostMapping(value="/login", params="login")
 	public String send(@RequestParam String userid, @RequestParam String loginPass, Model model) {
 		String userInfo = loginSer.find(userid).toString();
 		String pass = "password=" + loginPass;
 		if(userInfo.contains(pass) == true) {
 			return "team20/Team20_menyu";
 		} else {
-			System.out.println(loginSer.find(userid));
-			return "team20/Team20_Login2";
+			System.out.println("ログイン失敗");
+			return "team20/Team20_Login";
 		}
 	}
 

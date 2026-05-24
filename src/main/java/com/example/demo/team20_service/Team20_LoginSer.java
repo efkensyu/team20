@@ -14,16 +14,7 @@ public class Team20_LoginSer {
 	public Team20_LoginSer(Team20_LoginRepository repository) {
 		this.repository = repository;
 	}
-	
-	public Boolean isPass(Team20_Login login) {
-		List<Team20_Login> result = repository.findByUseridAndPassword(login.getUserid(), login.getPassword());
-		if(result.size() > 0) {
-			return true;
-		}
-		return false;
+	public List<Team20_Login> find(String userid) {
+		return repository.find(userid);
 	}
-	
-//	public List<Team20_Shain> findByShainCd(String shainCd) {
-//		return repository.findByShainCd(shainCd);
-//	}
 }
