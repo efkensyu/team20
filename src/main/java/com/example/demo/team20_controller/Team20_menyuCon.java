@@ -3,7 +3,8 @@ package com.example.demo.team20_controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.SessionAttributes;
+@SessionAttributes(names="shainCd")
 @Controller
 public class Team20_menyuCon {
 	
@@ -22,7 +23,7 @@ public class Team20_menyuCon {
 			}
 	@PostMapping(value="/menyu", params="result")
 	public String send3() {
-				return "redirect:/Result";
+				return "team20/Team20_Result";
 			}
 		
 	}

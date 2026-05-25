@@ -98,7 +98,7 @@
 				<td>職種</td>
 				<td>
 					<select th:field="*{job}">
-						<option value="">登録なし</option>
+						<option th:value="${null}">-- 職種を選択してください --</option>
 						<optgroup label="開発">
 										<option value="Java">Java</option>
 										<option value="Oracle">Oracle</option>
@@ -119,6 +119,7 @@
 			</tr>
 		</table>
 		<input type="submit" name="search" value="検索" />
+		<input type="submit" name="clear" value="クリア" />
 		<input type="submit" name="back" value="メニューに戻る">
 
 	</form>
