@@ -8,7 +8,7 @@
 </head>
 <header>
 	<div class="header">
-		    <img th:src="@{/Team20logo.png}" width="100" height="auto">
+		    <img th:src="@{/Team20logo.png}" width="100">
 		</div>
 </header>
 <body>
@@ -16,11 +16,11 @@
 		<diV class="content">
 			 <diV class="content2">
 				<h2 class="gg">ログイン</h2>
-				<form method="post" th:action="@{/login}">
-					<p>名前</p>
-					<input class="textbox" type="text" name="userid">
+				<form method="post" th:action="@{/Team20_Login}" th:object="${loginForm}">
+					<p>社員番号</p>
+					<input class="textbox" type="text" th:field="*{userid}">
 					<p>パスワード</p>			
-					<input class="textbox" type="text" name="loginPass">
+					<input class="textbox" type="password" th:field="*{password}">
 					<br>
 					<input class="button" type="submit" name="login" value="ログイン"><br>
 					<input class="button" type="submit" name="regist" value="初回登録はこちら">

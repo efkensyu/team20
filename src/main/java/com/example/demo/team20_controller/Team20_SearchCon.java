@@ -18,7 +18,7 @@ public class Team20_SearchCon {
 	private final Team20_searchservice service;
 	@GetMapping("/search")
 	public String index(Model model) {
-		model.addAttribute("regForm",new RegForm());
+		model.addAttribute("regForm",new Team20_RegForm());
 	 return "team20/Team20_Search";
 	}
 	
@@ -27,7 +27,7 @@ public class Team20_SearchCon {
 		return "team20/Team20_menyu";
 	}
 	@PostMapping(value="/search",params="search")
-	public String send2(@ModelAttribute("regForm") RegForm regForm,Model model) {
+	public String send2(@ModelAttribute("regForm") Team20_RegForm regForm,Model model) {
 		System.out.println("Post実行");
 		List<Team20_Shain>userDataList =service.findmatch(regForm.getName(),regForm.getJanru(),regForm.getHobby(),regForm.getJob());
 		model.addAttribute("userDataList",userDataList);

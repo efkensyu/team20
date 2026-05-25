@@ -31,7 +31,7 @@ public class Team20_RegisterCon {
 	//	}
 	@GetMapping("/Team20_register")
 	public String index(Model model) { // ← Model を追加
-		model.addAttribute("regForm", new RegForm()); // ← この行を追加
+		model.addAttribute("regForm", new Team20_RegForm()); // ← この行を追加
 		return"team20/Team20_register";
 	}
 
@@ -43,14 +43,14 @@ public class Team20_RegisterCon {
 //	
 	//登録ボタン
 		@PostMapping(value = "/Team20_register_result", params = "regit")
-		public String register(@ModelAttribute RegForm regForm) {
+		public String register(@ModelAttribute Team20_RegForm regForm) {
 			
 			service.Proupdate(regForm);
 			return "team20/Team20_Register_Result";
 		}
 	//編集ボタン
 	@PostMapping(value = "/Team20_register_result", params = "edit")
-	public String editor(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
+	public String editor(@ModelAttribute Team20_RegForm regForm, SessionStatus sessionStatus) {
 		return "redirect:/Team20_register";
 	}
 }

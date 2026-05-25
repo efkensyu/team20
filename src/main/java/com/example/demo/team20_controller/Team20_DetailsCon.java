@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class Team20_DetailsCon {
 	private final Team20_DetailsService service;
 	@GetMapping("/details")			
-	public String index(RegForm regForm,Model model) {
+	public String index(Team20_RegForm regForm,Model model) {
 		Team20_Shain userData=service.findPerson(regForm.getCode());
 		model.addAttribute("userData",userData);
 		return "team20/Team20_Details";	
