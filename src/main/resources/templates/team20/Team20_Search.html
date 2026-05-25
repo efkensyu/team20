@@ -6,7 +6,9 @@
 	<title>検索画面</title>
 	<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Search.css}">
 </head>
-
+<header>
+	<th:src=logo.png alt="サイトのロゴ">
+</header>
 <body>
 	<h1 id="search">検索</h1>
 	<form method="post" th:action="@{/search}" th:object="${regForm}">
@@ -107,11 +109,12 @@
 									<optgroup label="インフラ">
 										<option value="Linux">Linux</option>
 										<option value="AWS">AWS</option>
-										<option value="anaconda">など</option>
-										<option value="Terrform">Javasclipt</option>
-										<option value="Shell Script">HTML</option>
+										<option value="anaconda">anaconda</option>
+										<option value="Terrform">Terrform</option>
+										<option value="Shell Script">Shell Script</option>
 									</optgroup>
-					</select>
+								</select>
+					
 				</td>
 			</tr>
 		</table>

@@ -1,6 +1,16 @@
 header {
+	background-color:red ;
+}
+
+footer {
 	background-color:#164a84 ;
-	
+	height: 50px;
+}
+
+body {
+	background-color: red;
+	max-width: 100%;
+	max-height: 500px;
 }
 
 .content {
