@@ -35,45 +35,99 @@ body {
 	background-position: center bottom;
 	background-size: cover; 
 	background-repeat: no-repeat;
-	padding-top:80px;
-	padding-bottom:80px;
+	background-attachment: fixed; 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	
 }
 
 .content {
-	margin-top: 120px;
-	margin-left: 30%;
-	margin-right:30%;
-	background-color: rgba(255,255,255,0.5) ;
-	border: 3px solid black;
-	border-radius: 10px;
-	text-align:center;
+	width: 90%;
+	max-width: 400px; 
+	background-color: rgba(255, 255, 255, 0.9); 
+	border: 1px solid #ccc; 
+	border-radius: 12px;
+	box-shadow: 0 8px 24px rgba(0,0,0,0.15); 
+	backdrop-filter: blur(5px); 
 }
 
 .content2 {
-	margin-top: 10%;
-	margin-left: 20%;
-	margin-right:20%;
-	margin-bottom: 10%;
-	text-align:center;
+	padding: 40px 30px;
+}
+
+.box {
+	margin-bottom: 30px;
+	color: #164a84;
+	font-size: 24px;
+}
+
+.content2 p {
+	text-align: left;
+	margin-bottom: 5px;
+	margin-top: 15px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #444; 
 }
 
 .textbox {
-	width: 200px;
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	background-color: #ffffff;
+	font-size: 16px;
+	box-sizing: border-box;
+	transition: all 0.3s;
 }
+
+.textbox:focus {
+	border-color: #164a84;
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(22, 74, 132, 0.2); }
 
 .button {
-	width: 150px;
-	margin-top: 10px;
+	width: 100%;
+	padding: 12px;
+	margin-top: 15px;
+	border-radius: 6px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s;
 }
 
-@media screen and (max-width: 920px) {
-	.textbox {
-		width: 90%;
-	}
+.button[name="login"] {
+	background-color: #164a84;
+	color: white;
+	border: none;
+}
+.button[name="login"]:hover {
+	background-color: #113663; 
+}
 
-	.button {
-		width: 95%;
-		margin-top: 10px;
-	}	
+.button[name="regist"] {
+	background-color: transparent;
+	color: #164a84;
+	border: 2px solid #164a84;
+	margin-top: 10px; 
+}
+.button[name="regist"]:hover {
+	background-color: rgba(22, 74, 132, 0.05); 
+}
+
+.text {
+	display: block;
+	text-align: left;
+	padding: 8px 4px;             /* 左右の余白を削り、下線を強調 */
+	border-bottom: 2px solid #164a84; /* ⭕ 下側だけにテーマカラーの線を引く */
+	font-size: 18px;              /* ⭕ 文字を少し大きく */
+	font-weight: bold;
+	color: #2d3748;
+	word-break: break-all;
+	margin-bottom: 5px;
 }

@@ -41,6 +41,6 @@ public class Team20_FirstRegister {
 	
 	@PostMapping(value="/Team20_FirstRegister", params="back")
 	public String back(@ModelAttribute Team20_RegisterForm registerForm) {
-		return "redirect:/Team20_FirstRegister";
+		return "redirect:/Team20_Login";
 	}
 }

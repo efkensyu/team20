@@ -3,6 +3,8 @@ package com.example.demo.team20_controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +31,12 @@ public class Team20_LoginCon {
 	}
 	
 	@PostMapping(value="/Team20_Login", params="login")
-	public String send(@ModelAttribute("loginForm") Team20_LoginForm loginForm, Model model) {
+	public String send(@Validated @ModelAttribute("loginForm") Team20_LoginForm loginForm, BindingResult result, Model model) {
+		if(result.hasErrors()) {
+			System.out.println("入力不足S");
+			model.addAttribute("loginForm", loginForm);
+			return "team20/Team20_Login";
+		}
 		String userInfo = loginSer.find(loginForm.getUserid()).toString();
 		String pass = "password=" + loginForm.getPassword();
 		if(userInfo.contains(pass) == true) {
@@ -44,6 +51,6 @@ public class Team20_LoginCon {
 	@PostMapping(value="/Team20_Login", params="regist")
 	public String regist() {
 		System.out.println("登録遷移");
-		return "team20/Team20_FirstRegister";	
+		return "redirect:/Team20_FirstRegister";	
 	}
 }
