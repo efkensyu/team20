@@ -23,22 +23,22 @@ public class Team20_SearchCon {
 	    // 送られてきた文字列が空文字（""）だった場合、自動的に null に変換する設定
 	    binder.registerCustomEditor(String.class, new org.springframework.beans.propertyeditors.StringTrimmerEditor(true));
 	}
-	@GetMapping("/search")
+	@GetMapping("/Team20_Search")
 	public String index(Model model) {
 		model.addAttribute("regForm",new RegForm());
 	 return "team20/Team20_Search";
 	}
 	
-	@PostMapping(value="/search",params="back")
+	@PostMapping(value="/Team20_Search",params="back")
 	public String send1() {
 		return "team20/Team20_menyu";
 	}
-	@PostMapping(value="/search",params="clear")
+	@PostMapping(value="/Team20_Search",params="clear")
 	public String send2(Model model) {
 		model.addAttribute("regForm", new RegForm());
 		return "team20/Team20_Search";
 	}
-	@PostMapping(value="/search",params="search")
+	@PostMapping(value="/Team20_Search",params="search")
 	public String send3(@ModelAttribute("regForm") RegForm regForm,Model model) {
 		System.out.println("Post実行");
 		List<Team20_Shain>userDataList =service.findmatch(regForm.getName(),regForm.getJanru(),regForm.getHobby(),regForm.getJob());

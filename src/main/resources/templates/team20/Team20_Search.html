@@ -7,11 +7,13 @@
 	<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Search.css}">
 </head>
 <header>
-	<th:src=logo.png alt="サイトのロゴ">
+	<div class="header">
+		    <img th:src="@{/Team20logo.png}" width="100" height="auto">
+		</div>
 </header>
 <body>
 	<h1 id="search">検索</h1>
-	<form method="post" th:action="@{/search}" th:object="${regForm}">
+	<form method="post" th:action="@{/Team20_Search}" th:object="${regForm}">
 		<table border="1" class="detail">
 
 			<tr>

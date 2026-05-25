@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 public class Team20_menyuCon {
 	
-	@GetMapping("/menyu")			
+	@GetMapping("/Team20_Menyu")			
 	public String index() {
 		return "team20/Team20_menyu";	
 	}
 	
-	@PostMapping(value="/menyu", params="register")
+	@PostMapping(value="/Team20_Menyu", params="register")
 	public String send1() {
 				return "redirect:/Team20_register";
 			}
-	@PostMapping(value="/menyu", params="search")
+	@PostMapping(value="/Team20_Menyu", params="search")
 	public String send2() {
 				return "redirect:/search";
 			}
-	@PostMapping(value="/menyu", params="result")
+	@PostMapping(value="/Team20_Menyu", params="result")
 	public String send3() {
 				return "team20/Team20_Result";
 			}
