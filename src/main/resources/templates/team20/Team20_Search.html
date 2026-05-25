@@ -7,11 +7,13 @@
 	<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Search.css}">
 </head>
 <header>
-	<th:src=logo.png alt="サイトのロゴ">
+	<div class="header">
+		    <img th:src="@{/Team20logo.png}" width="100" height="auto">
+		</div>
 </header>
 <body>
 	<h1 id="search">検索</h1>
-	<form method="post" th:action="@{/search}" th:object="${regForm}">
+	<form method="post" th:action="@{/Team20_Search}" th:object="${regForm}">
 		<table border="1" class="detail">
 
 			<tr>
@@ -98,7 +100,7 @@
 				<td>職種</td>
 				<td>
 					<select th:field="*{job}">
-						<option value="">登録なし</option>
+						<option th:value="${null}">-- 職種を選択してください --</option>
 						<optgroup label="開発">
 										<option value="Java">Java</option>
 										<option value="Oracle">Oracle</option>
@@ -119,6 +121,7 @@
 			</tr>
 		</table>
 		<input type="submit" name="search" value="検索" />
+		<input type="submit" name="clear" value="クリア" />
 		<input type="submit" name="back" value="メニューに戻る">
 
 	</form>

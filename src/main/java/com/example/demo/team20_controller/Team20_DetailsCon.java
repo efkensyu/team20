@@ -13,14 +13,15 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class Team20_DetailsCon {
 	private final Team20_DetailsService service;
-	@GetMapping("/details")			
+
+	@GetMapping("/Team20_Details")			
 	public String index(Team20_RegForm regForm,Model model) {
 		Team20_Shain userData=service.findPerson(regForm.getCode());
 		model.addAttribute("userData",userData);
 		return "team20/Team20_Details";	
 	}
 	
-	@PostMapping("/detail")
+	@PostMapping("/Team20_detail")
 	public String send() {
 		return "team20/Team20_Result";
 	}
