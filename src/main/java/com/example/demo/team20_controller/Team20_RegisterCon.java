@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.demo.team20_service.Team20_RegisterSer;
 
@@ -21,10 +20,10 @@ public class Team20_RegisterCon {
 	
 	private final Team20_RegisterSer service;
 	
-	//	@ModelAttribute("regForm")
-	//	public RegForm setup() {
-	//		return new RegForm();
-	//	}
+//		@ModelAttribute("regForm")
+//		public RegForm setup() {
+//			return new RegForm();
+//		}
 	//	@GetMapping("/Team20_register")			
 	//	public String index() {
 	//		return "team20/Team20_register";	
@@ -32,7 +31,7 @@ public class Team20_RegisterCon {
 	@GetMapping("/Team20_register")
 	public String index(Model model) { // ← Model を追加
 		model.addAttribute("regForm", new RegForm()); // ← この行を追加
-		return"team20/Team20_register";
+		return"team20/Team20_Register";
 	}
 
 //	@PostMapping("/Team20_register_result")
@@ -42,15 +41,16 @@ public class Team20_RegisterCon {
 //	}
 //	
 	//登録ボタン
-		@PostMapping(value = "/Team20_register_result", params = "regit")
-		public String register(@ModelAttribute RegForm regForm) {
-			
+		@PostMapping(value = "/Team20_Register_Result", params = "regit")
+		public String register(@ModelAttribute RegForm regForm,Model model) {
+			model.addAttribute("regForm",regForm);
 			service.Proupdate(regForm);
 			return "team20/Team20_Register_Result";
 		}
 	//編集ボタン
-	@PostMapping(value = "/Team20_register_result", params = "edit")
-	public String editor(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
-		return "redirect:/Team20_register";
+	@PostMapping(value = "/Team20_Register_Result", params = "edit")
+	public String editor(@ModelAttribute RegForm regForm, Model model) {
+		model.addAttribute("regForm",regForm);
+		return "team20/Team20_Register";
 	}
 }

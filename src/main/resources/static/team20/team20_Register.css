@@ -1,37 +1,15 @@
-:root {
-	--navy: #2c4a6e;
-	--navy-dark: #1e3350;
-	--green: #4a7c6e;
-	--green-light: #6aab99;
-	--green-pale: #e8f4f1;
-	--gray-bg: #f4f6f8;
-	--gray-light: #e8edf2;
-	--gray-border: #d0d8e0;
-	--text-dark: #1a2a3a;
-	--text-mid: #4a5a6a;
-	--text-light: #8a9aaa;
-	--white: #ffffff;
-	--shadow: 0 2px 8px rgba(44, 74, 110, 0.12);
-	--shadow-lg: 0 4px 20px rgba(44, 74, 110, 0.18);
-	--radius: 8px;
-	--radius-lg: 12px;
-}
 
-head {
-	
-}
+/*body {*/
+/*	background: #d0d8e0;*/
 
-body {
-	background: #d0d8e0;
+/*}*/
 
-}
-
-table {
-	background-color: white;
-}
+/*table {*/
+/*	background-color: white;*/
+/*}*/
 
 .rankingbar {
-	background-color: whitesmoke;
+	background-color: royalblue;
 }
 
 .rank1 {
@@ -63,20 +41,263 @@ select {
 }
 
 
+/*.header {*/
+/*	background-color: blue;*/
+/*	display: flex;*/
+/*	 横並びにする */
+/*	align-items: center;*/
+/*	 縦方向中央揃え */
+/*	position: relative;*/
+/*	 h1の絶対配置基準 */
+/*}*/
+
+/*.header h1 {*/
+/*	color: white;*/
+/*	font-weight: bold;*/
+/*	 タイトルを画面全体の中央に見せる */
+/*	position: absolute;*/
+/*	left: 50%;*/
+/*	transform: translateX(-50%);*/
+/*	margin: 0;*/
+/*}*/
+
+
+/*.content {*/
+/*	margin-top: 10%;*/
+/*	margin-left: 30%;*/
+/*	margin-right: 30%;*/
+/*	background-color: white;*/
+/*	border: 3px solid black;*/
+/*	border-radius: 10px;*/
+/*	text-align: center;*/
+/*}*/
+
+/*.content2 {*/
+/*	margin-top: 10%;*/
+/*	margin-left: 20%;*/
+/*	margin-right: 20%;*/
+/*	margin-bottom: 10%;*/
+/*	text-align: center;*/
+/*}*/
+
+/*.textbox {*/
+/*	width: 200px;*/
+/*}*/
+
+/*.button {*/
+/*	width: 150px;*/
+/*	margin-top: 10px;*/
+/*}*/
+
+/*@media screen and (max-width: 920px) {*/
+/*	.textbox {*/
+/*		width: 90%;*/
+/*	}*/
+
+/*	.button {*/
+/*		width: 100%;*/
+/*		margin-top: 10px;*/
+/*	}	*/
+/*}*/
+
+
+
+/*リセット*/
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+body {
+	font-family: sans-serif;
+/*	background-color: #f0f0f0;*/
+	padding: 10px;
+	text-align:center;
+	
+	background-image: url("/kari.png");
+	background-size: cover;
+	
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	
+	
+}
+
+body::before{
+	background-color: rgba(255, 255, 255, 0.5); /* 白を50%重ねる */
+	z-index: 0; /* 背景の上・コンテンツの下 */
+}
+
+/*ヘッダー  */
 .header {
-    background-color: blue;
-    display: flex;          /* 横並びにする */
-    align-items: center;    /* 縦方向中央揃え */
-    position: relative;     /* h1の絶対配置基準 */
+	background-color: blue;
+	display: flex;
+	align-items: center;
+	position: relative;
+	padding: 10px;
+	width: 100%;
 }
 
 .header h1 {
-    color: white;
-    font-weight: bold;
-    /* タイトルを画面全体の中央に見せる */
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
+	color: white;
+	font-weight: bold;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: clamp(16px, 3vw, 28px);
+
+	white-space: nowrap;
 }
 
+.header img {
+	width: clamp(50px, 8vw, 100px);
+	height: auto;
+}
+
+/* コンテンツ全体  */
+.content {
+	width: 90%;
+	max-width: 900px;
+	margin: 20px auto;
+	background-color: #f0f0f0;
+	position:relative;
+	z-index:1;
+	
+}
+
+.content2 {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+
+	
+}
+
+/* テキストボックス */
+input[type="text"],
+textarea {
+	width: 200%;
+	max-width: 600px;
+	padding: 8px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	text-align:center;
+}
+
+
+
+textarea {
+	display: block;
+	margin: 0 auto;
+/*	左右中央寄せ*/
+	width: 60%;
+	max-width: 500%;
+	padding: 10%;
+	font-size: 16px;
+	text-align: left;
+	padding-top: 10px;
+/*	writing-mode: horizontal-tb;  横書き・上:*/
+	resize: vertical;
+	box-sizing: border-box;
+}
+
+/* テーブル */
+table {
+	width: 100%;
+	max-width: 800px;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+table td {
+	padding: 10px;
+	word-break: break-word;
+	/* 長いテキストを折り返す */
+}
+
+/* セレクトボックス */
+select {
+	width: 100%;
+	max-width: 400px;
+	padding: 8px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	text-align:center;
+}
+
+/*  ラジオボタン */
+input[type="radio"] {
+	margin-right: 5px;
+	text-align:center;
+}
+
+/* ボタン  */
+input[type="submit"] {
+	padding: 10px 30px;
+	font-size: 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-right: 10px;
+	border:1px solid black;
+	text-align:center;
+}
+
+
+
+footer {
+    display: flex;
+    justify-content: flex-end;  /* 右寄せ */
+    gap: 10px;                  /* ボタン間のスペース */
+    margin-top: 10px;
+    width: 80%;                 /* textareaの幅に合わせる */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* メディアクエリ*/
+@media (max-width: 768px) {
+	.content {
+		width: 95%;
+	}
+
+	table {
+		font-size: 14px;
+	}
+
+	input[type="text"],
+	textarea,
+	select {
+		max-width: 100%;
+	}
+
+	input[type="submit"] {
+		width: 100%;
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.header h1 {
+		font-size: 14px;
+	}
+
+	.content2 {
+		padding: 10px;
+	}
+
+	table td {
+/*		display: block;*/
+		width: 100%;
+	}
+
+	input[type="radio"] {
+		display: block;
+		margin: 5px 0;
+	}
+}
