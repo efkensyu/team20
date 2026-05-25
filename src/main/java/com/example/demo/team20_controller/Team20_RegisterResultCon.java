@@ -35,15 +35,15 @@ public class Team20_RegisterResultCon {
 	@PostMapping(value = "/Team20_Result", params = "do")
 	public String showresult(HttpSession session, Model model) { // ← Model を追加
 		// セッションからログイン中の社員を取得
-		Team20_Shain loginShain = (Team20_Shain) session.getAttribute("loginShain");
+		Team20_Shain RegForm = (Team20_Shain) session.getAttribute("RegForm");
 
-		if (loginShain == null) {
+		if (RegForm == null) {
 			return "team20/Team20_Register_Result";
 		}
 
-		List<Team20_Shain> resultList = service.getMatchingResult(loginShain);
+		List<Team20_Shain> resultList = service.getMatchingResult(RegForm);
 		model.addAttribute("resultList", resultList);
-		model.addAttribute("loginList", loginShain);
+		model.addAttribute("loginList", RegForm);
 		return "team20/Team20_Result";
 	}
 
