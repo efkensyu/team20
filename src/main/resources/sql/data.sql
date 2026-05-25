@@ -1,9 +1,10 @@
-INSERT INTO shain_tbl VALUES('A01', '田中', '', '', '', '', '','');
-INSERT INTO shain_tbl VALUES('A02', '田中', '', '', '', '', '','');
-INSERT INTO shain_tbl VALUES('A03', '田中', '', '', '', '', '','');
-INSERT INTO shain_tbl VALUES('A04', '田中', '', '', '', '', '','');
-INSERT INTO shain_tbl VALUES('A05', '田中', '', '', '', '', '','');
-INSERT INTO shain_tbl VALUES('A06', '田中', '', '', '', '', '','');
+
+INSERT INTO SHAIN_TBL VALUES('A01', '佐藤', 'HS01', 'HI01', 'HI05', 'java', 'こんにちは、佐藤です。バックエンド開発を担当しています。趣味は休日にサッカーをすることと、夜に映画を見ることです！');
+INSERT INTO SHAIN_TBL VALUES('A02', '鈴木', 'HO01', 'HO02', 'HI02', 'linux', 'インフラエンジニアの鈴木です。週末はよく車を運転してキャンプ場へ行き、自然の中で読書を楽しんでいます。');
+INSERT INTO SHAIN_TBL VALUES('A03', '高橋', 'HI02', 'HI03', 'HS02', 'python', 'データ分析チームの高橋です。プログラミングの勉強を兼ねた読書と、動画サブスクの鑑賞、それから草野球が趣味です。');
+INSERT INTO SHAIN_TBL VALUES('A04', '田中', 'HO03', 'HO04', 'HS01', 'aws', 'クラウドエンジニアの田中です。海が大好きで、釣りとサーフィンが生きがいです！体力作りでサッカーもやっています。');
+INSERT INTO SHAIN_TBL VALUES('A05', '渡辺', 'HS03', 'HS04', 'HS05', 'javascript', 'フロントエンド開発担当の渡辺です。学生時代から球技全般が大好きで、今は社内のバスケ部と卓球部に所属しています。');
+INSERT INTO SHAIN_TBL VALUES('A06', '伊藤', 'HI01', 'HI04', 'HO05', 'html', 'Webデザイナーの伊藤です。普段はインドア派でゲームやピアノ演奏をしていますが、長期休暇にはパラセーリングに挑戦します！');
 
 
 INSERT INTO login_tbl VALUES('A01', '111');

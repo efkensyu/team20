@@ -1,7 +1,10 @@
 h1#search{
 	text-align:center;
-	color:coral
+	color:coral;
 	
+}
+body{
+	background-image: url("kari.png");
 }
 .detail{
 	width: 100%;
