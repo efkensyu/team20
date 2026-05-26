@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>ユーザー登録</title>
 <link rel="icon" type="image/png" th:href="@{/Team20icon.png}">	
-<link rel="stylesheet" type="text/css" th:href="@{team20/team20_FirstRegister.css}">
+<link rel="stylesheet" type="text/css" th:href="@{team20/team20_FirstResult.css}">
 </head>
 <header>
 	<div class="header">
@@ -15,18 +15,19 @@
 	<diV class="content">
 	 	<diV class="content2">
 			<h2 class="box">ユーザー登録</h2>
-			<form method="post" th:action="@{/Team20_FirstRegister}" th:object="${registerForm}">
+			<form method="post" th:action="@{/Team20_FirstResult}" th:object="${registerForm}">
+				<h4>以下の内容でお間違いないでしょうか。</h4>
 				<a>名前</a>
 				<br>
-				<input class="textbox" type="text" th:field="*{name}">
+				<th:block class="text" th:text="*{name} + 様"></th:block>
 				<br>
 				<a>社員番号</a>
 				<br>
-				<input class="textbox" type="text" th:field="*{userid}">
+				<th:block class="text" th:text="*{userid}"></th:block>
 				<br>
 				<a>パスワード</a>
 				<br>
-				<input type="text" class="textbox" th:field="*{password}">
+				<th:block class="text" th:text="*{password}"></th:block>
 				<br>
 				<input class="button" type="submit" name="regist" value="登録">
 				<br>

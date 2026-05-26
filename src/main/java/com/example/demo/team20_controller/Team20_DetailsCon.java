@@ -14,10 +14,13 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class Team20_DetailsCon {
 	private final Team20_DetailsService service;
+
 	@GetMapping("/Team20_Details")			
+
 	public String index(@RequestParam("code") String shaincd,Model model) {
 		Team20_Shain shain = service.findPerson(shaincd);
 		model.addAttribute("userData",shain);
+	
 		return "team20/Team20_Details";	
 	}
 	

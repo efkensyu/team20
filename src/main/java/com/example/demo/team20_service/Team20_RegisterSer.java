@@ -1,36 +1,33 @@
 package com.example.demo.team20_service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
-import com.example.demo.team20_controller.RegForm;
-import com.example.demo.team20_entity.Team20_Hobby;
-import com.example.demo.team20_repository.Team20_registerRepository;
+import com.example.demo.team20_controller.Team20_RegForm;
+import com.example.demo.team20_repository.Team20_RegisterRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class Team20_RegisterSer {
-	private final Team20_registerRepository repository;
-	private String rank1, rank2, rank3;
+	private final Team20_RegisterRepository repository;
+//	private String rank1, rank2, rank3;
 
-	public List<Team20_Hobby> findByHobby(RegForm regForm) {
-		rank1 = regForm.getHobby();
-		rank2 = regForm.getHobby2();
-		rank3 = regForm.getHobby3();
+//	public List<Team20_Hobby> findByHobby(Team20_Shain team20_Shain) {
+//		rank1 = team20_Shain.getHobby();
+//		rank2 = team20_Shain.getHobby2();
+//		rank3 = team20_Shain.getHobby3();
+//
+//		return repository.findByHobbyEquals(rank1, rank2, rank3);
+//	}
 
-		return repository.findByHobbyEquals(rank1, rank2, rank3);
-	}
-
-	public void Proupdate(RegForm regForm) {
+	public void Proupdate(Team20_RegForm regForm) {
 
 		repository.update(
 				regForm.getCode(), // shainCd
-				this.rank1, // rank1
-				this.rank2, // rank2
-				this.rank3, // rank3
+				regForm.getHobby(),  // rank1 ← hobbyCd
+	            regForm.getHobby2(), // rank2 ← hobbyCd
+	            regForm.getHobby3(), // rank3 ← hobbyCd
 				regForm.getJob(), // job
 				regForm.getIntro()// intro
 		);

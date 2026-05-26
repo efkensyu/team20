@@ -25,7 +25,7 @@ public class Team20_SearchCon {
 	}
 	@GetMapping("/Team20_Search")
 	public String index(Model model) {
-		model.addAttribute("regForm",new RegForm());
+		model.addAttribute("regForm",new Team20_RegForm());
 	 return "team20/Team20_Search";
 	}
 	
@@ -33,13 +33,14 @@ public class Team20_SearchCon {
 	public String send1() {
 		return "team20/Team20_menyu";
 	}
+
 	@PostMapping(value="/Team20_Search",params="clear")
 	public String send2(Model model) {
-		model.addAttribute("regForm", new RegForm());
+		model.addAttribute("regForm", new Team20_RegForm());
 		return "team20/Team20_Search";
 	}
 	@PostMapping(value="/Team20_Search",params="search")
-	public String send3(@ModelAttribute("regForm") RegForm regForm,Model model) {
+	public String send3(@ModelAttribute("regForm") Team20_RegForm regForm,Model model) {
 		System.out.println("Post実行");
 		List<Team20_Shain>userDataList =service.findmatch(regForm.getName(),regForm.getJanru(),regForm.getHobby(),regForm.getJob());
 			model.addAttribute("userData",userDataList);

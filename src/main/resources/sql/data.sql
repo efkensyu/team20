@@ -1,3 +1,4 @@
+
 INSERT INTO SHAIN_TBL VALUES('A01', '佐藤', 'HS01', 'HI01', 'HI05', 'java', 'こんにちは、佐藤です。バックエンド開発を担当しています。趣味は休日にサッカーをすることと、夜に映画を見ることです！');
 INSERT INTO SHAIN_TBL VALUES('A02', '鈴木', 'HO01', 'HO02', 'HI02', 'linux', 'インフラエンジニアの鈴木です。週末はよく車を運転してキャンプ場へ行き、自然の中で読書を楽しんでいます。');
 INSERT INTO SHAIN_TBL VALUES('A03', '高橋', 'HI02', 'HI03', 'HS02', 'python', 'データ分析チームの高橋です。プログラミングの勉強を兼ねた読書と、動画サブスクの鑑賞、それから草野球が趣味です。');
@@ -20,6 +21,7 @@ INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS02', 'スポーツ', 
 INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS03', 'スポーツ', 'バスケ');
 INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS04', 'スポーツ', 'バレーボール');
 INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS05', 'スポーツ', '卓球');
+INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS06', 'スポーツ', '水球');
 
 -- アウトドア
 INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO01', 'アウトドア', 'キャンプ');

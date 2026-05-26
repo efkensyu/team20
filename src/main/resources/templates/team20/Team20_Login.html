@@ -8,21 +8,26 @@
 </head>
 <header>
 	<div class="header">
-		    <img th:src="@{/Team20logo.png}" width="100" height="auto">
+		    <img th:src="@{/Team20logo.png}" width="100">
 		</div>
 </header>
 <body>
 	<div class="main">
 		<diV class="content">
 			 <diV class="content2">
-				<h2 class="gg">ログイン</h2>
-				<form method="post" th:action="@{/login}">
-					<p>名前</p>
-					<input class="textbox" type="text" name="userid">
-					<p>パスワード</p>			
-					<input class="textbox" type="text" name="loginPass">
-					<br>
-					<input class="button" type="submit" name="login" value="ログイン"><br>
+				<h2 class="box">ログイン</h2>
+				<form method="post" th:action="@{/Team20_Login}" th:object="${loginForm}">
+					<p>
+						<a>社員番号</a>
+						<th:block class="error" th:if="${#fields.hasErrors('userid')}" th:errors="*{userid}"></th:block>
+					</p>
+					<input class="textbox" type="text" th:field="*{userid}">
+					<p>
+						<a>パスワード</a>
+						<th:block class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></th:block>
+					</p>			
+					<input class="textbox" type="password" th:field="*{password}">
+					<input class="button" type="submit" name="login" value="ログイン">
 					<input class="button" type="submit" name="regist" value="初回登録はこちら">
 					</form>
 			</diV>
