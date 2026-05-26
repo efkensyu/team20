@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.team20.team20_entity.Team20_Shain;
+import com.example.demo.team20.team20_repository.Team20_RegisterResultRepository;
 import com.example.demo.team20.team20_service.Team20_RegisterResultSer;
 
 @Controller
@@ -21,13 +22,19 @@ import com.example.demo.team20.team20_service.Team20_RegisterResultSer;
 public class Team20_RegisterResultCon {
 
 	private final Team20_RegisterResultSer registerResultSer;
+	private final Team20_RegisterResultRepository shainRepository;
+	
+	private String userid;//=社員コード
 
-	public Team20_RegisterResultCon(Team20_RegisterResultSer registerResultSer) {
+	public Team20_RegisterResultCon(Team20_RegisterResultSer registerResultSer,Team20_RegisterResultRepository shainRepository) {
 		this.registerResultSer = registerResultSer;
+		this.shainRepository = shainRepository;
 	}
 
 	@GetMapping("/Team20_Register_Result")
-	public String index(Model model) { // ← Model を追加
+	public String index(HttpSession session,Model model) { // ← Model を追加
+		userid = (String) session.getAttribute("userid");
+		System.out.println("ログイン中" + userid);
 		model.addAttribute("regForm", new Team20_RegForm()); // ← この行を追加
 		return "team20/Team20_Register_Result";
 	}
@@ -40,33 +47,23 @@ public class Team20_RegisterResultCon {
 
 	//実行ボタン
 	@PostMapping(value = "/Team20_Result", params = "do")
-	public String showresult(HttpSession session, Model model) { // ← Model を追加
-		// セッションからログイン中の社員を取得
-		Team20_Shain Team20_RegForm = (Team20_Shain) session.getAttribute("Team20_RegForm");
-
-		if (Team20_RegForm == null) {
+	public String showresult(HttpSession session, Model model) {
+		
+		String userid = (String) session.getAttribute("userid");
+		System.out.println("実行ボタン　ログイン中："+userid);
+		
+		if(userid == null) {
+			return "redirect:/Team20_Register_Result";
+		}
+	// 指定されたユーザーIDで社員情報を検索（存在しない場合はnullを代入）
+		Team20_Shain loginShain = shainRepository.findById(userid).orElse(null);
+//
+		if (loginShain == null) {
 			return "team20/Team20_Register_Result";
 		}
-		List<Team20_Shain> resultList = registerResultSer.getMatchingResult(Team20_RegForm);
+		List<Team20_Shain> resultList = registerResultSer.getMatchingResult(loginShain);
 		model.addAttribute("resultList", resultList);
-		model.addAttribute("loginList", Team20_RegForm);
-		return "team20/Team20_Result";
-	}
-
-	@GetMapping(value = "/Team20_Result", params = "do")
-	public String showresultGet(HttpSession session, Model model) { // ← Model を追加
-		// セッションからログイン中の社員を取得
-		Team20_Shain Team20_RegForm = (Team20_Shain) session.getAttribute("Team20_RegForm");
-
-		if (Team20_RegForm == null) {
-			return "team20/Team20_Register_Result";
-		}
-
-		//ボタン
-
-		List<Team20_Shain> resultList = registerResultSer.getMatchingResult(Team20_RegForm);
-		model.addAttribute("resultList", resultList);
-		model.addAttribute("loginList", Team20_RegForm);
+		model.addAttribute("loginList", loginShain);
 		return "team20/Team20_Result";
 	}
 

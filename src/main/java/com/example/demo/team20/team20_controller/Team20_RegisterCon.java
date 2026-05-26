@@ -63,7 +63,7 @@ public class Team20_RegisterCon {
 	//登録ボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "register")
 	public String register(@ModelAttribute Team20_RegForm regForm, Model model) {
-		userid="A001";
+//		userid="A001";
 		model.addAttribute("regForm", regForm);
 		if(userid.equals(regForm.getCode())) {
 			service.Proupdate(regForm);
@@ -81,4 +81,10 @@ public class Team20_RegisterCon {
 		return "team20/Team20_Register";
 		
 	}
+	
+	//メニューボタン
+		@PostMapping(value = "/Team20_Register_Result", params = "back")
+		public String back(@ModelAttribute Team20_RegForm regForm) {
+			return "team20/Team20_Menyu";
+		}
 }

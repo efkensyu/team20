@@ -13,11 +13,17 @@ import lombok.Data;
 @Data
 public class Team20_Shain {
 	@Id
+	@Column(name="shaincd")
 	private String shainCd;
+	@Column(name="shainnm")
 	private String shainNm;
+	@Column(name="rank1")   
 	private String rank1;
+	@Column(name="rank2")
 	private String rank2;
+	@Column(name="rank3")
 	private String rank3;
+	@Column(name="job")
 	private String job;
 	@Column(name="intro")
 	private String intro;
