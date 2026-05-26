@@ -26,7 +26,7 @@ public class Team20_RegisterResultCon {
 		this.registerResultSer = registerResultSer;
 	}
 
-	@GetMapping("/Team20_register_result")
+	@GetMapping("/Team20_Register_Result")
 	public String index(Model model) { // ← Model を追加
 		model.addAttribute("regForm", new Team20_RegForm()); // ← この行を追加
 		return "team20/Team20_Register_Result";
