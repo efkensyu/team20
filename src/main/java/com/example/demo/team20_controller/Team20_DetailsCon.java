@@ -3,8 +3,8 @@ package com.example.demo.team20_controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.team20_entity.Team20_Shain;
 import com.example.demo.team20_service.Team20_DetailsService;
@@ -17,10 +17,11 @@ public class Team20_DetailsCon {
 
 	@GetMapping("/Team20_Details")			
 
-	public String index(@RequestParam("shainCd") String shainCd,Model model) {
+	public String index(@ModelAttribute("shainCd") String shainCd, Model model) {
+		if (shainCd != null) {
 		Team20_Shain shain = service.findPerson(shainCd);
 		model.addAttribute("userData",shain);
-	
+		}
 		return "team20/Team20_Details";	
 	}
 	

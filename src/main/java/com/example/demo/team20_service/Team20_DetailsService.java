@@ -13,7 +13,7 @@ public class Team20_DetailsService {
 	private final Team20_DetailsRepository repository;
 	
 	public Team20_Shain findPerson(String shainCd) {
-		Team20_Shain shain=repository.findPerson(shainCd);
+		Team20_Shain shain=repository.findById(shainCd).orElse(null);
 		if(shain !=null) {
 			String h1= repository.findHobbyname(shain.getRank1());
 			String h2= repository.findHobbyname(shain.getRank2());
@@ -22,7 +22,7 @@ public class Team20_DetailsService {
 			shain.setRank2(h2);
 			shain.setRank3(h3);
 		}
-		return repository.findPerson(shainCd);
+		return shain;
 		}
 	
 }
