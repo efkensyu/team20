@@ -162,14 +162,14 @@ body::before {
 	width: 90%;
 	max-width: 900px;
 	margin: 20px auto;
-	background-color: #f0f0f0;
 	position: relative;
 	z-index: 1;
+	background-color: rgba(255, 255, 255, 0.9);
 
 }
 
 .content2 {
-	background-color: rgba(255, 255, 255, 0.85);
+/*	background-color: rgba(255, 255, 255, 0.85);*/
 	/* 白・透明度85% */
 	padding: 20px;
 	border-radius: 8px;
