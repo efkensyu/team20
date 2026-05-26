@@ -28,8 +28,10 @@
 
 					<h3>氏名</h3>
 					<input type="text" class="textbox" th:field="*{name}" size="20" value="氏名" />
+					<th:block  th:if="${#fields.hasErrors('name')}"><span th:errors="*{name}" class="error"></span></th:block>
 					<h3>社員コード</h3>
 					<input type="text" class="textbox" th:field="*{code}" size="20" value="code" />
+					<th:block  th:if="${#fields.hasErrors('code')}"><span th:errors="*{code}" class="error"></span></th:block>
 					<h3>趣味</h3>
 					<table border="1">
 						<tr>
@@ -51,6 +53,7 @@
 								<input type="radio" th:field="*{janru}" value="学び・教養">学び・教養
 								<br>
 								<input type="radio" th:field="*{janru}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
+								<th:block  th:if="${#fields.hasErrors('janru')}"><span th:errors="*{janru}" class="error"></span></th:block>
 							</td>
 						</tr>
 						<tr>
@@ -69,6 +72,7 @@
 										</option>
 									</th:block>
 								</select>
+								<th:block  th:if="${#fields.hasErrors('hobby')}"><span th:errors="*{hobby}" class="error"></span></th:block>
 
 								<script src="https://code.jquery.com/jquery-3.6.0.min.js">
 								</script>
@@ -132,6 +136,7 @@
 								<input type="radio" th:field="*{janru2}" value="学び・教養">学び・教養
 								<br>
 								<input type="radio" th:field="*{janru2}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
+								<th:block  th:if="${#fields.hasErrors('janru2')}"><span th:errors="*{janru2}" class="error"></span></th:block>
 							</td>
 						</tr>
 						<tr>
@@ -150,6 +155,7 @@
 										</option>
 									</th:block>
 								</select>
+								<th:block  th:if="${#fields.hasErrors('hobby2')}"><span th:errors="*{hobby2}" class="error"></span></th:block>
 
 								<script src="https://code.jquery.com/jquery-3.6.0.min.js">
 								</script>
@@ -211,6 +217,7 @@
 								<input type="radio" th:field="*{janru3}" value="学び・教養">学び・教養
 								<br>
 								<input type="radio" th:field="*{janru3}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
+								<th:block  th:if="${#fields.hasErrors('janru3')}"><span th:errors="*{janru3}" class="error"></span></th:block>
 							</td>
 						</tr>
 						<tr>
@@ -229,7 +236,8 @@
 										</option>
 									</th:block>
 								</select>
-
+								<th:block  th:if="${#fields.hasErrors('hobby3')}"><span th:errors="*{hobby3}" class="error"></span></th:block>
+								
 								<script src="https://code.jquery.com/jquery-3.6.0.min.js">
 								</script>
 								<script th:inline="javascript">
@@ -291,11 +299,13 @@
 						<option value="Shell Script">Shell Script</option>
 					</optgroup>
 				</select>
+				<th:block  th:if="${#fields.hasErrors('job')}"><span th:errors="*{job}" class="error"></span></th:block>
 				<br>
 
 
 				<h3>自己紹介</h3>
 				<textarea th:field="*{intro}" rows="10" placeholder="自己紹介を入力してください">この中に入力</textarea>
+				<th:block  th:if="${#fields.hasErrors('intro')}"><span th:errors="*{intro}" class="error"></span></th:block>
 				<div class="footer">
 
 					<input class="button" type="submit" value="登録する" name="register" />
