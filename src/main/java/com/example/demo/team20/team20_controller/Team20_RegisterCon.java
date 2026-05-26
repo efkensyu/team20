@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,23 +65,31 @@ public class Team20_RegisterCon {
 
 	//登録ボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "register")
-	public String register(@ModelAttribute Team20_RegForm regForm, Model model,SessionStatus status) {
+	public String register(@ModelAttribute @Validated Team20_RegForm regForm,BindingResult result, Model model,SessionStatus status) {
 //		userid="A001";
 		model.addAttribute("regForm", regForm);
 		if(userid.equals(regForm.getCode())) {
+			if(result.hasErrors()) {
+				return "team20/Team20_Register";
+			}
 			service.Proupdate(regForm);
 			status.setComplete();
-			return "team20/Team20_Register_Result";
-		}else {
+			
+		}else if(result.hasErrors()) {
 			return "team20/Team20_Register";
 		}
+		return "team20/Team20_Register_Result";
+		
 		
 	}
 
 	//編集ボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "edit")
-	public String editor(@ModelAttribute Team20_RegForm regForm, Model model) {
+	public String editor(@ModelAttribute @Validated Team20_RegForm regForm,BindingResult result, Model model) {
 		model.addAttribute("regForm", regForm);
+		if(result.hasErrors()) {
+			return "team20/Team20_Register";
+		}
 		return "team20/Team20_Register";
 		
 	}
