@@ -62,7 +62,7 @@ public class Team20_RegisterCon {
 		model.addAttribute("regForm", regForm);
 
 		service.Proupdate(regForm);
-		return "redirect:/Team20_Register_Result";
+		return "team20/Team20_Register_Result";
 	}
 
 	//編集ボタン
