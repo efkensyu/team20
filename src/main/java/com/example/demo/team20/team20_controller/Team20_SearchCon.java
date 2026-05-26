@@ -49,12 +49,19 @@ public class Team20_SearchCon {
 		return "team20/Team20_Search";
 	}
 	@PostMapping(value="/Team20_Search",params="search")
-	public String send3(@ModelAttribute("searchForm") @Validated Team20_SearchForm searchForm,BindingResult result,Model model) {
+	public String send3(@ModelAttribute("searchForm") @Validated Team20_SearchForm searchForm,BindingResult result,HttpSession session,Model model) {
 		if(result.hasErrors()) {
 			return "team20/Team20_Search";
 		}
 		System.out.println("Post実行");
-		List<Team20_Shain>resultList =service.findmatch(searchForm.getName(),searchForm.getJanru(),searchForm.getHobby(),searchForm.getJob());
+		String loginUserid = (String) session.getAttribute("userid");
+		List<Team20_Shain> resultList = service.findmatch(
+				searchForm.getName(), 
+				searchForm.getJanru(), 
+				searchForm.getHobby(), 
+				searchForm.getJob(), 
+				loginUserid
+		);
 		System.out.println(resultList);
 		model.addAttribute("resultList",resultList);
 		return "redirect:/Team20_Result";
