@@ -61,9 +61,13 @@ public class Team20_RegisterCon {
 	@PostMapping(value = "/Team20_Register_Result", params = "register")
 	public String register(@ModelAttribute Team20_RegForm regForm, Model model) {
 		model.addAttribute("regForm", regForm);
-
-		service.Proupdate(regForm);
-		return "team20/Team20_Register_Result";
+		if(userid.equals(regForm.getCode())) {
+			service.Proupdate(regForm);
+			return "team20/Team20_Register_Result";
+		}else {
+			return "team20/Team20_Register";
+		}
+		
 	}
 
 	//編集ボタン
