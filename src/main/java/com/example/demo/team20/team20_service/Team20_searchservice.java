@@ -12,8 +12,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Team20_searchservice {
 	private final Team20_searchserviceRepository repository;
-	public List<Team20_Shain> findmatch(String name,String janru,String hobby,String job){
-		return repository.findmatch(name, janru, hobby,job);
+	public List<Team20_Shain> findmatch(String name,String janru,String hobby,String job, String loginUserid){
+		return repository.findmatch(name, janru, hobby,job,loginUserid);
 		
 	}
 }

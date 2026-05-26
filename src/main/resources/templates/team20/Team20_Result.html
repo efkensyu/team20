@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.ofg">
 <head>
-<link rel="icon" href="logo.png" type="image/png.microsoft.icon">	
+	<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">	
+	<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Result.css}">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-<h1>検索結果</h1>
-<th:block th:each="data, i : ${resultList}">
-<form method="post" th:action="@{/Team20_Result}" >
-	
-		<div>
-			<input type="hidden" name="shainCd" th:value="${data.shainCd}">
-			<a th:text="*{i.count}"></a>
-			<br>
-			<a th:text="*{data.shainNm}"></a>
-			<br>
-			<a th:text="*{data.rank1}"></a>
-			<br>
-			<a th:text="*{data.rank2}"></a>
-			<br>				
-			<a th:text="*{data.rank3}"></a>
-			<br>
-			<input type="submit" value="詳細">
+<header>
+	<div class="header">
+		    <img th:src="@{/Team20logo.png}" width="100">
 		</div>
-</form>
-</th:block>
+</header>
+<body>
+<div class="main">
+	<div class="content">
+		<h1 class="box">検索結果</h1>
+	<th:block th:each="data, i : ${resultList}">
+		<form method="post" th:action="@{/Team20_Result}" >
+			<div class="content2">
+				<input type="hidden" name="shainCd" th:value="${data.shainCd}">
+				<a th:text="*{i.count}"></a>
+				<a th:text="*{data.shainNm}"></a>
+	 			<a th:text="*{data.rank1}"></a>
+				<a th:text="*{data.rank2}"></a>
+				<a th:text="*{data.rank3}"></a>
+				<input class="button" type="submit" value="詳細">
+			</div>
+		</form>
+	</th:block>
+	</div>
+</div>
 </body>
+<footer>
+	<p>なにか</p>
+</footer>
 </html>
