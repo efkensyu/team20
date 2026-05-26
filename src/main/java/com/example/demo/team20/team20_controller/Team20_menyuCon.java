@@ -21,7 +21,7 @@ public class Team20_menyuCon {
 	@PostMapping(value="/Team20_Menyu", params="register")
 	public String send1(HttpSession session,Model model) {
 		session.setAttribute("userid", userid);
-		return "redirect:/Team20_register";
+		return "redirect:/Team20_Register";
 	}
 	@PostMapping(value="/Team20_Menyu", params="search")
 	public String send2(HttpSession session,Model model) {
