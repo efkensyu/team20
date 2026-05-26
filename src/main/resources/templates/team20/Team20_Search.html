@@ -7,11 +7,11 @@
 	<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Search.css}">
 </head>
 <header>
-	<div class="header">
-		    <img th:src="@{/Team20logo.png}" width="100" height="auto">
-		</div>
+		<img th:src="@{/Team20logo.png}" width="100" height="auto">	
 </header>
+
 <body>
+	
 	<h1 id="search">検索</h1>
 	<form method="post" th:action="@{/Team20_Search}" th:object="${regForm}">
 		<table border="1" class="detail">
@@ -25,12 +25,13 @@
 				<td><input type="text" th:field="*{name}" size="20" value="名前"></td>
 			</tr>
 			<tr>
-				<td>ジャンル</td>
+				<td class="janru">ジャンル</td>
 				<td> <input type="radio" th:field="*{janru}" value="スポーツ">スポーツ
 					<input type="radio" th:field="*{janru}" value="アウトドア">アウトドア
 					<input type="radio" th:field="*{janru}" value="インドア">インドア
 					<input type="radio" th:field="*{janru}" value="クリエイティブ">クリエイティブ
 					<input type="radio" th:field="*{janru}" value="学び・教養">学び・教養
+					<br>
 					<input type="radio" th:field="*{janru}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
 				</td>
 			</tr>
@@ -102,27 +103,30 @@
 					<select th:field="*{job}">
 						<option th:value="${null}">-- 職種を選択してください --</option>
 						<optgroup label="開発">
-										<option value="Java">Java</option>
-										<option value="Oracle">Oracle</option>
-										<option value="Python">Python</option>
-										<option value="Javasclipt">Javasclipt</option>
-										<option value="HTML">HTML</option>
-									</optgroup>
-									<optgroup label="インフラ">
-										<option value="Linux">Linux</option>
-										<option value="AWS">AWS</option>
-										<option value="anaconda">anaconda</option>
-										<option value="Terrform">Terrform</option>
-										<option value="Shell Script">Shell Script</option>
-									</optgroup>
-								</select>
-					
+							<option value="Java">Java</option>
+							<option value="Oracle">Oracle</option>
+							<option value="Python">Python</option>
+							<option value="Javasclipt">Javasclipt</option>
+							<option value="HTML">HTML</option>
+						</optgroup>
+						<optgroup label="インフラ">
+							<option value="Linux">Linux</option>
+							<option value="AWS">AWS</option>
+							<option value="anaconda">anaconda</option>
+							<option value="Terrform">Terrform</option>
+							<option value="Shell Script">Shell Script</option>
+						</optgroup>
+					</select>
+
 				</td>
 			</tr>
 		</table>
-		<input type="submit" name="search" value="検索" />
-		<input type="submit" name="clear" value="クリア" />
-		<input type="submit" name="back" value="メニューに戻る">
+		<div class="botton">
+
+			<input type="submit" name="search" value="検索" />
+			<input type="submit" name="clear" value="クリア" />
+			<input type="submit" name="back" value="メニューに戻る">
+		</div>
 
 	</form>
 </body>
