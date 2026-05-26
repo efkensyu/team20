@@ -10,25 +10,27 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes(names="shainCd")
 @Controller
 public class Team20_menyuCon {
+	private String userid;
 	
 	@GetMapping("/Team20_Menyu")			
 	public String index(HttpSession session,Model model) {
-		String userid = (String) session.getAttribute("userid");
-	    String password = (String) session.getAttribute("password");
+		userid = (String) session.getAttribute("userid");
 		return "team20/Team20_menyu";	
 	}
 	
 	@PostMapping(value="/Team20_Menyu", params="register")
-	public String send1() {
-				return "redirect:/Team20_register";
-			}
-	@PostMapping(value="/Team20_Menyu", params="search")
-	public String send2() {
-				return "redirect:/Team20_Search";
-			}
-	@PostMapping(value="/Team20_Menyu", params="result")
-	public String send3() {
-				return "team20/Team20_Result";
-			}
-		
+	public String send1(HttpSession session,Model model) {
+		session.setAttribute("userid", userid);
+		return "redirect:/Team20_register";
 	}
+	@PostMapping(value="/Team20_Menyu", params="search")
+	public String send2(HttpSession session,Model model) {
+		session.setAttribute("userid", userid);
+		return "redirect:/Team20_Search";
+	}
+	@PostMapping(value="/Team20_Menyu", params="result")
+	public String send3(HttpSession session,Model model) {
+		session.setAttribute("userid", userid);
+		return "team20/Team20_Result";
+	}		
+}
