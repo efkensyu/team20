@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class Team20_menyuCon {
 	private String userid;
 	
+//	@Autowired
+//	private Team20_MenyuSer menyuSer;
+	
 	@GetMapping("/Team20_Menyu")			
 	public String index(HttpSession session,Model model) {
 		userid = (String) session.getAttribute("userid");
+//		String loginName = menyuSer.find(userid).toString();;
+//		model.addAttribute("name", loginName);
 		System.out.println("ログイン中" + userid);
-		return "team20/Team20_menyu";	
+		return "team20/Team20_menyu";
 	}
 	
 	@PostMapping(value="/Team20_Menyu", params="register")

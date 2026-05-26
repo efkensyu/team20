@@ -2,18 +2,33 @@
 <html xmlns:th="https://www.thymeleaf.ofg">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>メニュー</title>
 <link rel="stylesheet" type="text/css" th:href="@{team20/team20_Menyu.css}">
+<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">	
 </head>
-<body>
-<h1>メニュー画面</h1>
-<form  method="post" th:action="@{/Team20_Menyu}">
-	<div class="bt-container">
-	<input type ="image" th:src="@{/Team20RegisterButton.jpg}" name="register" alt="登録画面" class="bt-animation" />
-	<input type ="image" th:src="@{/Team20SearchButton.jpg}" name="search" alt="検索画面" class="bt-animation"/>
-		<input type ="image" th:src="@{/Team20ResultButton.jpg}" name="result" alt="結果画面" class="bt-animation"/>
-	
+<header>
+	<div class="header">
+	    <img th:src="@{/Team20logo.png}" width="100">
 	</div>
-</form>
+</header>
+<body>
+	<div class="main">
+		<diV class="content">
+			 <diV class="content2">
+				<form  method="post" th:action="@{/Team20_Menyu}">
+					<h1 class="box" th:text="${name} + 様"></h1>
+					<p>B-ITへようこそ。</p>
+					<div class="bt-container">
+						<input type ="submit" name="register" value="プロフィール登録" class="button" />
+						<input type ="submit" name="search" value="社員検索" class="button"/>
+						<input type ="submit" name="result" value="結果表示" class="button"/>	
+					</div>
+				</form>
+			 </diV>
+		</diV>
+	</div>
 </body>
+<footer>
+	<p>なにか</p>
+</footer>
 </html>
