@@ -10,8 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.team20_entity.Team20_Shain;
 
 @Repository
-public interface Team20_RegisterResultRepository extends JpaRepository<Team20_Shain, String> {
+public interface Team20_RegisterResultRepository
+		extends JpaRepository<Team20_Shain, String> {
 
+	// 自分以外の全社員を取得
 	@Query("SELECT s FROM Team20_Shain s WHERE s.shainCd <> :shainCd")
-    List<Team20_Shain> findAllExcludeSelf(@Param("shainCd") String shainCd);
+	List<Team20_Shain> findAllExcludeSelf(@Param("shainCd") String shainCd);
 }
