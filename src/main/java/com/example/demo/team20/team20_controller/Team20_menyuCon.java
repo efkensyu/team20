@@ -15,13 +15,14 @@ public class Team20_menyuCon {
 	@GetMapping("/Team20_Menyu")			
 	public String index(HttpSession session,Model model) {
 		userid = (String) session.getAttribute("userid");
+		System.out.println("ログイン中" + userid);
 		return "team20/Team20_menyu";	
 	}
 	
 	@PostMapping(value="/Team20_Menyu", params="register")
 	public String send1(HttpSession session,Model model) {
 		session.setAttribute("userid", userid);
-		return "redirect:/Team20_register";
+		return "redirect:/Team20_Register";
 	}
 	@PostMapping(value="/Team20_Menyu", params="search")
 	public String send2(HttpSession session,Model model) {
@@ -31,6 +32,6 @@ public class Team20_menyuCon {
 	@PostMapping(value="/Team20_Menyu", params="result")
 	public String send3(HttpSession session,Model model) {
 		session.setAttribute("userid", userid);
-		return "team20/Team20_Result";
+		return "redirect:/Team20_Result";
 	}		
 }

@@ -2,6 +2,8 @@ package com.example.demo.team20.team20_controller;
 
 import java.util.List;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -17,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class Team20_SearchCon {
+	private String userid;//=社員コード
 	private final Team20_searchservice service;
 @InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -24,7 +27,9 @@ public class Team20_SearchCon {
 	    binder.registerCustomEditor(String.class, new org.springframework.beans.propertyeditors.StringTrimmerEditor(true));
 	}
 	@GetMapping("/Team20_Search")
-	public String index(Model model) {
+	public String index(HttpSession session,Model model) {
+		userid = (String) session.getAttribute("userid");
+		System.out.println("ログイン中" + userid);
 		model.addAttribute("regForm",new Team20_RegForm());
 	 return "team20/Team20_Search";
 	}

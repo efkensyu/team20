@@ -39,6 +39,7 @@ public class Team20_RegisterCon {
 	@GetMapping("/Team20_Register")
 	public String index(HttpSession session, Model model) { // ← Model を追加
 		userid = (String) session.getAttribute("userid");
+		System.out.println("ログイン中" + userid);
 		if (!model.containsAttribute("regForm")) {
 			model.addAttribute("regForm", new Team20_RegForm());
 		}	
