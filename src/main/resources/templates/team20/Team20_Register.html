@@ -1,323 +1,215 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-<!--<html xmlns:th="https://www.thymeleaf.ofg">-->
-
-
 <head>
 	<meta charset="UTF-8">
 	<title>登録画面</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/team20/team20_Register.css}">
 	<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">
 </head>
-
-
 <body>
+	<header>
+		<div class="header">
+			<img th:src="@{/Team20logo.png}" width="100" height="50">
+			<h1>プロフィール登録画面</h1>
+		</div>
+	</header>
 
-	<div class="header">
-		<!-- ✅ 左端に画像 -->
-		<img th:src="@{/Team20logo.png}" width="100" height="50">
-		<h1>プロフィール登録画面</h1>
-	</div>
-
-
-	<div class="content">
-		<div class="content2">
-			<form method="post" th:action="@{/Team20_Register_Result}" th:object="${regForm}">
-
-
+	<div class="main">
+		<div class="content">
+			<div class="content2">
+				<form method="post" th:action="@{/Team20_Register_Result}" th:object="${regForm}">
 
 					<h3>氏名</h3>
-					<input type="text" class="textbox" th:field="*{name}" size="20" value="氏名" />
-					<th:block  th:if="${#fields.hasErrors('name')}"><span th:errors="*{name}" class="error"></span></th:block>
+					<input type="text" class="textbox" th:field="*{name}" size="20">
+					<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+
 					<h3>社員コード</h3>
-					<input type="text" class="textbox" th:field="*{code}" size="20" value="code" />
-					<th:block  th:if="${#fields.hasErrors('code')}"><span th:errors="*{code}" class="error"></span></th:block>
+					<input type="text" class="textbox" th:field="*{code}" size="20">
+					<span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" class="error"></span>
+
 					<h3>趣味</h3>
-					<table border="1">
-						<tr>
-							<td class="rankingbar">
-								<th:text class="rank1">１位</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<th:text class="janru">ジャンル</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" th:field="*{janru}" value="スポーツ" selected="selected">スポーツ
-								<input type="radio" th:field="*{janru}" value="アウトドア">アウトドア
-								<input type="radio" th:field="*{janru}" value="インドア">インドア
-								<input type="radio" th:field="*{janru}" value="クリエイティブ">クリエイティブ
-								<input type="radio" th:field="*{janru}" value="学び・教養">学び・教養
-								<br>
-								<input type="radio" th:field="*{janru}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
-								<th:block  th:if="${#fields.hasErrors('janru')}"><span th:errors="*{janru}" class="error"></span></th:block>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<th:text class="hobby">趣味</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<select th:field="*{hobby}" id="hobby" disabled="disabled">
-									<option value="">-- 趣味を選択してください --</option>
-									<!-- ✅ DBから取得したhobbyListをループ・手書きoptionは全削除 -->
-									<th:block th:each="h : ${hobbyList}">
-										<option th:value="${h.hobbyCd}" th:text="${h.hobby}"
-											th:attr="data-val=${h.janru}">
-										</option>
-									</th:block>
-								</select>
-								<th:block  th:if="${#fields.hasErrors('hobby')}"><span th:errors="*{hobby}" class="error"></span></th:block>
-
-								<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-								</script>
-								<script th:inline="javascript">
-									$(document).ready(function () {
-										var $hobby = $('#hobby'); // 2位はhobby2、3位はhobby3
-
-										// 初期状態：全option非表示
-										$hobby.find('option').each(function () {
-											var val2 = $(this).data('val');
-											if (val2 !== undefined) {
-												$(this).hide().prop('disabled', true);
-											}
-										});
-
-										// ジャンル選択時
-										$('input[name="janru"]').change(function () { // 2位はjanru2、3位はjanru3
-											var val1 = $(this).val();
-											$hobby.val('');
-											$hobby.prop('disabled', val1 === "");
-
-											$hobby.find('option').each(function () {
-												var val2 = $(this).data('val');
-												if (val2 === undefined) return;
-
-												if (val1 == val2) {
-													$(this).show().prop('disabled', false);
-												} else {
-													$(this).hide().prop('disabled', true);
-												}
-											});
-										});
-									});
-									// formの送信直前にdisabledを全解除
-									$('form').submit(function () {
-										$('#hobby, #hobby2, #hobby3').prop('disabled', false);
-									});
-									//											
-								</script>
-							</td>
-						</tr>
+					
+					<table class="ranking-table">
+						<thead>
+							<tr>
+								<th class="rankingbar" colspan="2">１位</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="janru-title">ジャンル</td>
+								<td>
+									<label><input type="radio" th:field="*{janru}" value="スポーツ">スポーツ</label>
+									<label><input type="radio" th:field="*{janru}" value="アウトドア">アウトドア</label>
+									<label><input type="radio" th:field="*{janru}" value="インドア">インドア</label>
+									<label><input type="radio" th:field="*{janru}" value="クリエイティブ">クリエイティブ</label>
+									<label><input type="radio" th:field="*{janru}" value="学び・教養">学び・教養</label>
+									<br>
+									<label><input type="radio" th:field="*{janru}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
+									<span th:if="${#fields.hasErrors('janru')}" th:errors="*{janru}" class="error"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="hobby-title">趣味</td>
+								<td>
+									<select th:field="*{hobby}" id="hobby" disabled="disabled">
+										<option value="">-- 趣味を選択してください --</option>
+										<th:block th:each="h : ${hobbyList}">
+											<option th:value="${h.hobbyCd}" th:text="${h.hobby}" th:attr="data-val=${h.janru}"></option>
+										</th:block>
+									</select>
+									<span th:if="${#fields.hasErrors('hobby')}" th:errors="*{hobby}" class="error"></span>
+								</td>
+							</tr>
+						</tbody>
 					</table>
-					<br><br>
-					<table border="1">
-						<tr>
-							<td class="rankingbar">
-								<th:text class="rank2">２位</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<th:text class="janru">ジャンル</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" th:field="*{janru2}" value="スポーツ">スポーツ
-								<input type="radio" th:field="*{janru2}" value="アウトドア" checked="checked">アウトドア
-								<input type="radio" th:field="*{janru2}" value="インドア">インドア
-								<input type="radio" th:field="*{janru2}" value="クリエイティブ">クリエイティブ
-								<input type="radio" th:field="*{janru2}" value="学び・教養">学び・教養
-								<br>
-								<input type="radio" th:field="*{janru2}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
-								<th:block  th:if="${#fields.hasErrors('janru2')}"><span th:errors="*{janru2}" class="error"></span></th:block>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<th:text class="hobby">趣味</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<!-- 2位 -->
-								<select th:field="*{hobby2}" id="hobby2" disabled="disabled">
-									<option value="">-- 趣味を選択してください --</option>
-									<th:block th:each="h : ${hobbyList}">
-										<option th:value="${h.hobbyCd}" th:text="${h.hobby}"
-											th:attr="data-val=${h.janru}">
-										</option>
-									</th:block>
-								</select>
-								<th:block  th:if="${#fields.hasErrors('hobby2')}"><span th:errors="*{hobby2}" class="error"></span></th:block>
 
-								<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-								</script>
-								<script th:inline="javascript">
-									$(document).ready(function () {
-										var $hobby = $('#hobby2');
-										//								var $janru = $('#janru');
-										$hobby.find('option').each(function () {
-											var val2 = $(this).data('val');
-
-											if (val2 !== undefined) {
-												$(this).hide().prop('disabled', true);
-											}
-										});
-										$('input[name="janru2"]').change(function () {
-											var val1 = $(this).val();
-											$hobby.val('');
-											if (val1 === "") {
-												$hobby.prop('disabled', true);
-											} else {
-												$hobby.prop('disabled', false);
-											}
-											$hobby.find('option').each(function () {
-												var val2 = $(this).data('val');
-												if (val2 === undefined) {
-													return;
-												}
-												if (val1 == val2) {
-													$(this).show().prop('disabled', false);
-												} else {
-													$(this).hide().prop('disabled', true);
-												}
-											})
-										})
-									})
-								</script>
-							</td>
-						</tr>
+					<table class="ranking-table">
+						<thead>
+							<tr>
+								<th class="rankingbar" colspan="2">２位</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="janru-title">ジャンル</td>
+								<td>
+									<label><input type="radio" th:field="*{janru2}" value="スポーツ">スポーツ</label>
+									<label><input type="radio" th:field="*{janru2}" value="アウトドア">アウトドア</label>
+									<label><input type="radio" th:field="*{janru2}" value="インドア">インドア</label>
+									<label><input type="radio" th:field="*{janru2}" value="クリエイティブ">クリエイティブ</label>
+									<label><input type="radio" th:field="*{janru2}" value="学び・教養">学び・教養</label>
+									<br>
+									<label><input type="radio" th:field="*{janru2}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
+									<span th:if="${#fields.hasErrors('janru2')}" th:errors="*{janru2}" class="error"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="hobby-title">趣味</td>
+								<td>
+									<select th:field="*{hobby2}" id="hobby2" disabled="disabled">
+										<option value="">-- 趣味を選択してください --</option>
+										<th:block th:each="h : ${hobbyList}">
+											<option th:value="${h.hobbyCd}" th:text="${h.hobby}" th:attr="data-val=${h.janru}"></option>
+										</th:block>
+									</select>
+									<span th:if="${#fields.hasErrors('hobby2')}" th:errors="*{hobby2}" class="error"></span>
+								</td>
+							</tr>
+						</tbody>
 					</table>
-					<br><br>
 
-					<table border="1">
-						<tr>
-							<td class="rankingbar">
-								<th:text class="rank3">３位</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<th:text class="janru">ジャンル</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="radio" th:field="*{janru3}" value="スポーツ">スポーツ
-								<input type="radio" th:field="*{janru3}" value="アウトドア">アウトドア
-								<input type="radio" th:field="*{janru3}" value="インドア" checked="checked">インドア
-								<input type="radio" th:field="*{janru3}" value="クリエイティブ">クリエイティブ
-								<input type="radio" th:field="*{janru3}" value="学び・教養">学び・教養
-								<br>
-								<input type="radio" th:field="*{janru3}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
-								<th:block  th:if="${#fields.hasErrors('janru3')}"><span th:errors="*{janru3}" class="error"></span></th:block>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<th:text class="hobby">趣味</th:text>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<!-- 3位 -->
-								<select th:field="*{hobby3}" id="hobby3" disabled="disabled">
-									<option value="">-- 趣味を選択してください --</option>
-									<th:block th:each="h : ${hobbyList}">
-										<option th:value="${h.hobbyCd}" th:text="${h.hobby}"
-											th:attr="data-val=${h.janru}">
-										</option>
-									</th:block>
-								</select>
-								<th:block  th:if="${#fields.hasErrors('hobby3')}"><span th:errors="*{hobby3}" class="error"></span></th:block>
-								
-								<script src="https://code.jquery.com/jquery-3.6.0.min.js">
-								</script>
-								<script th:inline="javascript">
-									$(document).ready(function () {
-										var $hobby = $('#hobby3');
-										//								var $janru = $('#janru');
-										$hobby.find('option').each(function () {
-											var val2 = $(this).data('val');
-
-											if (val2 !== undefined) {
-												$(this).hide().prop('disabled', true);
-											}
-										});
-										$('input[name="janru3"]').change(function () {
-											var val1 = $(this).val();
-											$hobby.val('');
-											if (val1 === "") {
-												$hobby.prop('disabled', true);
-											} else {
-												$hobby.prop('disabled', false);
-											}
-											$hobby.find('option').each(function () {
-												var val2 = $(this).data('val');
-												if (val2 === undefined) {
-													return;
-												}
-												if (val1 == val2) {
-													$(this).show().prop('disabled', false);
-												} else {
-													$(this).hide().prop('disabled', true);
-												}
-											})
-										})
-									})
-								</script>
-								
-							</td>
-						</tr>
+					<table class="ranking-table">
+						<thead>
+							<tr>
+								<th class="rankingbar" colspan="2">３位</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="janru-title">ジャンル</td>
+								<td>
+									<label><input type="radio" th:field="*{janru3}" value="スポーツ">スポーツ</label>
+									<label><input type="radio" th:field="*{janru3}" value="アウトドア">アウトドア</label>
+									<label><input type="radio" th:field="*{janru3}" value="インドア">インドア</label>
+									<label><input type="radio" th:field="*{janru3}" value="クリエイティブ">クリエイティブ</label>
+									<label><input type="radio" th:field="*{janru3}" value="学び・教養">学び・教養</label>
+									<br>
+									<label><input type="radio" th:field="*{janru3}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
+									<span th:if="${#fields.hasErrors('janru3')}" th:errors="*{janru3}" class="error"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="hobby-title">趣味</td>
+								<td>
+									<select th:field="*{hobby3}" id="hobby3" disabled="disabled">
+										<option value="">-- 趣味を選択してください --</option>
+										<th:block th:each="h : ${hobbyList}">
+											<option th:value="${h.hobbyCd}" th:text="${h.hobby}" th:attr="data-val=${h.janru}"></option>
+										</th:block>
+									</select>
+									<span th:if="${#fields.hasErrors('hobby3')}" th:errors="*{hobby3}" class="error"></span>
+								</td>
+							</tr>
+						</tbody>
 					</table>
-					<br><br>
-				</th:block>
-				<!--		分野ごとに決められるようにする-->
-				<h3>興味のあるIT分野を選択してください</h3>
 
+					<h3>興味のあるIT分野を選択してください</h3>
+					<select class="itbunya" th:field="*{job}">
+						<optgroup label="開発">
+							<option value="Java">Java</option>
+							<option value="Oracle">Oracle</option>
+							<option value="Python">Python</option>
+							<option value="JavaScript">JavaScript</option>
+							<option value="HTML">HTML</option>
+						</optgroup>
+						<optgroup label="インフラ">
+							<option value="Linux">Linux</option>
+							<option value="AWS">AWS</option>
+							<option value="anaconda">anaconda</option>
+							<option value="Terraform">Terraform</option>
+							<option value="Shell Script">Shell Script</option>
+						</optgroup>
+					</select>
+					<span th:if="${#fields.hasErrors('job')}" th:errors="*{job}" class="error"></span>
 
-				<select class="itbunya" th:field="*{job}" title="開発">
-					<optgroup label="開発">
-						<option value="Java">Java</option>
-						<option value="Oracle">Oracle</option>
-						<option value="Python">Python</option>
-						<option value="Javasclipt">Javasclipt</option>
-						<option value="HTML">HTML</option>
-					</optgroup>
-					<optgroup label="インフラ">
-						<option value="Linux">Linux</option>
-						<option value="AWS">AWS</option>
-						<option value="anaconda">anaconda</option>
-						<option value="Terrform">Terrform</option>
-						<option value="Shell Script">Shell Script</option>
-					</optgroup>
-				</select>
-				<th:block  th:if="${#fields.hasErrors('job')}"><span th:errors="*{job}" class="error"></span></th:block>
-				<br>
+					<h3>自己紹介</h3>
+					<textarea th:field="*{intro}" rows="10" placeholder="自己紹介を入力してください"></textarea>
+					<span th:if="${#fields.hasErrors('intro')}" th:errors="*{intro}" class="error"></span>
 
-
-				<h3>自己紹介</h3>
-				<textarea th:field="*{intro}" rows="10" placeholder="自己紹介を入力してください">この中に入力</textarea>
-				<th:block  th:if="${#fields.hasErrors('intro')}"><span th:errors="*{intro}" class="error"></span></th:block>
-				<div class="footer">
-
-					<input class="button" type="submit" value="登録する" name="register" />
-					<!--		編集ボタン-->
-					<input class="button" type="submit" value="編集する" name="edit" />
-<!--					メニュー遷移ボタン-->
-					<input class="button" type="submit" value="メニュー画面へ戻る" name="back" />
-				</div>
-			</form>
-
+					<div class="botton-container">
+						<input class="button" type="submit" value="登録する" name="register">
+						<input class="button" type="submit" value="編集する" name="edit">
+						<input class="button" type="submit" value="メニューに戻る" name="back">
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
-</body>
 
+	<footer>
+		<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script th:inline="javascript">
+		$(document).ready(function () {
+			function setupHobbyFilter(janruName, hobbyId) {
+				var $hobby = $(hobbyId);
+				
+				$hobby.find('option').each(function () {
+					var val2 = $(this).data('val');
+					if (val2 !== undefined) {
+						$(this).hide().prop('disabled', true);
+					}
+				});
+
+				$('input[name="' + janruName + '"]').change(function () {
+					var val1 = $(this).val();
+					$hobby.val('');
+					$hobby.prop('disabled', val1 === "");
+
+					$hobby.find('option').each(function () {
+						var val2 = $(this).data('val');
+						if (val2 === undefined) return;
+
+						if (val1 == val2) {
+							$(this).show().prop('disabled', false);
+						} else {
+							$(this).hide().prop('disabled', true);
+						}
+					});
+				});
+			}
+
+			setupHobbyFilter('janru', '#hobby');
+			setupHobbyFilter('janru2', '#hobby2');
+			setupHobbyFilter('janru3', '#hobby3');
+
+			$('form').submit(function () {
+				$('#hobby, #hobby2, #hobby3').prop('disabled', false);
+			});
+		});
+	</script>
+</body>
 </html>

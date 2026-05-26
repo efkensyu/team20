@@ -1,64 +1,110 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-
 <head>
 	<meta charset="UTF-8">
 	<title>登録確認画面</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/team20/team20_Register.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/team20/team20_Confirm.css}">
 	<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">
 </head>
-
 <body>
+	<header>
+		<div class="header">
+			<img th:src="@{/Team20logo.png}" width="100" height="50">
+			<h1>プロフィール内容確認画面</h1>
+		</div>
+	</header>
 
-	<div class="header">
-		<!-- ✅ 左端に画像 -->
-		<img th:src="@{/Team20logo.png}" width="100" height="50">
-		<h1>プロフィール内容確認画面</h1>
-	</div>
+	<div class="main">
+		<div class="content">
+			<div class="content2">
+				<form method="post" th:action="@{/Team20_Result}" th:object="${regForm}">
 
-	<div class="content">
-		<div class="content2">
-			<form method="post" th:action="@{/Team20_Result}" th:object="${regForm}">
+					<h2 class="confirm-title">登録する内容に間違いはありませんか</h2>
 
-				<h2>登録する内容に間違いはありませんか</h2>
-				<h3>氏名</h3>
-				<p th:text="*{name}" class="textbox"></p>
-				<h3>社員コード</h3>
-				<p th:text="*{code}" class="textbox"></p>
-				<br>
-				<h3>1番目に好きな趣味</h3>
-				<p th:text="'ジャンル'+'	'+*{janru}"></p>
-				<p th:text="'趣味' +'	' +*{hobby}"></p>
+					<h3>氏名</h3>
+					<div class="confirm-box">
+						<p th:text="*{name}"></p>
+					</div>
 
-				<br>
-				<h3>2番目に好きな趣味</h3>
-				<p th:text="'ジャンル'+'	'+*{janru2}"></p>
-				<p th:text="'趣味' +'	'+ *{hobby2}"></p>
-				<br>
-				<h3>3番目に好きな趣味</h3>
-				<p th:text="'ジャンル'+'	'+*{janru3}"></p>
-				<p th:text="'趣味' +'	'+ *{hobby3}"></p>
-				<br>
+					<h3>社員コード</h3>
+					<div class="confirm-box">
+						<p th:text="*{code}"></p>
+					</div>
 
-				<!--		分野別で指定したものが表示されるようにする-->
-				<h3>興味のあるIT分野</h3>
-				<p th:text=" *{job}"></p>
-				<br>
+					<h3>趣味</h3>
+					<table class="ranking-table">
+						<thead>
+							<tr>
+								<th class="rankingbar" colspan="2">１位</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="janru-title">ジャンル</td>
+								<td th:text="*{janru}"></td>
+							</tr>
+							<tr>
+								<td class="hobby-title">趣味</td>
+								<td th:text="*{hobby}"></td>
+							</tr>
+						</tbody>
+					</table>
 
-				<h3>自己紹介</h3>
-				<textarea th:field="*{intro}" rows="10"></textarea>
-				<!--					<p th:text="自己紹介： + *{intro}"></p>-->
-				<br>
+					<table class="ranking-table">
+						<thead>
+							<tr>
+								<th class="rankingbar" colspan="2">２位</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="janru-title">ジャンル</td>
+								<td th:text="*{janru2}"></td>
+							</tr>
+							<tr>
+								<td class="hobby-title">趣味</td>
+								<td th:text="*{hobby2}"></td>
+							</tr>
+						</tbody>
+					</table>
 
+					<table class="ranking-table">
+						<thead>
+							<tr>
+								<th class="rankingbar" colspan="2">３位</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="janru-title">ジャンル</td>
+								<td th:text="*{janru3}"></td>
+							</tr>
+							<tr>
+								<td class="hobby-title">趣味</td>
+								<td th:text="*{hobby3}"></td>
+							</tr>
+						</tbody>
+					</table>
 
-				<input type="submit" value="戻る" name="back" />
-				<input type="submit" value="確定する" name="do" />
+					<h3>興味のあるIT分野</h3>
+					<div class="confirm-box">
+						<p th:text="*{job}"></p>
+					</div>
 
-			</form>
+					<h3>自己紹介</h3>
+					<textarea th:field="*{intro}" rows="10" readonly></textarea>
 
+					<div class="botton-container">
+						<input class="button" type="submit" value="戻る" name="back">
+						<input class="button" type="submit" value="確定する" name="do">
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 
+	<footer>
+		<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
+	</footer>
 </body>
-
 </html>

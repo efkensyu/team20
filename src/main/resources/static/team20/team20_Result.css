@@ -33,6 +33,10 @@ footer {
 	  box-sizing: border-box;
 }
 
+footer p {
+	text-align: right;
+}
+
 body {
 	background-image: url("/kari.png");
 	background-position: center bottom;
@@ -160,8 +164,4 @@ body {
 
 .button :hover {
 	background-color: rgba(22, 74, 132, 0.05); 
-}
-
-footer p {
-	text-align: right;
 }
