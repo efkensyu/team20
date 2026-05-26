@@ -12,12 +12,12 @@ public interface Team20_DetailsRepository extends JpaRepository<Team20_Shain, St
 	@Query(value="SELECT "
 			+ "  s.shaincd,"
 			+ "    s.shainnm,"
-			+ "    (SELECT h.janru||'/'|| h.hobby FROM hobby_tbl h WHERE h.hobbycode = s.rank1) AS rank1,"
-			+ "    (SELECT h.janru||'/'|| h.hobby FROM hobby_tbl h WHERE h.hobbycode = s.rank2) AS rank2,"
-			+ "    (SELECT h.janru||'/'|| h.hobby FROM hobby_tbl h WHERE h.hobbycode = s.rank3) AS rank3,"
+			+ "    (SELECT h.janru||'/'|| h.hobby FROM team20_hobby_tbl h WHERE h.hobbycode = s.rank1) AS rank1,"
+			+ "    (SELECT h.janru||'/'|| h.hobby FROM team20_hobby_tbl h WHERE h.hobbycode = s.rank2) AS rank2,"
+			+ "    (SELECT h.janru||'/'|| h.hobby FROM team20_hobby_tbl h WHERE h.hobbycode = s.rank3) AS rank3,"
 			+ "    s.job,"
 			+ "    s.intro"
-			+ " FROM shain_tbl s WHERE shaincd = :code",nativeQuery=true)
+			+ " FROM team20_shain_tbl s WHERE shaincd = :code",nativeQuery=true)
 		public Team20_Shain findPerson(@Param("code")String shaincd);
 			
 		}
