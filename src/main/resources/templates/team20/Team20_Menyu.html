@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Menyu.css}">
 </head>
 <body>
 <h1>メニュー画面</h1>
 <form  method="post" th:action="@{/Team20_Menyu}">
-	<input type ="submit" name="register" value="登録画面" />
-	<input type ="submit" name="search" value="検索画面"/>
-	<input type ="submit" name="result" value="結果画面"/>
+	<div class="bt-container">
+	<input type ="image" th:src="@{/Team20RegisterButton.jpg}" name="register" alt="登録画面" class="bt-animation" />
+	<input type ="image" th:src="@{/Team20SearchButton.jpg}" name="search" alt="検索画面" class="bt-animation"/>
+		<input type ="image" th:src="@{/Team20ResultButton.jpg}" name="result" alt="結果画面" class="bt-animation"/>
+	
+	</div>
 </form>
 </body>
 </html>
