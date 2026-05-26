@@ -32,10 +32,10 @@ public class Team20_RegisterResultCon {
 	}
 
 	@GetMapping("/Team20_Register_Result")
-	public String index(HttpSession session,Model model) { // ← Model を追加
+	public String index(HttpSession session,Model model) { 
 		userid = (String) session.getAttribute("userid");
 		System.out.println("ログイン中" + userid);
-		model.addAttribute("regForm", new Team20_RegForm()); // ← この行を追加
+		model.addAttribute("regForm", new Team20_RegForm()); 
 		return "team20/Team20_Register_Result";
 	}
 
@@ -45,7 +45,7 @@ public class Team20_RegisterResultCon {
 		return "team20/Team20_Register";
 	}
 
-	//実行ボタン
+	//確定ボタン
 	@PostMapping(value = "/Team20_Result", params = "do")
 	public String showresult(HttpSession session, Model model) {
 		

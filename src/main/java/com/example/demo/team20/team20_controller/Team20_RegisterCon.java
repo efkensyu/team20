@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.demo.team20.team20_entity.Team20_Hobby;
 import com.example.demo.team20.team20_service.Team20_HobbySer;
@@ -39,7 +40,7 @@ public class Team20_RegisterCon {
 	}
 
 	@GetMapping("/Team20_Register")
-	public String index(HttpSession session, Model model) { // ← Model を追加
+	public String index(HttpSession session, Model model) { 
 		userid = (String) session.getAttribute("userid");
 		System.out.println("ログイン中" + userid);
 		if (!model.containsAttribute("regForm")) {
@@ -50,7 +51,7 @@ public class Team20_RegisterCon {
 		return "team20/Team20_Register";
 	}
 
-	// ①ジャンル選択時にAjaxから呼ばれる
+	// ジャンル選択時にAjaxから呼ばれる
 	// → 該当ジャンルのhobbyリストをJSON形式で返す
 	@GetMapping("/Team20_getHobbies")
 	@ResponseBody
@@ -62,11 +63,12 @@ public class Team20_RegisterCon {
 
 	//登録ボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "register")
-	public String register(@ModelAttribute Team20_RegForm regForm, Model model) {
+	public String register(@ModelAttribute Team20_RegForm regForm, Model model,SessionStatus status) {
 //		userid="A001";
 		model.addAttribute("regForm", regForm);
 		if(userid.equals(regForm.getCode())) {
 			service.Proupdate(regForm);
+			status.setComplete();
 			return "team20/Team20_Register_Result";
 		}else {
 			return "team20/Team20_Register";
