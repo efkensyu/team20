@@ -26,9 +26,11 @@ footer {
 	  background-color:#164a84 ;
 	  display: flex;
 	  align-items: center;
-	  justify-content: center;
+	  justify-content: flex-end;
 	  color: white;
 	  z-index: 1000;
+	  padding-right: 40px; 
+	  box-sizing: border-box;
 }
 
 body {
@@ -158,4 +160,8 @@ body {
 
 .button :hover {
 	background-color: rgba(22, 74, 132, 0.05); 
+}
+
+footer p {
+	text-align: right;
 }
