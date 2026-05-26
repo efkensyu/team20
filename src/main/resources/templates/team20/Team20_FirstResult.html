@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.ofg">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ユーザー登録</title>
@@ -14,20 +14,20 @@
 <body>
 	<diV class="content">
 	 	<diV class="content2">
-			<h2>ユーザー登録</h2>
-			<form method="post" th:action="@{/Team20_FirstResult}" >
+			<h2 class="box">ユーザー登録</h2>
+			<form method="post" th:action="@{/Team20_FirstResult}" th:object="${registerForm}">
 				<h4>以下の内容でお間違いないでしょうか。</h4>
 				<a>名前</a>
 				<br>
-				<th:block class="th" th:text="*{name}"></th:block>
+				<th:block class="text" th:text="*{name} + 様"></th:block>
 				<br>
-				<a>社員コード</a>
+				<a>社員番号</a>
 				<br>
-				<th:block class="th" th:text="*{cord}"></th:block>
+				<th:block class="text" th:text="*{userid}"></th:block>
 				<br>
 				<a>パスワード</a>
 				<br>
-				<th:block class="th" th:text="*{password}"></th:block>
+				<th:block class="text" th:text="*{password}"></th:block>
 				<br>
 				<input class="button" type="submit" name="regist" value="登録">
 				<br>
