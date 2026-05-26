@@ -1,5 +1,7 @@
 package com.example.demo.team20_controller;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +33,7 @@ public class Team20_LoginCon {
 	}
 	
 	@PostMapping(value="/Team20_Login", params="login")
-	public String send(@Validated @ModelAttribute("loginForm") Team20_LoginForm loginForm, BindingResult result, Model model) {
+	public String send(@Validated @ModelAttribute("loginForm") Team20_LoginForm loginForm, HttpSession session, BindingResult result, Model model) {
 		if(result.hasErrors()) {
 			System.out.println("入力不足");
 			model.addAttribute("loginForm", loginForm);
@@ -40,6 +42,8 @@ public class Team20_LoginCon {
 		String userInfo = loginSer.find(loginForm.getUserid()).toString();
 		String pass = "password=" + loginForm.getPassword();
 		if(userInfo.contains(pass) == true) {
+			session.setAttribute("userid", loginForm.getUserid());
+		    session.setAttribute("password", loginForm.getPassword());
 			return "team20/Team20_menyu";
 		} else {
 			System.out.println("ログイン失敗");
