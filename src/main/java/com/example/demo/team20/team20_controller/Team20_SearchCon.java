@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -32,7 +34,7 @@ public class Team20_SearchCon {
 	public String index(HttpSession session,Model model) {
 		userid = (String) session.getAttribute("userid");
 		System.out.println("ログイン中" + userid);
-		model.addAttribute("regForm",new Team20_RegForm());
+		model.addAttribute("searchForm",new Team20_SearchForm());
 	 return "team20/Team20_Search";
 	}
 	
@@ -43,14 +45,16 @@ public class Team20_SearchCon {
 
 	@PostMapping(value="/Team20_Search",params="clear")
 	public String send2(Model model) {
-		model.addAttribute("regForm", new Team20_RegForm());
+		model.addAttribute("searchForm", new Team20_SearchForm());
 		return "team20/Team20_Search";
 	}
 	@PostMapping(value="/Team20_Search",params="search")
-	public String send3(@ModelAttribute Team20_RegForm regForm,Model model) {
-		
+	public String send3(@ModelAttribute("searchForm") @Validated Team20_SearchForm searchForm,BindingResult result,Model model) {
+		if(result.hasErrors()) {
+			return "team20/Team20_Search";
+		}
 		System.out.println("Post実行");
-		List<Team20_Shain>resultList =service.findmatch(regForm.getName(),regForm.getJanru(),regForm.getHobby(),regForm.getJob());
+		List<Team20_Shain>resultList =service.findmatch(searchForm.getName(),searchForm.getJanru(),searchForm.getHobby(),searchForm.getJob());
 		System.out.println(resultList);
 		model.addAttribute("resultList",resultList);
 		return "redirect:/Team20_Result";

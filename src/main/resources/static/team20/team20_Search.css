@@ -14,19 +14,47 @@ body{
 		background-position: center; 
 		background-repeat: no-repeat;
 }
-.detail {
-	width: 680px;        
-	margin: 0 auto;      
-	background-color: rgba(255, 255, 255, 0.9); /* 💡 後ろの画像が透けて文字が見づらくなるのを防ぐ白い背景 */
-	border-collapse: collapse; /* 枠線を綺麗に1本にまとめます */
-}
+.detail {width: 85%;           
+		max-width: 1150px;      
+		margin: 40px auto;     
+		font-size: 22px;      
+		border-collapse: collapse; 
+		background-color: rgba(255, 255, 255, 0.9);
+		box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+	}
+	table.detail th, table.detail td {
+			padding: 22px 30px !important; /* 上下22px、左右30pxの巨大な余白 */
+		}
+	table.detail input[type="text"],
+	table.detail select{
+		font-size:20px;
+		padding: 12px;
+		width:100%;
+		box-sizing:border-box;
+		border:2px solid #ccc;
+		border-radius:2px;
+	}
+	table.detail input[type="radio"]{
+		transform:scale(1.6);
+		margin-left:20px;
+		margin-right:8px;
+		cursor:pointer;
+	}
+	table.detail td{
+		line-height: 2.0;
+	}
+	
 .botton{
-	text-align: center;
-	margin-top:20px;
+	text-align:center;
+	margin-bottom:50px;
+	margin-top:35px;
 }
 .botton input[type="submit"]{
-	margin:0 5px;
-	padding:6px 12px;
+	font-size:30px;
+	margin:0 20px;
+	padding:15px 45px;
+	border-radius:8px;
+	font-weight:bold;
 	cursor: pointer;
 	
 }
