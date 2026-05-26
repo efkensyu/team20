@@ -1,0 +1,210 @@
+/*リセット*/
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+body {
+	font-family: sans-serif;
+	/*	background-color: #f0f0f0;*/
+	padding: 10px;
+	text-align: center;
+
+	background-image: url("/kari.png");
+	background-size: cover;
+
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+
+
+}
+
+body::before {
+	background-color: rgba(255, 255, 255, 0.5);
+	/* 白を50%重ねる */
+	z-index: 0;
+	/* 背景の上・コンテンツの下 */
+}
+
+/*ヘッダー  */
+.header {
+	background-color: blue;
+	display: flex;
+	align-items: center;
+	position: relative;
+	padding: 10px;
+	width: 100%;
+}
+
+.header h1 {
+	color: white;
+	font-weight: bold;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: clamp(16px, 3vw, 28px);
+
+	white-space: nowrap;
+}
+
+.header img {
+	width: clamp(50px, 8vw, 100px);
+	height: auto;
+}
+
+/* コンテンツ全体  */
+.content {
+	width: 90%;
+	max-width: 900px;
+	margin: 20px auto;
+	background-color: #f0f0f0;
+	position: relative;
+	z-index: 1;
+
+}
+
+.content2 {
+	background-color: rgba(255, 255, 255, 0.85);
+	/* 白・透明度85% */
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	/* 影をつける */
+
+
+}
+
+/* テキストボックス */
+input[type="text"],
+textarea {
+	width: 200%;
+	max-width: 600px;
+	padding: 8px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	text-align: center;
+}
+
+
+
+textarea {
+	display: block;
+	margin: 0 auto;
+	/*	左右中央寄せ*/
+	width: 60%;
+	max-width: 500%;
+	padding: 10%;
+	font-size: 16px;
+	text-align: left;
+	padding-top: 10px;
+	/*	writing-mode: horizontal-tb;  横書き・上:*/
+	resize: vertical;
+	box-sizing: border-box;
+}
+
+/* テーブル */
+table {
+	width: 100%;
+	max-width: 800px;
+	border-collapse: collapse;
+	margin: 0 auto;
+	background-color: rgba(255, 255, 255, 0.85);
+	border-radius: 8px;
+}
+
+table td {
+	padding: 10px;
+	word-break: break-word;
+	/* 長いテキストを折り返す */
+}
+
+/* セレクトボックス */
+select {
+	width: 100%;
+	max-width: 400px;
+	padding: 8px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	text-align: center;
+}
+
+/*  ラジオボタン */
+input[type="radio"] {
+	margin-right: 5px;
+	text-align: center;
+}
+
+/* ボタン  */
+input[type="submit"] {
+	padding: 10px 30px;
+	font-size: 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 10px;
+	margin-right: 10px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+
+
+.footer {
+	display: flex;
+	justify-content: flex-end;
+	/* 右寄せ */
+	gap: 10px;
+	/* ボタン間のスペース */
+	margin-top: 10px;
+	width: 80%;
+	/* textareaの幅に合わせる */
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* メディアクエリ*/
+@media (max-width: 768px) {
+	.content {
+		width: 95%;
+	}
+
+	table {
+		font-size: 14px;
+	}
+
+	input[type="text"],
+	textarea,
+	select {
+		max-width: 100%;
+	}
+
+	input[type="submit"] {
+		width: 100%;
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.header h1 {
+		font-size: 14px;
+	}
+
+	.content2 {
+		padding: 10px;
+	}
+
+	table td {
+		/*		display: block;*/
+		width: 100%;
+	}
+
+	input[type="radio"] {
+		display: block;
+		margin: 5px 0;
+	}
+	};

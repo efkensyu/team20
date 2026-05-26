@@ -25,7 +25,6 @@
 			<form method="post" th:action="@{/Team20_Register_Result}" th:object="${regForm}">
 
 
-				<th:block>
 
 					<h3>氏名</h3>
 					<input type="text" class="textbox" th:field="*{name}" size="20" value="氏名" />
@@ -266,13 +265,7 @@
 										})
 									})
 								</script>
-								<!--						<select th:field="*{hobby3}">-->
-								<!--							<option value="ゲーム">ゲーム</option>-->
-								<!--							<option value="読書">読書</option>-->
-								<!--							<option value="サブスク">サブスク</option>-->
-								<!--							<option value="ピアノ">ピアノ</option>-->
-								<!--							<option value="映画">映画</option>-->
-								<!--						</select>-->
+								
 							</td>
 						</tr>
 					</table>
@@ -305,7 +298,7 @@
 				<textarea th:field="*{intro}" rows="10" placeholder="自己紹介を入力してください">この中に入力</textarea>
 				<div class="footer">
 
-					<input class="button" type="submit" value="登録" name="regit" />
+					<input class="button" type="submit" value="登録" name="register" />
 					<!--		編集ボタン-->
 					<input class="button" type="submit" value="編集" name="edit" />
 				</div>
