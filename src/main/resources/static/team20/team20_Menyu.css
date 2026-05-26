@@ -1,0 +1,42 @@
+.bt-container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	gap:60px;
+	margin:100px auto;
+	width:100%;
+}
+.bt-animation{
+	
+	width:260px;
+	height:260px;
+	object-fit:cover;
+	object-position:cover;
+	transform: scale(1.5);	
+    clip-path: inset(22% 21% 20% 21% round 32px);
+	display:block;
+	border:none;
+	outline:none;
+	background:none;
+	cursor:pointer;
+	border-radius: 36px;
+	
+	
+	transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+		            filter 0.5s ease,
+		            opacity 0.3s ease;
+		filter: drop-shadow(0 12px 20px rgba(160, 180, 210, 0.3)) brightness(0.98);
+	}
+
+.bt-animation:hover{
+	transform: translateY(-10px) scale(1.63);
+	filter: drop-shadow(0 25px 35px rgba(130, 155, 200, 0.45)) brightness(1.06);
+	}
+
+		
+	.bt-animation:active {
+		transform: translateY(-2px) scale(1.58); 
+			filter: drop-shadow(0 8px 12px rgba(130, 155, 200, 0.35)) brightness(0.95);
+			opacity: 0.9;
+				transition: transform 0.1s ease; 
+	}

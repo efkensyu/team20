@@ -1,12 +1,37 @@
 h1#search{
 	text-align:center;
-	color:coral;
+	color:whitesmoke;
 	
+}
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 body{
-	background-image: url("kari.png");
+	background-image: url("/kari.png");
+		background-size: cover;
+		background-position: center; 
+		background-repeat: no-repeat;
 }
-.detail{
-	width: 100%;
+.detail {
+	width: 680px;        
+	margin: 0 auto;      
+	background-color: rgba(255, 255, 255, 0.9); /* 💡 後ろの画像が透けて文字が見づらくなるのを防ぐ白い背景 */
+	border-collapse: collapse; /* 枠線を綺麗に1本にまとめます */
+}
+.botton{
+	text-align: center;
+	margin-top:20px;
+}
+.botton input[type="submit"]{
+	margin:0 5px;
+	padding:6px 12px;
+	cursor: pointer;
 	
 }
+header{
+	background-color:blue;
+	
+}
+
