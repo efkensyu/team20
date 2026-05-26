@@ -1,136 +1,142 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.ofg">
-
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>検索画面</title>
-	<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Search.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/team20/team20_Search.css}">
 </head>
-<header>
-		<img th:src="@{/Team20logo.png}" width="100" height="auto">	
-</header>
-
 <body>
-	
-	<h1 id="search">検索</h1>
-	<form method="post" th:action="@{/Team20_Search}" th:object="${searchForm}">
-		<table border="1" class="detail">
-
-			<tr>
-				<th>項目名</th>
-				<th>入力欄</th>
-			</tr>
-			<tr>
-				<td>名前</td>
-				<td><input type="text" th:field="*{name}" size="20" value="名前">
-				<th:block th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></th:block></td>
-				
-			</tr>
-			<tr>
-				<td class="janru">ジャンル</td>
-				<td> <input type="radio" th:field="*{janru}" value="スポーツ">スポーツ
-					<input type="radio" th:field="*{janru}" value="アウトドア">アウトドア
-					<input type="radio" th:field="*{janru}" value="インドア">インドア
-					<input type="radio" th:field="*{janru}" value="クリエイティブ">クリエイティブ
-					<input type="radio" th:field="*{janru}" value="学び・教養">学び・教養
-					<br>
-					<input type="radio" th:field="*{janru}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション
-				</td>
-			</tr>
-			<tr>
-				<td>趣味</td>
-				<td>
-					<select th:field="*{hobby}" id="hobby">
-						<option value="">-- 趣味を選択してください --</option>
-						<option value="サッカー" data-val="スポーツ">サッカー</option>
-						<option value="野球" data-val="スポーツ">野球</option>
-						<option value="バスケ" data-val="スポーツ">バスケ</option>
-						<option value="バレーボール" data-val="スポーツ">バレーボール</option>
-						<option value="卓球" data-val="スポーツ">卓球</option>
-						<option value="キャンプ" data-val="アウトドア">キャンプ</option>
-						<option value="ドライブ" data-val="アウトドア">ドライブ</option>
-						<option value="釣り" data-val="アウトドア">釣り</option>
-						<option value="サーフィン" data-val="アウトドア">サーフィン</option>
-						<option value="パラセーリング" data-val="アウトドア">パラセーリング</option>
-						<option value="ゲーム" data-val="インドア">ゲーム</option>
-						<option value="読書" data-val="インドア">読書</option>
-						<option value="サブスク" data-val="インドア">サブスク</option>
-						<option value="ピアノ" data-val="インドア">ピアノ</option>
-						<option value="映画" data-val="インドア">映画</option>
-
-					</select>
-					<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-					<script th:inline="javascript">
-						$(document).ready(function () {
-							var $hobby = $('#hobby');
-
-
-							$hobby.prop('disabled', false).find('option').show().prop('disabled', false);
-
-							$('input[name="janru"]').change(function () {
-								var val1 = $('input[name="janru"]:checked').val();
-
-								$hobby.val('');
-
-								if (val1 === undefined || val1 === "") {
-									$hobby.prop('disabled', false);
-									$hobby.find('option').show().prop('disabled', false);
-									return;
-								}
-
-
-								$hobby.prop('disabled', false);
-								$hobby.find('option').each(function () {
-									var val2 = $(this).data('val');
-
-
-									if (val2 === undefined) {
-										return;
-									}
-
-									if (val1 == val2) {
-										$(this).show().prop('disabled', false);
-									} else {
-										$(this).hide().prop('disabled', true);
-									}
-								});
-							});
-						});
-					</script>
-				</td>
-			</tr>
-			<tr>
-				<td>職種</td>
-				<td>
-					<select th:field="*{job}">
-						<option th:value="${null}">-- 職種を選択してください --</option>
-						<optgroup label="開発">
-							<option value="Java">Java</option>
-							<option value="Oracle">Oracle</option>
-							<option value="Python">Python</option>
-							<option value="Javasclipt">Javasclipt</option>
-							<option value="HTML">HTML</option>
-						</optgroup>
-						<optgroup label="インフラ">
-							<option value="Linux">Linux</option>
-							<option value="AWS">AWS</option>
-							<option value="anaconda">anaconda</option>
-							<option value="Terrform">Terrform</option>
-							<option value="Shell Script">Shell Script</option>
-						</optgroup>
-					</select>
-
-				</td>
-			</tr>
-		</table>
-		<div class="botton">
-
-			<input type="submit" name="search" value="検索" />
-			<input type="submit" name="clear" value="クリア" />
-			<input type="submit" name="back" value="メニューに戻る">
+	<header>
+		<div class="header">
+			<img th:src="@{/Team20logo.png}" width="100">
 		</div>
+	</header>
 
-	</form>
+	<div class="main">
+		<div class="content">
+			<div class="content2">
+				<h2 class="box">検索</h2>	
+				<form method="post" th:action="@{/Team20_Search}" th:object="${searchForm}">
+					<table class="detail">
+						<thead>
+							<tr>
+								<th>項目名</th>
+								<th>入力欄</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>名前</td>
+								<td>
+									<input type="text" th:field="*{name}" size="20" value="名前">
+									<span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="janru">ジャンル</td>
+								<td>
+									<label><input type="radio" th:field="*{janru}" value="スポーツ">スポーツ</label>
+									<label><input type="radio" th:field="*{janru}" value="アウトドア">アウトドア</label>
+									<label><input type="radio" th:field="*{janru}" value="インドア">インドア</label>
+									<label><input type="radio" th:field="*{janru}" value="クリエイティブ">クリエイティブ</label>
+									<label><input type="radio" th:field="*{janru}" value="学び・教養">学び・教養</label>
+									<br>
+									<label><input type="radio" th:field="*{janru}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
+								</td>
+							</tr>
+							<tr>
+								<td>趣味</td>
+								<td>
+									<select th:field="*{hobby}" id="hobby">
+										<option value="">-- 趣味を選択してください --</option>
+										<option value="サッカー" data-val="スポーツ">サッカー</option>
+										<option value="野球" data-val="スポーツ">野球</option>
+										<option value="バスケ" data-val="スポーツ">バスケ</option>
+										<option value="バレーボール" data-val="スポーツ">バレーボール</option>
+										<option value="卓球" data-val="スポーツ">卓球</option>
+										<option value="キャンプ" data-val="アウトドア">キャンプ</option>
+										<option value="ドライブ" data-val="アウトドア">ドライブ</option>
+										<option value="釣り" data-val="アウトドア">釣り</option>
+										<option value="サーフィン" data-val="アウトドア">サーフィン</option>
+										<option value="パラセーリング" data-val="アウトドア">パラセーリング</option>
+										<option value="ゲーム" data-val="インドア">ゲーム</option>
+										<option value="読書" data-val="インドア">読書</option>
+										<option value="サブスク" data-val="インドア">サブスク</option>
+										<option value="ピアノ" data-val="インドア">ピアノ</option>
+										<option value="映画" data-val="インドア">映画</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>職種</td>
+								<td>
+									<select th:field="*{job}">
+										<option th:value="${null}">-- 職種を選択してください --</option>
+										<optgroup label="開発">
+											<option value="Java">Java</option>
+											<option value="Oracle">Oracle</option>
+											<option value="Python">Python</option>
+											<option value="JavaScript">JavaScript</option>
+											<option value="HTML">HTML</option>
+										</optgroup>
+										<optgroup label="インフラ">
+											<option value="Linux">Linux</option>
+											<option value="AWS">AWS</option>
+											<option value="anaconda">anaconda</option>
+											<option value="Terraform">Terraform</option>
+											<option value="Shell Script">Shell Script</option>
+										</optgroup>
+									</select>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<div class="botton">
+						<input type="submit" name="search" value="検索">
+						<input type="submit" name="clear" value="クリア">
+						<input type="submit" name="back" value="メニューに戻る">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script th:inline="javascript">
+		$(document).ready(function () {
+			var $hobby = $('#hobby');
+			$hobby.prop('disabled', false).find('option').show().prop('disabled', false);
+
+			$('input[name="janru"]').change(function () {
+				var val1 = $('input[name="janru"]:checked').val();
+				$hobby.val('');
+
+				if (val1 === undefined || val1 === "") {
+					$hobby.prop('disabled', false);
+					$hobby.find('option').show().prop('disabled', false);
+					return;
+				}
+
+				$hobby.prop('disabled', false);
+				$hobby.find('option').each(function () {
+					var val2 = $(this).data('val');
+					if (val2 === undefined) {
+						return;
+					}
+
+					if (val1 == val2) {
+						$(this).show().prop('disabled', false);
+					} else {
+						$(this).hide().prop('disabled', true);
+					}
+				});
+			});
+		});
+	</script>
 </body>
-
 </html>
