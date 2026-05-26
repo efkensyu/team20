@@ -40,11 +40,11 @@ public class Team20_SearchCon {
 		return "team20/Team20_Search";
 	}
 	@PostMapping(value="/Team20_Search",params="search")
-	public String send3(@ModelAttribute("regForm") Team20_RegForm regForm,Model model) {
+	public String send3(@ModelAttribute Team20_RegForm regForm,org.springframework.web.servlet.mvc.support.RedirectAttributes redirectAttributes) {
 		System.out.println("Post実行");
-		List<Team20_Shain>userDataList =service.findmatch(regForm.getName(),regForm.getJanru(),regForm.getHobby(),regForm.getJob());
-			model.addAttribute("userData",userDataList);
-		System.out.println(userDataList);
-		return "team20/Team20_Result";
+		List<Team20_Shain>resultList =service.findmatch(regForm.getName(),regForm.getJanru(),regForm.getHobby(),regForm.getJob());
+		System.out.println(resultList);
+		redirectAttributes.addFlashAttribute("resultList",resultList);
+		return "redirect:/Team20_Result";
 	}
 }

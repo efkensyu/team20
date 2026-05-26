@@ -7,9 +7,11 @@
 </head>
 <body>
 <h1>検索結果</h1>
-<form>
-	<th:block th:each="data, i : ${resultList}">
+<th:block th:each="data, i : ${resultList}">
+<form method="post" th:action="@{/Team20_Result}" >
+	
 		<div>
+			<input type="hidden" name="shainCd" th:value="${data.shainCd}">
 			<a th:text="*{i.count}"></a>
 			<br>
 			<a th:text="*{data.shainNm}"></a>
@@ -20,9 +22,9 @@
 			<br>				
 			<a th:text="*{data.rank3}"></a>
 			<br>
-			<input type="submit" name="button + *{i.count}">
+			<input type="submit" value="詳細">
 		</div>
-	</th:block>
 </form>
+</th:block>
 </body>
 </html>

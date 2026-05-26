@@ -17,14 +17,14 @@ public class Team20_DetailsCon {
 
 	@GetMapping("/Team20_Details")			
 
-	public String index(@RequestParam("code") String shaincd,Model model) {
-		Team20_Shain shain = service.findPerson(shaincd);
+	public String index(@RequestParam("shainCd") String shainCd,Model model) {
+		Team20_Shain shain = service.findPerson(shainCd);
 		model.addAttribute("userData",shain);
 	
 		return "team20/Team20_Details";	
 	}
 	
-	@PostMapping("/Team20_detail")
+	@PostMapping("/Team20_Details")
 	public String send() {
 		return "team20/Team20_Result";
 	}
