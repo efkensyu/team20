@@ -30,6 +30,8 @@ public class Team20_RegisterCon {
 	private String userid;//=社員コード
 	private final Team20_RegisterSer service;
 	private final Team20_HobbySer hobbyservice;
+	
+	
 
 	@ModelAttribute("regForm")
 	public Team20_RegForm setup() {
@@ -61,6 +63,7 @@ public class Team20_RegisterCon {
 	//登録ボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "register")
 	public String register(@ModelAttribute Team20_RegForm regForm, Model model) {
+		userid="A001";
 		model.addAttribute("regForm", regForm);
 		if(userid.equals(regForm.getCode())) {
 			service.Proupdate(regForm);
