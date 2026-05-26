@@ -2,6 +2,8 @@ package com.example.demo.team20.team20_controller;
 
 import java.util.List;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.http.ResponseEntity;
 
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -25,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @SessionAttributes("regForm")
 public class Team20_RegisterCon {
-
+	private String userid;//=社員コード
 	private final Team20_RegisterSer service;
 	private final Team20_HobbySer hobbyservice;
 
@@ -35,15 +37,14 @@ public class Team20_RegisterCon {
 	}
 
 	@GetMapping("/Team20_Register")
-	public String index(Model model) { // ← Model を追加
+	public String index(HttpSession session, Model model) { // ← Model を追加
+		userid = (String) session.getAttribute("userid");
 		if (!model.containsAttribute("regForm")) {
 			model.addAttribute("regForm", new Team20_RegForm());
-		}
+		}	
 		// 全hobbyをModelに追加
 		model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
-
 		return "team20/Team20_Register";
-
 	}
 
 	// ①ジャンル選択時にAjaxから呼ばれる
