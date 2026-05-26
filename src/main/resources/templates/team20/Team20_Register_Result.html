@@ -22,27 +22,27 @@
 
 				<h2>登録する内容に間違いはありませんか</h2>
 				<h3>氏名</h3>
-				<p th:text="*{name}" class="textbox"   ></p>
+				<p th:text="*{name}" class="textbox"></p>
 				<h3>社員コード</h3>
-				<p th:text="*{code}" class="textbox"   ></p>
+				<p th:text="*{code}" class="textbox"></p>
 				<br>
 				<h3>1番目に好きな趣味</h3>
-				<p th:text="'ジャンル'+'	'+*{janru}+'	'+'趣味' +*{hobby}"></p>
+				<p th:text="'ジャンル'+'	'+*{janru}+'	'+'趣味' + *{hobby}"></p>
 				<br>
 				<h3>2番目に好きな趣味</h3>
-				<p th:text="'ジャンル'+'	'+*{janru2}+'	'+'趣味' +*{hobby2}"></p>
+				<p th:text="'ジャンル'+'	'+*{janru2}+'	'+'趣味' + *{hobby2}"></p>
 				<br>
 				<h3>3番目に好きな趣味</h3>
-				<p th:text="'ジャンル'+'	'+*{janru3}+'	'+'趣味' +*{hobby3}"></p>
+				<p th:text="'ジャンル'+'	'+*{janru3}+'	'+'趣味' + *{hobby3}"></p>
 				<br>
-				
+
 				<!--		分野別で指定したものが表示されるようにする-->
 				<h3>興味のあるIT分野</h3>
 				<p th:text=" *{job}"></p>
 				<br>
 
 				<h3>自己紹介</h3>
-				<textarea th:field="*{intro}" rows="10" ></textarea>
+				<textarea th:field="*{intro}" rows="10"></textarea>
 				<!--					<p th:text="自己紹介： + *{intro}"></p>-->
 				<br>
 
