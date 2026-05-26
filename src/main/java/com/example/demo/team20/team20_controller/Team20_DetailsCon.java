@@ -18,7 +18,10 @@ public class Team20_DetailsCon {
 	@GetMapping("/Team20_Details")			
 
 	public String index(@ModelAttribute("shainCd") String shainCd, Model model) {
-		if (shainCd != null) {
+		System.out.println("get");
+		System.out.println(shainCd);
+		
+		if (shainCd != null&& !shainCd.isEmpty() ) {
 		Team20_Shain shain = service.findPerson(shainCd);
 		model.addAttribute("userData",shain);
 		}
@@ -27,6 +30,6 @@ public class Team20_DetailsCon {
 	
 	@PostMapping("/Team20_Details")
 	public String send() {
-		return "team20/Team20_Result";
+		return "redirect:/Team20_Result";
 	}
 }
