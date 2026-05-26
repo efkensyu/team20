@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.ofg">
-<head>
+<html xmlns:th="https://www.thymeleaf.org"> <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ユーザー詳細プロフィール</title>
 </head>
 <body>
+
 <table border="1" th:object="${userData}">
 	<tr>
 		<th>プロフィール</th>
 	</tr>
 	<tr>
 		<td>
-		<p th:text="名前：+*{shainNm}"></p>
+		<p th:text="'名前：' + *{shainNm}"></p>
+		
 		<p>趣味ランキング</p>
-		<p th:text="1位：+*{rank1}"></p>
-		<p th:text="2位：+*{rank2}"></p>
-		<p th:text="3位：+*{rank3}"></p>
-		<p th:text="職種：+*{job}"></p>
-		<p th:text="自己紹介：+*{intro}"></p>
+		<p th:text="'1位：' + *{rank1}"></p>
+		<p th:text="'2位：' + *{rank2}"></p>
+		<p th:text="'3位：' + *{rank3}"></p>
+		
+		<p th:text="'職種：' + *{job}"></p>
+		<p th:text="'自己紹介：' + *{intro}"></p>
 		</td>
 	</tr>
 </table>
 
 <br><br>
+
+<form method="post" th:action="@{/Team20_Details}">
+	<input type="submit" value="結果一覧に戻る">
+</form>
+
 </body>
 </html>

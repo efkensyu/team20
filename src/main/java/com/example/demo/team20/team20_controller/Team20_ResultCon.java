@@ -18,7 +18,7 @@ public class Team20_ResultCon {
 	}
 	
 	@PostMapping("/Team20_Result")
-	public String send1(@RequestParam String shainCd) {
+	public String send1(@RequestParam("shainCd") String shainCd) {
 		return "team20/Team20_Details";
 	}
 }
