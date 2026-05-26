@@ -3,7 +3,7 @@ package com.example.demo.team20_controller;
 import lombok.Data;
 
 @Data
-public class RegForm {
+public class Team20_RegForm {
 	
 	
 	private String name;

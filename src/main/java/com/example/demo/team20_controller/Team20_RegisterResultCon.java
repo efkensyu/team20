@@ -28,14 +28,14 @@ public class Team20_RegisterResultCon {
 
 	@GetMapping("/Team20_register_result")
 	public String index(Model model) { // ← Model を追加
-		model.addAttribute("regForm", new RegForm()); // ← この行を追加
+		model.addAttribute("regForm", new Team20_RegForm()); // ← この行を追加
 		return "team20/Team20_Register_Result";
 	}
 
 	
 	//戻るボタン
 		@PostMapping(value = "/Team20_Result", params = "back")
-		public String back(@ModelAttribute RegForm regForm) {
+		public String back(@ModelAttribute Team20_RegForm regForm) {
 			return "team20/Team20_Register";
 		}
 		
@@ -43,17 +43,17 @@ public class Team20_RegisterResultCon {
 	@PostMapping(value = "/Team20_Result", params = "do")
 	public String showresult(HttpSession session, Model model) { // ← Model を追加
 		// セッションからログイン中の社員を取得
-		Team20_Shain RegForm = (Team20_Shain) session.getAttribute("RegForm");
+		Team20_Shain Team20_RegForm = (Team20_Shain) session.getAttribute("Team20_RegForm");
 		
-		if (RegForm == null) {
+		if (Team20_RegForm == null) {
 			return "team20/Team20_Register_Result";
 		}
 		
 		//ボタン
 
-		List<Team20_Shain> resultList = registerResultSer.getMatchingResult(RegForm);
+		List<Team20_Shain> resultList = registerResultSer.getMatchingResult(Team20_RegForm);
 		model.addAttribute("resultList", resultList);
-		model.addAttribute("loginList", RegForm);
+		model.addAttribute("loginList", Team20_RegForm);
 		return "team20/Team20_Result";
 	}
 

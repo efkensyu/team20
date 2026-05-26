@@ -14,33 +14,26 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 @SessionAttributes(names = "shainCd")
-public class Team20_FirstRegisterCon {
+public class Team20_FirstResultCon {
 	private final Team20_FirstRegisterSer fRegisterSer;
 	
-	@GetMapping("/firstRegister")			
+	@GetMapping("/firstResult")			
 	public String index() {
-		return "team20/Team20_FirstRegister";	
+		return "team20/Team20_FirstResult";	
 	}
 	
-	@PostMapping(value="/firstRegister", params="regist")
+	@PostMapping(value="/firstResult", params="regist")
 	public String send(@RequestParam String shainNm,@RequestParam String shainCd, @RequestParam String loginPass, Model model) {
-		String userInfo = fRegisterSer.find(shainCd).toString();
-		String pass = "password=" + loginPass;
 		String userid = shainCd;
 		String password = loginPass;
-		if(userInfo.contains(pass) == true) {
-			System.out.println("登録済み");
-			return "team20/Team20_menyu";
-		} else {
 			System.out.println("登録完了");
 			fRegisterSer.registShain(shainCd, shainNm);
 			fRegisterSer.registLogin(userid, password);
 			return "team20/Team20_Login";
-		}
 	}
 	
-	@PostMapping(value="/firstRegister", params="back")
+	@PostMapping(value="/firstResult", params="back")
 	public String back() {
-		return "team20/Team20_login";
+		return "team20/Team20_firstRegister";
 	}
 }

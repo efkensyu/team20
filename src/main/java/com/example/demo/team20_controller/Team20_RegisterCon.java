@@ -1,5 +1,9 @@
 package com.example.demo.team20_controller;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.springframework.stereotype.Controller;
@@ -7,8 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.example.demo.team20_entity.Team20_Hobby;
+import com.example.demo.team20_service.Team20_HobbySer;
 import com.example.demo.team20_service.Team20_RegisterSer;
 
 import lombok.RequiredArgsConstructor;
@@ -17,40 +25,52 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @SessionAttributes("regForm")
 public class Team20_RegisterCon {
-	
+
 	private final Team20_RegisterSer service;
-	
-//		@ModelAttribute("regForm")
-//		public RegForm setup() {
-//			return new RegForm();
-//		}
-	//	@GetMapping("/Team20_register")			
-	//	public String index() {
-	//		return "team20/Team20_register";	
-	//	}
-	@GetMapping("/Team20_register")
-	public String index(Model model) { // ← Model を追加
-		model.addAttribute("regForm", new RegForm()); // ← この行を追加
-		return"team20/Team20_Register";
+	private final Team20_HobbySer hobbyservice;
+
+	@ModelAttribute("regForm")
+	public Team20_RegForm setup() {
+		return new Team20_RegForm();
 	}
 
-//	@PostMapping("/Team20_register_result")
-//	public String send1(@ModelAttribute RegForm regForm, SessionStatus sessionStatus) {
-//		
-//		return "team20/Team20_register_result";
-//	}
-//	
-	//登録ボタン
-		@PostMapping(value = "/Team20_Register_Result", params = "regit")
-		public String register(@ModelAttribute RegForm regForm,Model model) {
-			model.addAttribute("regForm",regForm);
-			service.Proupdate(regForm);
-			return "team20/Team20_Register_Result";
+	@GetMapping("/Team20_register")
+	public String index(Model model) { // ← Model を追加
+		if (!model.containsAttribute("regForm")) {
+			model.addAttribute("regForm", new Team20_RegForm());
 		}
+		// 全hobbyをModelに追加
+	    model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
+	    
+	    return "team20/Team20_Register";
+
+	}
+
+	// ①ジャンル選択時にAjaxから呼ばれる
+	// → 該当ジャンルのhobbyリストをJSON形式で返す
+	@GetMapping("/Team20_getHobbies")
+	@ResponseBody
+	public ResponseEntity<List<Team20_Hobby>> getHobbies(
+			@RequestParam("janru") String janru) {
+
+		List<Team20_Hobby> hobbies = hobbyservice.getHobbiesByJanru(janru);
+		return ResponseEntity.ok(hobbies);
+	}
+
+	//登録ボタン
+	@PostMapping(value = "/Team20_Register_Result", params = "regit")
+	public String register(@ModelAttribute Team20_RegForm regForm, Model model) {
+		model.addAttribute("regForm", regForm);
+
+		service.Proupdate(regForm);
+		return "redirect:/Team20_Register_Result";
+	}
+
 	//編集ボタン
-	@PostMapping(value = "/Team20_Register_Result", params = "edit")
-	public String editor(@ModelAttribute RegForm regForm, Model model) {
-		model.addAttribute("regForm",regForm);
-		return "team20/Team20_Register";
+	@PostMapping(value = "/Team20_Register", params = "edit")
+	public String editor(@ModelAttribute Team20_RegForm regForm, Model model) {
+		model.addAttribute("regForm", regForm);
+		return "redirect:/Team20_Register";
+
 	}
 }
