@@ -11,9 +11,9 @@ import com.example.demo.team20_entity.Team20_Login;
 
 @Repository
 public interface Team20_LoginRepository extends JpaRepository<Team20_Login, String> {
-	@Query(value="select * from login_tbl where USERID = :userid", nativeQuery = true)
+	@Query(value="select * from team20_login_tbl where USERID = :userid", nativeQuery = true)
 	public List<Team20_Login> find(@Param("userid") String userid);
-	@Query(value="select * from login_tbl where USERID = :userid", nativeQuery = true)
+	@Query(value="select * from team20_login_tbl where USERID = :userid", nativeQuery = true)
 	public List<Team20_Login> find2(@Param("userid") String shainCd);
 //	@Modifying
 //	@Transactional
