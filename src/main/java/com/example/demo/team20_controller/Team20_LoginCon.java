@@ -33,7 +33,7 @@ public class Team20_LoginCon {
 	@PostMapping(value="/Team20_Login", params="login")
 	public String send(@Validated @ModelAttribute("loginForm") Team20_LoginForm loginForm, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			System.out.println("入力不足S");
+			System.out.println("入力不足");
 			model.addAttribute("loginForm", loginForm);
 			return "team20/Team20_Login";
 		}

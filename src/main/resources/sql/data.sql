@@ -1,38 +1,39 @@
 
-INSERT INTO SHAIN_TBL VALUES('A01', '佐藤', 'HS01', 'HI01', 'HI05', 'java', 'こんにちは、佐藤です。バックエンド開発を担当しています。趣味は休日にサッカーをすることと、夜に映画を見ることです！');
-INSERT INTO SHAIN_TBL VALUES('A02', '鈴木', 'HO01', 'HO02', 'HI02', 'linux', 'インフラエンジニアの鈴木です。週末はよく車を運転してキャンプ場へ行き、自然の中で読書を楽しんでいます。');
-INSERT INTO SHAIN_TBL VALUES('A03', '高橋', 'HI02', 'HI03', 'HS02', 'python', 'データ分析チームの高橋です。プログラミングの勉強を兼ねた読書と、動画サブスクの鑑賞、それから草野球が趣味です。');
-INSERT INTO SHAIN_TBL VALUES('A04', '田中', 'HO03', 'HO04', 'HS01', 'aws', 'クラウドエンジニアの田中です。海が大好きで、釣りとサーフィンが生きがいです！体力作りでサッカーもやっています。');
-INSERT INTO SHAIN_TBL VALUES('A05', '渡辺', 'HS03', 'HS04', 'HS05', 'javascript', 'フロントエンド開発担当の渡辺です。学生時代から球技全般が大好きで、今は社内のバスケ部と卓球部に所属しています。');
-INSERT INTO SHAIN_TBL VALUES('A06', '伊藤', 'HI01', 'HI04', 'HO05', 'html', 'Webデザイナーの伊藤です。普段はインドア派でゲームやピアノ演奏をしていますが、長期休暇にはパラセーリングに挑戦します！');
+INSERT INTO TEAM20_SHAIN_TBL VALUES('A01', '佐藤', 'HS01', 'HI01', 'HI05', 'java', 'こんにちは、佐藤です。バックエンド開発を担当しています。趣味は休日にサッカーをすることと、夜に映画を見ることです！');
+INSERT INTO TEAM20_SHAIN_TBL VALUES('A02', '鈴木', 'HO01', 'HO02', 'HI02', 'linux', 'インフラエンジニアの鈴木です。週末はよく車を運転してキャンプ場へ行き、自然の中で読書を楽しんでいます。');
+INSERT INTO TEAM20_SHAIN_TBL VALUES('A03', '高橋', 'HI02', 'HI03', 'HS02', 'python', 'データ分析チームの高橋です。プログラミングの勉強を兼ねた読書と、動画サブスクの鑑賞、それから草野球が趣味です。');
+INSERT INTO TEAM20_SHAIN_TBL VALUES('A04', '田中', 'HO03', 'HO04', 'HS01', 'aws', 'クラウドエンジニアの田中です。海が大好きで、釣りとサーフィンが生きがいです！体力作りでサッカーもやっています。');
+INSERT INTO TEAM20_SHAIN_TBL VALUES('A05', '渡辺', 'HS03', 'HS04', 'HS05', 'javascript', 'フロントエンド開発担当の渡辺です。学生時代から球技全般が大好きで、今は社内のバスケ部と卓球部に所属しています。');
+INSERT INTO TEAM20_SHAIN_TBL VALUES('A06', '伊藤', 'HI01', 'HI04', 'HO05', 'html', 'Webデザイナーの伊藤です。普段はインドア派でゲームやピアノ演奏をしていますが、長期休暇にはパラセーリングに挑戦します！');
 
 
-INSERT INTO login_tbl VALUES('A01', '111');
-INSERT INTO login_tbl VALUES('A02', '222');
-INSERT INTO login_tbl VALUES('A03', '333');
-INSERT INTO login_tbl VALUES('A04', '444');
-INSERT INTO login_tbl VALUES('A05', '555');
-INSERT INTO login_tbl VALUES('A06', '666');
-INSERT INTO login_tbl VALUES('A07', '777');
+INSERT INTO TEAM20_LOGIN_TBL VALUES('A01', '111');
+INSERT INTO TEAM20_LOGIN_TBL VALUES('A02', '222');
+INSERT INTO TEAM20_LOGIN_TBL VALUES('A03', '333');
+INSERT INTO TEAM20_LOGIN_TBL VALUES('A04', '444');
+INSERT INTO TEAM20_LOGIN_TBL VALUES('A05', '555');
+INSERT INTO TEAM20_LOGIN_TBL VALUES('A06', '666');
+INSERT INTO TEAM20_LOGIN_TBL VALUES('A07', '777');
 
 -- スポーツ
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS01', 'スポーツ', 'サッカー');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS02', 'スポーツ', '野球');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS03', 'スポーツ', 'バスケ');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS04', 'スポーツ', 'バレーボール');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS05', 'スポーツ', '卓球');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS06', 'スポーツ', '水球');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS01', 'スポーツ', 'サッカー');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS02', 'スポーツ', '野球');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS03', 'スポーツ', 'バスケ');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS04', 'スポーツ', 'バレーボール');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS05', 'スポーツ', '卓球');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HS06', 'スポーツ', '水球');
+
 
 -- アウトドア
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO01', 'アウトドア', 'キャンプ');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO02', 'アウトドア', 'ドライブ');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO03', 'アウトドア', '釣り');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO04', 'アウトドア', 'サーフィン');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO05', 'アウトドア', 'パラセーリング');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO01', 'アウトドア', 'キャンプ');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO02', 'アウトドア', 'ドライブ');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO03', 'アウトドア', '釣り');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO04', 'アウトドア', 'サーフィン');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HO05', 'アウトドア', 'パラセーリング');
 
 -- インドア
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI01', 'インドア', 'ゲーム');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI02', 'インドア', '読書');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI03', 'インドア', 'サブスク');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI04', 'インドア', 'ピアノ');
-INSERT INTO HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI05', 'インドア', '映画');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI01', 'インドア', 'ゲーム');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI02', 'インドア', '読書');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI03', 'インドア', 'サブスク');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI04', 'インドア', 'ピアノ');
+INSERT INTO TEAM20_HOBBY_TBL (HOBBYCODE, JANRU, HOBBY) VALUES ('HI05', 'インドア', '映画');
