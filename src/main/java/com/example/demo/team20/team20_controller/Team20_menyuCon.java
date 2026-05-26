@@ -15,6 +15,7 @@ public class Team20_menyuCon {
 	@GetMapping("/Team20_Menyu")			
 	public String index(HttpSession session,Model model) {
 		userid = (String) session.getAttribute("userid");
+		System.out.println("ログイン中" + userid);
 		return "team20/Team20_menyu";	
 	}
 	
@@ -31,6 +32,6 @@ public class Team20_menyuCon {
 	@PostMapping(value="/Team20_Menyu", params="result")
 	public String send3(HttpSession session,Model model) {
 		session.setAttribute("userid", userid);
-		return "team20/Team20_Result";
+		return "redirect:/Team20_Result";
 	}		
 }

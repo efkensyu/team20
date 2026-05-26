@@ -44,11 +44,11 @@ public class Team20_LoginCon {
 		if(userInfo.contains(pass) == true) {
 			session.setAttribute("userid", loginForm.getUserid());
 		    session.setAttribute("password", loginForm.getPassword());
-			return "team20/Team20_menyu";
+			return "redirect:/Team20_Menyu";
 		} else {
 			System.out.println("ログイン失敗");
 			model.addAttribute("loginForm", loginForm);
-			return "team20/Team20_Login";
+			return "redirect:/Team20_Login";
 		}
 	}
 
