@@ -34,15 +34,15 @@ public class Team20_RegisterCon {
 		return new Team20_RegForm();
 	}
 
-	@GetMapping("/Team20_register")
+	@GetMapping("/Team20_Register")
 	public String index(Model model) { // ← Model を追加
 		if (!model.containsAttribute("regForm")) {
 			model.addAttribute("regForm", new Team20_RegForm());
 		}
 		// 全hobbyをModelに追加
-	    model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
-	    
-	    return "team20/Team20_Register";
+		model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
+
+		return "team20/Team20_Register";
 
 	}
 
@@ -52,13 +52,12 @@ public class Team20_RegisterCon {
 	@ResponseBody
 	public ResponseEntity<List<Team20_Hobby>> getHobbies(
 			@RequestParam("janru") String janru) {
-
 		List<Team20_Hobby> hobbies = hobbyservice.getHobbiesByJanru(janru);
 		return ResponseEntity.ok(hobbies);
 	}
 
 	//登録ボタン
-	@PostMapping(value = "/Team20_Register_Result", params = "regit")
+	@PostMapping(value = "/Team20_Register_Result", params = "register")
 	public String register(@ModelAttribute Team20_RegForm regForm, Model model) {
 		model.addAttribute("regForm", regForm);
 
@@ -67,10 +66,10 @@ public class Team20_RegisterCon {
 	}
 
 	//編集ボタン
-	@PostMapping(value = "/Team20_Register", params = "edit")
+	@PostMapping(value = "/Team20_Register_Result", params = "edit")
 	public String editor(@ModelAttribute Team20_RegForm regForm, Model model) {
 		model.addAttribute("regForm", regForm);
-		return "redirect:/Team20_Register";
-
+		return "team20/Team20_Register";
+		
 	}
 }
