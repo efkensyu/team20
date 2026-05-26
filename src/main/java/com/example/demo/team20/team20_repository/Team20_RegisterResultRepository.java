@@ -16,4 +16,7 @@ public interface Team20_RegisterResultRepository
 	// 自分以外の全社員を取得
 	@Query("SELECT s FROM Team20_Shain s WHERE s.shainCd <> :shainCd")
 	List<Team20_Shain> findAllExcludeSelf(@Param("shainCd") String shainCd);
+	
+	
+	
 }
