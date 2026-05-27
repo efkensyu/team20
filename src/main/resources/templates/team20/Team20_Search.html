@@ -48,23 +48,13 @@
 								<td>趣味</td>
 								<td>
 									<select th:field="*{hobby}" id="hobby">
-										<option value="">-- 趣味を選択してください --</option>
-										<option value="サッカー" data-val="スポーツ">サッカー</option>
-										<option value="野球" data-val="スポーツ">野球</option>
-										<option value="バスケ" data-val="スポーツ">バスケ</option>
-										<option value="バレーボール" data-val="スポーツ">バレーボール</option>
-										<option value="卓球" data-val="スポーツ">卓球</option>
-										<option value="キャンプ" data-val="アウトドア">キャンプ</option>
-										<option value="ドライブ" data-val="アウトドア">ドライブ</option>
-										<option value="釣り" data-val="アウトドア">釣り</option>
-										<option value="サーフィン" data-val="アウトドア">サーフィン</option>
-										<option value="パラセーリング" data-val="アウトドア">パラセーリング</option>
-										<option value="ゲーム" data-val="インドア">ゲーム</option>
-										<option value="読書" data-val="インドア">読書</option>
-										<option value="サブスク" data-val="インドア">サブスク</option>
-										<option value="ピアノ" data-val="インドア">ピアノ</option>
-										<option value="映画" data-val="インドア">映画</option>
-									</select>
+											<option value="">-- 趣味を選択してください --</option>
+											<option th:each="h : ${hobbyList}" 
+											        th:value="${h.hobby}" 
+											        th:text="${h.hobby}" 
+											        th:data-val="${h.janru}">
+											</option>
+										</select>
 								</td>
 							</tr>
 							<tr>

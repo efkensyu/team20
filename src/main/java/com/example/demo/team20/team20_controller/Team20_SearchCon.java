@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.team20.team20_entity.Team20_Shain;
+import com.example.demo.team20.team20_service.Team20_HobbySer;
 import com.example.demo.team20.team20_service.Team20_searchservice;
 
 import lombok.RequiredArgsConstructor;
@@ -30,19 +31,23 @@ import lombok.extern.slf4j.Slf4j;
 public class Team20_SearchCon {
 	private String userid;//=社員コード
 	private final Team20_searchservice service;
+	private final Team20_HobbySer service2;
 @InitBinder
 	public void initBinder(WebDataBinder binder) {
 	    // 送られてきた文字列が空文字（""）だった場合、自動的に null に変換する設定
 	    binder.registerCustomEditor(String.class, new org.springframework.beans.propertyeditors.StringTrimmerEditor(true));
 	}
 	@GetMapping("/Team20_Search")
-	public String index(HttpSession session,Model model) {
+	public String index(HttpSession session, Model model) {
 		userid = (String) session.getAttribute("userid");
-		log.info("[検索画面] 初期表示リクエスト受付。ログイン中のuserid: {}",userid);
+		if (userid == null) {
+			userid = (String) session.getAttribute("shainCd");
+		}
+		log.info("[検索画面] 初期表示リクエスト受付。ログイン中のuserid: {}", userid);
 		
-		System.out.println("ログイン中" + userid);
-		model.addAttribute("searchForm",new Team20_SearchForm());
-	 return "team20/Team20_Search";
+		model.addAttribute("hobbyList", service2.getAllHobbies());
+		model.addAttribute("searchForm", new Team20_SearchForm());
+		return "team20/Team20_Search";
 	}
 	
 	@PostMapping(value="/Team20_Search",params="back")
