@@ -167,6 +167,6 @@ public class Team20_RegisterCon {
 	@PostMapping(value = "/Team20_Register_Result", params = "back")
 	public String back(@ModelAttribute Team20_RegForm regForm) {
 		log.info("[登録画面] メニューボタン押下 → メニュー画面へ");
-		return "team20/Team20_Menyu";
+		return "redirect:/Team20_Menyu";
 	}
 }
