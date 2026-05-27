@@ -19,7 +19,7 @@ html, body {
 
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: url("/kari.png") center bottom / cover no-repeat fixed;
+    background: url("/team20/kari.png") center bottom / cover no-repeat fixed;
     padding-top: 100px;
     padding-bottom: 100px;
 	align-items: center;
