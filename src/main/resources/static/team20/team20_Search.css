@@ -5,9 +5,6 @@ body {
 	min-height: 100%;
 	margin: 0;
 	padding: 0;
-}
-
-body {
 	background-image: url("/team20/kari.png");
 	background-size: cover;
 	background-position: center; 
@@ -142,7 +139,12 @@ table.detail input[type="radio"] {
 
 .botton {
 	text-align: center;
-	margin-top: 10px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	flex-wrap: wrap;
 }
 
 .botton input[type="submit"] {
@@ -167,6 +169,7 @@ table.detail input[type="radio"] {
 	background-color:   #113663; 
 }
 
+.botton input[name="clear"],
 .botton input[name="back"]{
 	margin-top: 10px;
 }
