@@ -20,13 +20,28 @@ public class Team20_RegForm {
 	@NotEmpty(message="いずれかを選択してください")
 	private String hobby;
 	@NotEmpty(message="いずれかを選択してください")
+	private String janruNm;
+	@NotEmpty(message="いずれかを選択してください")
+	private String hobbyNm;
+	
+	@NotEmpty(message="いずれかを選択してください")
 	private String janru2;
 	@NotEmpty(message="いずれかを選択してください")
 	private String hobby2;
 	@NotEmpty(message="いずれかを選択してください")
+	private String janruNm2;
+	@NotEmpty(message="いずれかを選択してください")
+	private String hobbyNm2;
+	
+	@NotEmpty(message="いずれかを選択してください")
 	private String janru3;
 	@NotEmpty(message="いずれかを選択してください")
 	private String hobby3;
+	@NotEmpty(message="いずれかを選択してください")
+	private String janruNm3;
+	@NotEmpty(message="いずれかを選択してください")
+	private String hobbyNm3;
+	
 	@NotEmpty(message="いずれかを選択してください")
 	private String job;
 	@NotNull(message="自己紹介文の入力お願いします。")

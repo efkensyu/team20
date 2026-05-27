@@ -31,7 +31,7 @@ public class Team20_RegisterResultSer {
 		// 自分以外の全社員取得
 		List<Team20_Shain> candidates = shainrepository.findAllExcludeSelf(me.getShainCd());
 		log.info("[マッチング計算] 比較対象の候補社員数: {} 名", candidates.size());
-		
+
 		// 自分のHobby情報を事前に取得（DBアクセスを最小化）
 		Team20_Hobby myHobby1 = findHobby(me.getRank1());
 		Team20_Hobby myHobby2 = findHobby(me.getRank2());
@@ -51,27 +51,30 @@ public class Team20_RegisterResultSer {
 
 			scoreList.add(new ShainScore(other, score));
 		}
-		
+
 		log.info("[マッチング計算] 全候補者のスコア算出完了。これより降順ソートを行います。");
 
 		// 降順ソート（同点は社員CD昇順）
 		scoreList.sort(Comparator
 				.comparingInt(ShainScore::getScore).reversed()
 				.thenComparing(ss -> ss.getShain().getShainCd()));
-		
+
 		// デバッグ:上位3名のスコア結果をログ出力
-				for (int i = 0; i < Math.min(scoreList.size(), 3); i++) {
-					ShainScore ss = scoreList.get(i);
-					log.info("  [マッチング上位結果] 順位 {}: 社員CD: {}, 算出スコア: {}点", 
-							(i + 1), ss.getShain().getShainCd(), ss.getScore());
-				}
-				
+		for (int i = 0; i < Math.min(scoreList.size(), 3); i++) {
+			ShainScore ss = scoreList.get(i);
+			log.info("  [マッチング上位結果] 順位 {}: 社員CD: {}, 算出スコア: {}点",
+					(i + 1), ss.getShain().getShainCd(), ss.getScore());
+		}
+
 		// Shainリストに変換
 		List<Team20_Shain> result = new ArrayList<>();
-		for (ShainScore ss : scoreList) {
+		for (int i = 0; i < Math.min(scoreList.size(), 9); i++) {
+			ShainScore ss = scoreList.get(i);
+			log.info("  [マッチング上位結果] 順位 {}: 社員CD: {}, 算出スコア: {}点",
+					(i + 1), ss.getShain().getShainCd(), ss.getScore());
 			result.add(ss.getShain());
 		}
-		
+
 		log.info("[マッチング計算終了] ソート済みの社員リストを返却します。返却件数: {}", result.size());
 		return result;
 	}

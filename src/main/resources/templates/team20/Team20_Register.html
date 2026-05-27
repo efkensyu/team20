@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8">
 	<title>登録画面</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/team20/team20_Register.css}">
 	<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">
 </head>
+
 <body>
 	<header>
 		<div class="header">
@@ -26,9 +28,10 @@
 					<h3>社員コード</h3>
 					<input type="text" class="textbox" th:field="*{code}" size="20">
 					<span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" class="error"></span>
-
-					<h3>趣味</h3>
 					
+					<span th:if="${codeError}" th:text="${codeError}" class="error"></span>
+					<h3>趣味</h3>
+
 					<table class="ranking-table">
 						<thead>
 							<tr>
@@ -45,8 +48,10 @@
 									<label><input type="radio" th:field="*{janru}" value="クリエイティブ">クリエイティブ</label>
 									<label><input type="radio" th:field="*{janru}" value="学び・教養">学び・教養</label>
 									<br>
-									<label><input type="radio" th:field="*{janru}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
-									<span th:if="${#fields.hasErrors('janru')}" th:errors="*{janru}" class="error"></span>
+									<label><input type="radio" th:field="*{janru}"
+											value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
+									<span th:if="${#fields.hasErrors('janru')}" th:errors="*{janru}"
+										class="error"></span>
 								</td>
 							</tr>
 							<tr>
@@ -55,10 +60,12 @@
 									<select th:field="*{hobby}" id="hobby" disabled="disabled">
 										<option value="">-- 趣味を選択してください --</option>
 										<th:block th:each="h : ${hobbyList}">
-											<option th:value="${h.hobbyCd}" th:text="${h.hobby}" th:attr="data-val=${h.janru}"></option>
+											<option th:value="${h.hobbyCd}" th:text="${h.hobby}"
+												th:attr="data-val=${h.janru}"></option>
 										</th:block>
 									</select>
-									<span th:if="${#fields.hasErrors('hobby')}" th:errors="*{hobby}" class="error"></span>
+									<span th:if="${#fields.hasErrors('hobby')}" th:errors="*{hobby}"
+										class="error"></span>
 								</td>
 							</tr>
 						</tbody>
@@ -80,8 +87,10 @@
 									<label><input type="radio" th:field="*{janru2}" value="クリエイティブ">クリエイティブ</label>
 									<label><input type="radio" th:field="*{janru2}" value="学び・教養">学び・教養</label>
 									<br>
-									<label><input type="radio" th:field="*{janru2}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
-									<span th:if="${#fields.hasErrors('janru2')}" th:errors="*{janru2}" class="error"></span>
+									<label><input type="radio" th:field="*{janru2}"
+											value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
+									<span th:if="${#fields.hasErrors('janru2')}" th:errors="*{janru2}"
+										class="error"></span>
 								</td>
 							</tr>
 							<tr>
@@ -90,10 +99,12 @@
 									<select th:field="*{hobby2}" id="hobby2" disabled="disabled">
 										<option value="">-- 趣味を選択してください --</option>
 										<th:block th:each="h : ${hobbyList}">
-											<option th:value="${h.hobbyCd}" th:text="${h.hobby}" th:attr="data-val=${h.janru}"></option>
+											<option th:value="${h.hobbyCd}" th:text="${h.hobby}"
+												th:attr="data-val=${h.janru}"></option>
 										</th:block>
 									</select>
-									<span th:if="${#fields.hasErrors('hobby2')}" th:errors="*{hobby2}" class="error"></span>
+									<span th:if="${#fields.hasErrors('hobby2')}" th:errors="*{hobby2}"
+										class="error"></span>
 								</td>
 							</tr>
 						</tbody>
@@ -115,8 +126,10 @@
 									<label><input type="radio" th:field="*{janru3}" value="クリエイティブ">クリエイティブ</label>
 									<label><input type="radio" th:field="*{janru3}" value="学び・教養">学び・教養</label>
 									<br>
-									<label><input type="radio" th:field="*{janru3}" value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
-									<span th:if="${#fields.hasErrors('janru3')}" th:errors="*{janru3}" class="error"></span>
+									<label><input type="radio" th:field="*{janru3}"
+											value="スピリチュアル・リラクゼーション">スピリチュアル・リラクゼーション</label>
+									<span th:if="${#fields.hasErrors('janru3')}" th:errors="*{janru3}"
+										class="error"></span>
 								</td>
 							</tr>
 							<tr>
@@ -125,10 +138,12 @@
 									<select th:field="*{hobby3}" id="hobby3" disabled="disabled">
 										<option value="">-- 趣味を選択してください --</option>
 										<th:block th:each="h : ${hobbyList}">
-											<option th:value="${h.hobbyCd}" th:text="${h.hobby}" th:attr="data-val=${h.janru}"></option>
+											<option th:value="${h.hobbyCd}" th:text="${h.hobby}"
+												th:attr="data-val=${h.janru}"></option>
 										</th:block>
 									</select>
-									<span th:if="${#fields.hasErrors('hobby3')}" th:errors="*{hobby3}" class="error"></span>
+									<span th:if="${#fields.hasErrors('hobby3')}" th:errors="*{hobby3}"
+										class="error"></span>
 								</td>
 							</tr>
 						</tbody>
@@ -176,13 +191,28 @@
 		$(document).ready(function () {
 			function setupHobbyFilter(janruName, hobbyId) {
 				var $hobby = $(hobbyId);
-				
+
 				$hobby.find('option').each(function () {
 					var val2 = $(this).data('val');
 					if (val2 !== undefined) {
 						$(this).hide().prop('disabled', true);
 					}
 				});
+
+				
+				var currentJanru = $('input[name="' + janruName + '"]:checked').val();
+				if (currentJanru) {
+					$hobby.prop('disabled', false);
+					$hobby.find('option').each(function () {
+						var val2 = $(this).data('val');
+						if (val2 === undefined) return;
+						if (currentJanru == val2) {
+							$(this).show().prop('disabled', false);
+						} else {
+							$(this).hide().prop('disabled', true);
+						}
+					});
+				}
 
 				$('input[name="' + janruName + '"]').change(function () {
 					var val1 = $(this).val();
@@ -212,4 +242,5 @@
 		});
 	</script>
 </body>
+
 </html>

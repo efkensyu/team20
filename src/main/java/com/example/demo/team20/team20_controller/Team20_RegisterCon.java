@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.example.demo.team20.team20_entity.Team20_Hobby;
+import com.example.demo.team20.team20_repository.Team20_HobbyRepository;
 import com.example.demo.team20.team20_service.Team20_HobbySer;
 import com.example.demo.team20.team20_service.Team20_RegisterSer;
 
@@ -38,6 +39,8 @@ public class Team20_RegisterCon {
 	private final Team20_RegisterSer service;
 	private final Team20_HobbySer hobbyservice;
 
+	private final Team20_HobbyRepository hobbyRepository;
+
 	@ModelAttribute("regForm")
 	public Team20_RegForm setup() {
 		return new Team20_RegForm();
@@ -47,7 +50,7 @@ public class Team20_RegisterCon {
 	public String index(HttpSession session, Model model) {
 		userid = (String) session.getAttribute("userid");
 		log.info("登録画面の表示　ログイン中のuserid:{}", userid);
-		System.out.println("ログイン中" + userid);
+
 		if (!model.containsAttribute("regForm")) {
 			model.addAttribute("regForm", new Team20_RegForm());
 		}
@@ -70,35 +73,88 @@ public class Team20_RegisterCon {
 
 	//登録ボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "register")
-	public String register(@ModelAttribute @Validated Team20_RegForm regForm,BindingResult result, Model model,SessionStatus status,
+	public String register(@ModelAttribute @Validated Team20_RegForm regForm, BindingResult result, Model model,
+			SessionStatus status,
 			@SessionAttribute(name = "userid", required = false) String sessionUserid) {
-		
+
 		log.info("登録ボタン押す　sessionUserid: {}, regForm.code: {}",
 				sessionUserid, regForm.getCode());
-//		userid="A001";
+
+		if (result.hasErrors()) {
+			log.warn("バリデーションエラー発生: {}", result.getAllErrors());
+			result.getFieldErrors().forEach(error -> log.warn("  フィールド名: [{}], エラー内容: [{}]",
+					error.getField(), error.getDefaultMessage()));
+
+			// エラー時にhobbyListを再セット
+			model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
+			model.addAttribute("regForm", regForm);
+			return "team20/Team20_Register"; // 登録画面に戻る
+		}
+
+		setHobbyNames(regForm);
+
+		//		userid="A001";
 		model.addAttribute("regForm", regForm);
-		if(sessionUserid != null && sessionUserid.equals(regForm.getCode())) {
-//			if(result.hasErrors()) {
-//				return "team20/Team20_Register";
-//			}
+		if (sessionUserid != null && sessionUserid.equals(regForm.getCode())) {
+
 			log.info("社員コード一致　→　DB更新実行");
 			service.Proupdate(regForm);
-//			status.setComplete();
-			
-		}else if(result.hasErrors()) {
-			log.warn("バリデーションエラー発生: {}", result.getAllErrors());
-			
-			// エラーが起きたフィールド名とメッセージを1件ずつログに出力
-		    result.getFieldErrors().forEach(error -> {
-		        log.warn("  フィールド名: [{}], エラー内容: [{}]", error.getField(), error.getDefaultMessage());
-		    });
-			model.addAttribute("regForm", regForm);
+			//			status.setComplete();
+
+		} else {
+			log.warn("社員コード不一致 sessionUserid:{} code:{}",
+					sessionUserid, regForm.getCode());
+			// ✅ 不一致の場合もエラーメッセージを表示して登録画面に戻す
+			model.addAttribute("codeError", "社員コードが一致しません");
+			model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
 			return "team20/Team20_Register";
+			//		} else if (result.hasErrors()) {
+			//			log.warn("バリデーションエラー発生: {}", result.getAllErrors());
+			//
+			//			// エラーが起きたフィールド名とメッセージを1件ずつログに出力
+			//			result.getFieldErrors().forEach(error -> {
+			//				log.warn("  フィールド名: [{}], エラー内容: [{}]", error.getField(), error.getDefaultMessage());
+			//			});
+			//			model.addAttribute("regForm", regForm);
+
 		}
 		log.info("登録画面→確認画面へ");
 		return "team20/Team20_Register_Result";
-		
-		
+
+	}
+
+	private void setHobbyNames(Team20_RegForm regForm) {
+		// 1位
+		//		if (regForm.getHobby() != null && !regForm.getHobby().isEmpty()) {
+		if (isNotEmpty(regForm.getHobby())) {
+			Team20_Hobby h1 = hobbyRepository.findById(regForm.getHobby()).orElse(null);
+			if (h1 != null) {
+				regForm.setHobbyNm(h1.getHobby());
+				regForm.setJanruNm(h1.getJanru());
+			}
+		}
+		// 2位
+		//		if (regForm.getHobby2() != null && !regForm.getHobby2().isEmpty()) {
+		if (isNotEmpty(regForm.getHobby2())) {
+			Team20_Hobby h2 = hobbyRepository.findById(regForm.getHobby2()).orElse(null);
+			if (h2 != null) {
+				regForm.setHobbyNm2(h2.getHobby());
+				regForm.setJanruNm2(h2.getJanru());
+			}
+		}
+		// 3位
+		//		if (regForm.getHobby3() != null && !regForm.getHobby3().isEmpty()) {
+		if (isNotEmpty(regForm.getHobby3())) {
+			Team20_Hobby h3 = hobbyRepository.findById(regForm.getHobby3()).orElse(null);
+			if (h3 != null) {
+				regForm.setHobbyNm3(h3.getHobby());
+				regForm.setJanruNm3(h3.getJanru());
+			}
+		}
+	}
+
+	private boolean isNotEmpty(String str) {
+		return str != null && !str.isEmpty();
 	}
 
 	//編集ボタン
@@ -106,10 +162,8 @@ public class Team20_RegisterCon {
 	public String editor(@ModelAttribute @Validated Team20_RegForm regForm, BindingResult result, Model model) {
 		log.info("編集ボタン押す");
 		model.addAttribute("regForm", regForm);
-		if (result.hasErrors()) {
-			log.warn("バリデーションエラー：｛｝",result.getAllErrors());
-			return "team20/Team20_Register";
-		}
+		model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
+		
 		return "team20/Team20_Register";
 
 	}
@@ -117,7 +171,7 @@ public class Team20_RegisterCon {
 	//メニューボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "back")
 	public String back(@ModelAttribute Team20_RegForm regForm) {
-		log.info("メニューボタン押下 → メニュー画面へ"); 
+		log.info("メニューボタン押下 → メニュー画面へ");
 		return "team20/Team20_Menyu";
 	}
 }
