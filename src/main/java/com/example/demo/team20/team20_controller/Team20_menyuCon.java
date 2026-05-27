@@ -26,10 +26,13 @@ public class Team20_menyuCon {
 	public String index(HttpSession session,Model model) {
 		//userid = (String) session.getAttribute("userid");
 		//↓追加
-		String currentUserId = (String) session.getAttribute("userid");
-		log.info("[メニュー画面] 初期表示リクエストを受付。ログイン中のuserid: {}", currentUserId);
+		userid= (String) session.getAttribute("userid");
+		log.info("[メニュー画面] 初期表示リクエストを受付。ログイン中のuserid: {}", userid);
 		
 		String loginName = menyuSer.find(userid);
+		if(loginName==null) {
+			return "redirect:/Team20_Login";
+		}
 		model.addAttribute("name", loginName);
 		System.out.println("ログイン中" + userid);
 		log.info("[メニュー画面] ようこそ、{} さん。画面を表示します。", loginName);

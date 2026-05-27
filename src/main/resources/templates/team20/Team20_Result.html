@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.ofg">
+
 <head>
-	<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">	
+	<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">
 	<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Result.css}">
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>結果</title>
 </head>
 <header>
 	<div class="header">
-		    <img th:src="@{/Team20logo.png}" width="100">
-		</div>
-</header>
-<body>
-<div class="main">
-	<div class="content">
-		<h1 class="box">検索結果</h1>
-	<th:block th:each="data, i : ${resultList}">
-		<form method="post" th:action="@{/Team20_Result}" >
-			
-			<div class="content2">
-				<input type="hidden" name="shainCd" th:value="${data.shainCd}">
-				<a th:text="${i.count}"></a>
-				<a th:text="${data.shainNm}"></a>
-	 			<a th:text="1位：+${data.rank1}"></a>
-				<a th:text="2位：+${data.rank2}"></a>
-				<a th:text="3位：+${data.rank3}"></a>
-				<input class="button" type="submit" value="詳細">
-			</div>
-		</form>
-	</th:block>
+		<img th:src="@{/Team20logo.png}" width="100">
 	</div>
-</div>
+</header>
+
+<body>
+	<div class="main">
+		<div class="content">
+			<h1 class="box">結果</h1>
+			<div class="card-container">
+				<th:block th:each="data, i : ${resultList}">
+					<form method="post" th:action="@{/Team20_Result}">
+
+						<div class="content2">
+							<input type="hidden" name="shainCd" th:value="${data.shainCd}">
+							<a th:text="${i.count}"></a>
+							<a th:text="${data.shainNm}"></a>
+							<a th:text="1位：+${data.rank1}"></a>
+							<a th:text="2位：+${data.rank2}"></a>
+							<a th:text="3位：+${data.rank3}"></a>
+							<input class="button" type="submit" name="details" value="詳細">
+						</div>
+					</form>
+				</th:block>
+			</div>
+			<form method="post" th:action="@{/Team20_Result}">
+				<div class="botton" style="margin-bottom: 40px; margin-top: 20px;">
+					<input type="submit" name="back" value="メニューに戻る">
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 <footer>
 	<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
 </footer>
+
 </html>

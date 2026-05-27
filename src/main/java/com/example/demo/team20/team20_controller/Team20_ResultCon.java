@@ -43,7 +43,7 @@ public class Team20_ResultCon {
 		return "team20/Team20_Result";
 	}
 	
-	@PostMapping("/Team20_Result")
+	@PostMapping(value="/Team20_Result",params="details")
 	public String send1(@RequestParam("shainCd") String shainCd,RedirectAttributes redirectAttributes) {
 		
 		log.info("[結果一覧画面ボタン] 詳細を見る社員が選択されました。 選択された社員コード(shainCd): {}", shainCd);
@@ -52,5 +52,13 @@ public class Team20_ResultCon {
 		log.info("[結果一覧画面] 詳細画面（/Team20_Details）へリダイレクトします。");
 		//System.out.println(shainCd);
 		return "redirect:/Team20_Details";
+	
+	}
+	@PostMapping(value="/Team20_Result",params="back2")
+	public String send2(RedirectAttributes redirectAttributes) {
+		
+		log.info("[メニューに戻るボタン]メニューに戻るが選択されました");
+		return "redirect:/Team20_Menyu";
+	
 	}
 }
