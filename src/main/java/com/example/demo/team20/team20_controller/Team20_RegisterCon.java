@@ -153,10 +153,13 @@ public class Team20_RegisterCon {
 	}
 
 	//編集ボタン
-	@PostMapping(value = "/Team20_Register_Result", params = "edit")
-	public String editor(@ModelAttribute @Validated Team20_RegForm regForm, BindingResult result, Model model) {
-		log.info("[登録画面] 編集ボタン押下");
-		model.addAttribute("regForm", regForm);
+	@PostMapping(value = "/Team20_Register_Result", params = "clear")
+	public String clear(HttpSession session, Model model) {
+		log.info("[登録画面] クリアボタン押下");
+		Team20_RegForm blankForm =new Team20_RegForm();
+		String sessionUserid = (String) session.getAttribute("userid");
+		blankForm.setCode(sessionUserid);
+		model.addAttribute("regForm", blankForm);
 		model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
 
 		return "team20/Team20_Register";
