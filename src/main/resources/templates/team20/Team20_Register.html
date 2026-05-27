@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
@@ -7,13 +7,13 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/team20/team20_Register.css}">
 	<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">
 </head>
-<header>
+
+<body>
+	<header>
 		<div class="header">
 			<img th:src="@{/Team20logo.png}" width="100" height="50">
 		</div>
 	</header>
-<body>
-
 	<div class="main">
 		<div class="content">
 			<h2 class="box">プロフィール登録画面</h2>
@@ -27,7 +27,7 @@
 					<h3>社員コード</h3>
 					<input type="text" class="textbox" th:field="*{code}" size="20">
 					<span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" class="error"></span>
-					
+
 					<span th:if="${codeError}" th:text="${codeError}" class="error"></span>
 					<h3>趣味</h3>
 
@@ -198,7 +198,7 @@
 					}
 				});
 
-				
+
 				var currentJanru = $('input[name="' + janruName + '"]:checked').val();
 				if (currentJanru) {
 					$hobby.prop('disabled', false);
@@ -241,7 +241,6 @@
 		});
 	</script>
 </body>
-<footer>
-	<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
-</footer>
+
+
 </html>
