@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -35,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 @SessionAttributes("regForm")
 public class Team20_RegisterCon {
 
-	private String userid;//=社員コード
+	//private String userid;//=社員コード
 	private final Team20_RegisterSer service;
 	private final Team20_HobbySer hobbyservice;
 
@@ -48,8 +47,8 @@ public class Team20_RegisterCon {
 
 	@GetMapping("/Team20_Register")
 	public String index(HttpSession session, Model model) {
-		userid = (String) session.getAttribute("userid");
-		log.info("登録画面の表示　ログイン中のuserid:{}", userid);
+		String currentUserId = (String) session.getAttribute("userid");
+        log.info("[登録画面] ログイン中のuserid: {}", currentUserId);
 
 		if (!model.containsAttribute("regForm")) {
 			model.addAttribute("regForm", new Team20_RegForm());
@@ -75,10 +74,16 @@ public class Team20_RegisterCon {
 	@PostMapping(value = "/Team20_Register_Result", params = "register")
 	public String register(@ModelAttribute @Validated Team20_RegForm regForm, BindingResult result, Model model,
 			SessionStatus status,
-			@SessionAttribute(name = "userid", required = false) String sessionUserid) {
+			HttpSession session
+			) {
+		
+		String sessionUserid = (String) session.getAttribute("userid");
 
-		log.info("登録ボタン押す　sessionUserid: {}, regForm.code: {}",
-				sessionUserid, regForm.getCode());
+		
+		log.info("登録ボタン押す　userid: {}, regForm.code: {}",
+				sessionUserid,regForm.getCode());
+//				sessionUserid, regForm.getCode());
+				
 
 		if (result.hasErrors()) {
 			log.warn("バリデーションエラー発生: {}", result.getAllErrors());
@@ -90,10 +95,8 @@ public class Team20_RegisterCon {
 			model.addAttribute("regForm", regForm);
 			return "team20/Team20_Register"; // 登録画面に戻る
 		}
-
+		//hobby名とjanru名をセット
 		setHobbyNames(regForm);
-
-		//		userid="A001";
 		model.addAttribute("regForm", regForm);
 		if (sessionUserid != null && sessionUserid.equals(regForm.getCode())) {
 
@@ -108,14 +111,6 @@ public class Team20_RegisterCon {
 			model.addAttribute("codeError", "社員コードが一致しません");
 			model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
 			return "team20/Team20_Register";
-			//		} else if (result.hasErrors()) {
-			//			log.warn("バリデーションエラー発生: {}", result.getAllErrors());
-			//
-			//			// エラーが起きたフィールド名とメッセージを1件ずつログに出力
-			//			result.getFieldErrors().forEach(error -> {
-			//				log.warn("  フィールド名: [{}], エラー内容: [{}]", error.getField(), error.getDefaultMessage());
-			//			});
-			//			model.addAttribute("regForm", regForm);
 
 		}
 		log.info("登録画面→確認画面へ");
@@ -160,10 +155,10 @@ public class Team20_RegisterCon {
 	//編集ボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "edit")
 	public String editor(@ModelAttribute @Validated Team20_RegForm regForm, BindingResult result, Model model) {
-		log.info("編集ボタン押す");
+		log.info("[登録画面] 編集ボタン押下");
 		model.addAttribute("regForm", regForm);
 		model.addAttribute("hobbyList", hobbyservice.getAllHobbies());
-		
+
 		return "team20/Team20_Register";
 
 	}
@@ -171,7 +166,7 @@ public class Team20_RegisterCon {
 	//メニューボタン
 	@PostMapping(value = "/Team20_Register_Result", params = "back")
 	public String back(@ModelAttribute Team20_RegForm regForm) {
-		log.info("メニューボタン押下 → メニュー画面へ");
+		log.info("[登録画面] メニューボタン押下 → メニュー画面へ");
 		return "team20/Team20_Menyu";
 	}
 }

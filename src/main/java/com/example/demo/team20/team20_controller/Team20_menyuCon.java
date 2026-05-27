@@ -17,42 +17,55 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class Team20_menyuCon {
-	private String userid;
 	
 	@Autowired
 	private Team20_MenyuSer menyuSer;
 	
 	@GetMapping("/Team20_Menyu")			
-	public String index(HttpSession session,Model model) {
-		//userid = (String) session.getAttribute("userid");
-		//↓追加
-		userid= (String) session.getAttribute("userid");
-		log.info("[メニュー画面] 初期表示リクエストを受付。ログイン中のuserid: {}", userid);
+	public String index(HttpSession session, Model model) {
+		// 🚀 1. 変数名をチームの最新状態である「currentUserId」に統一してセッションから取得
+		String currentUserId = (String) session.getAttribute("userid");
+		log.info("[メニュー画面] 初期表示リクエストを受付。ログイン中のuserid: {}", currentUserId);
 		
-		String loginName = menyuSer.find(userid);
-		if(loginName==null) {
+		// セッション自体が空っぽだった場合の安全ガード
+		if (currentUserId == null) {
+			log.warn("[メニュー画面] セッションにuseridが存在しないため、ログイン画面へリダイレクトします。");
 			return "redirect:/Team20_Login";
 		}
+		
+		// 🚀 2. 統一した「currentUserId」をサービスに渡してDB検索（コンフリクトの融合）
+		String loginName = menyuSer.find(currentUserId);
+		
+		// 🚀 3. 【HEAD側の変更を採用】名前が取れなかったらログイン画面に安全に戻すガード処理
+		if (loginName == null) {
+			log.warn("[メニュー画面] userid: {} に紐づく社員名がDBから取得できなかったため、ログイン画面へ戻します。", currentUserId);
+			return "redirect:/Team20_Login";
+		}
+		
 		model.addAttribute("name", loginName);
-		System.out.println("ログイン中" + userid);
+		System.out.println("ログイン中" + currentUserId);
 		log.info("[メニュー画面] ようこそ、{} さん。画面を表示します。", loginName);
 		return "team20/Team20_menyu";
 	}
 	
 	@PostMapping(value="/Team20_Menyu", params="register")
-	public String send1(HttpSession session,Model model) {
-		
-		session.setAttribute("userid", userid);
+	public String send1(HttpSession session, Model model) {
+		String currentUserId = (String) session.getAttribute("userid");
+		log.info("[メニュー画面] 登録画面へ userid: {}", currentUserId);
 		return "redirect:/Team20_Register";
 	}
+	
 	@PostMapping(value="/Team20_Menyu", params="search")
-	public String send2(HttpSession session,Model model) {
-		session.setAttribute("userid", userid);
+	public String send2(HttpSession session, Model model) {
+		String currentUserId = (String) session.getAttribute("userid");
+		log.info("[メニュー画面] 検索画面へ userid: {}", currentUserId);
 		return "redirect:/Team20_Search";
 	}
+	
 	@PostMapping(value="/Team20_Menyu", params="result")
-	public String send3(HttpSession session,Model model) {
-		session.setAttribute("userid", userid);
+	public String send3(HttpSession session, Model model) {
+		String currentUserId = (String) session.getAttribute("userid");
+		log.info("[メニュー画面] 結果画面へ userid: {}", currentUserId);
 		return "redirect:/Team20_Result";
 	}		
 }
