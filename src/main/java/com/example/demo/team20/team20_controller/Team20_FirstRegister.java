@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,7 +42,11 @@ public class Team20_FirstRegister {
 		System.out.println(userInfo);
 		if(userInfo.contains(id) == true) {
 			log.warn("[新規登録警告] 登録失敗 - ユーザーID: {} はすでに登録済みです", registerForm.getUserid());
-			
+			result.addError(new FieldError(
+			        "registerForm",
+			        "userid",
+			        "この社員番号はすでに登録されています。"
+			    ));
 			System.out.println("登録済み");
 			model.addAttribute("registerForm", registerForm);
 			return "team20/Team20_FirstRegister";
