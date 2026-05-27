@@ -25,9 +25,15 @@ footer {
 	  background-color:#164a84 ;
 	  display: flex;
 	  align-items: center;
-	  justify-content: center;
+	  justify-content: flex-end;
 	  color: white;
 	  z-index: 1000;
+	  padding-right: 40px; 
+	  box-sizing: border-box;
+}
+
+footer p {
+	text-align: right;
 }
 
 body {
@@ -112,12 +118,12 @@ body {
 
 .button[name="regist"] {
 	background-color: transparent;
-	color: #164a84;
+	color:   #164a84;
 	border: 2px solid #164a84;
 	margin-top: 10px; 
 }
 .button[name="regist"]:hover {
-	background-color: rgba(22, 74, 132, 0.05); 
+	background-color:  rgba(22, 74, 132, 0.05);
 }
 
 .error {

@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.team20.team20_service.Team20_MenyuSer;
+
+import lombok.extern.slf4j.Slf4j;
+
 @SessionAttributes(names="shainCd")
 @Controller
+@Slf4j
 public class Team20_menyuCon {
 	private String userid;
 	
@@ -20,15 +24,21 @@ public class Team20_menyuCon {
 	
 	@GetMapping("/Team20_Menyu")			
 	public String index(HttpSession session,Model model) {
-		userid = (String) session.getAttribute("userid");
+		//userid = (String) session.getAttribute("userid");
+		//↓追加
+		String currentUserId = (String) session.getAttribute("userid");
+		log.info("[メニュー画面] 初期表示リクエストを受付。ログイン中のuserid: {}", currentUserId);
+		
 		String loginName = menyuSer.find(userid);
 		model.addAttribute("name", loginName);
 		System.out.println("ログイン中" + userid);
+		log.info("[メニュー画面] ようこそ、{} さん。画面を表示します。", loginName);
 		return "team20/Team20_menyu";
 	}
 	
 	@PostMapping(value="/Team20_Menyu", params="register")
 	public String send1(HttpSession session,Model model) {
+		
 		session.setAttribute("userid", userid);
 		return "redirect:/Team20_Register";
 	}

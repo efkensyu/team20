@@ -17,6 +17,7 @@
 		<h1 class="box">検索結果</h1>
 	<th:block th:each="data, i : ${resultList}">
 		<form method="post" th:action="@{/Team20_Result}" >
+			
 			<div class="content2">
 				<input type="hidden" name="shainCd" th:value="${data.shainCd}">
 				<a th:text="${i.count}"></a>
@@ -32,6 +33,6 @@
 </div>
 </body>
 <footer>
-	<p>なにか</p>
+	<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
 </footer>
 </html>

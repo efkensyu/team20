@@ -17,24 +17,27 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.team20.team20_entity.Team20_Shain;
 import com.example.demo.team20.team20_service.Team20_ResultSer;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @SessionAttributes("resultList")
 public class Team20_ResultCon {
 	private String userid;//=社員コード
 	@Autowired
 	private Team20_ResultSer service;
+	
 	@ModelAttribute("resultList")
 	public ArrayList<Team20_Shain> setupresultList(){
 		return new ArrayList<Team20_Shain>();
 	}
-	/*@GetMapping("/Team20_Result")
-	public String index(ArrayList<Team20_Shain> resultList) {
-	 return "team20/Team20_Result";
-	}*/
+	
+	
 	@GetMapping("/Team20_Result")
 	public String index(@ModelAttribute("resultList") ArrayList<Team20_Shain> resultList, HttpSession session, Model model) {
 		userid = (String) session.getAttribute("userid");
 		System.out.println("ログイン中" + userid);
+		log.info("[結果一覧画面] 表示リクエスト受付。ログイン中のuserid: {}", userid);
 		ArrayList<Team20_Shain> list= service.ChangeHobbyList(resultList);
 		model.addAttribute("resultList",list);
 		return "team20/Team20_Result";
@@ -42,8 +45,12 @@ public class Team20_ResultCon {
 	
 	@PostMapping("/Team20_Result")
 	public String send1(@RequestParam("shainCd") String shainCd,RedirectAttributes redirectAttributes) {
+		
+		log.info("[結果一覧画面ボタン] 詳細を見る社員が選択されました。 選択された社員コード(shainCd): {}", shainCd);
+		
 		redirectAttributes.addFlashAttribute("shainCd", shainCd);
-		System.out.println(shainCd);
+		log.info("[結果一覧画面] 詳細画面（/Team20_Details）へリダイレクトします。");
+		//System.out.println(shainCd);
 		return "redirect:/Team20_Details";
 	}
 }

@@ -19,6 +19,11 @@ import com.example.demo.team20.team20_entity.Team20_Shain;
 import com.example.demo.team20.team20_service.Team20_searchservice;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+
+
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 @SessionAttributes("resultList")
@@ -33,6 +38,8 @@ public class Team20_SearchCon {
 	@GetMapping("/Team20_Search")
 	public String index(HttpSession session,Model model) {
 		userid = (String) session.getAttribute("userid");
+		log.info("[検索画面] 初期表示リクエスト受付。ログイン中のuserid: {}",userid);
+		
 		System.out.println("ログイン中" + userid);
 		model.addAttribute("searchForm",new Team20_SearchForm());
 	 return "team20/Team20_Search";
@@ -40,17 +47,24 @@ public class Team20_SearchCon {
 	
 	@PostMapping(value="/Team20_Search",params="back")
 	public String send1() {
+		log.info("[検索画面ボタン] 「戻る」が押されました。メニュー画面へ戻ります。");
 		return "team20/Team20_menyu";
 	}
 
 	@PostMapping(value="/Team20_Search",params="clear")
 	public String send2(Model model) {
+		log.info("[検索画面ボタン] 「クリア」が押されました。検索条件をリセットします。");
 		model.addAttribute("searchForm", new Team20_SearchForm());
 		return "team20/Team20_Search";
 	}
 	@PostMapping(value="/Team20_Search",params="search")
 	public String send3(@ModelAttribute("searchForm") @Validated Team20_SearchForm searchForm,BindingResult result,HttpSession session,Model model) {
+		//確認
+		log.info("  [検索入力条件] 名前: {}, ジャンル: {}, 趣味: {}, 職種(Job): {}", 
+				searchForm.getName(), searchForm.getJanru(), searchForm.getHobby(), searchForm.getJob());
+		
 		if(result.hasErrors()) {
+			log.warn("[検索画面警告] 入力バリデーションエラーが発生しました。件数: {}", result.getErrorCount());
 			return "team20/Team20_Search";
 		}
 		System.out.println("Post実行");
@@ -62,7 +76,9 @@ public class Team20_SearchCon {
 				searchForm.getJob(), 
 				loginUserid
 		);
-		System.out.println(resultList);
+		
+		log.info("[検索成功] 検索条件にマッチした社員を {} 件検知しました。結果画面へリダイレクトします。", resultList.size());
+//		System.out.println(resultList);
 		model.addAttribute("resultList",resultList);
 		return "redirect:/Team20_Result";
 	}
