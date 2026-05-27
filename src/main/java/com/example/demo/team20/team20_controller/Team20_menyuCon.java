@@ -23,20 +23,16 @@ public class Team20_menyuCon {
 	
 	@GetMapping("/Team20_Menyu")			
 	public String index(HttpSession session, Model model) {
-		// 🚀 1. 変数名をチームの最新状態である「currentUserId」に統一してセッションから取得
 		String currentUserId = (String) session.getAttribute("userid");
 		log.info("[メニュー画面] 初期表示リクエストを受付。ログイン中のuserid: {}", currentUserId);
 		
-		// セッション自体が空っぽだった場合の安全ガード
+		
 		if (currentUserId == null) {
 			log.warn("[メニュー画面] セッションにuseridが存在しないため、ログイン画面へリダイレクトします。");
 			return "redirect:/Team20_Login";
 		}
 		
-		// 🚀 2. 統一した「currentUserId」をサービスに渡してDB検索（コンフリクトの融合）
 		String loginName = menyuSer.find(currentUserId);
-		
-		// 🚀 3. 【HEAD側の変更を採用】名前が取れなかったらログイン画面に安全に戻すガード処理
 		if (loginName == null) {
 			log.warn("[メニュー画面] userid: {} に紐づく社員名がDBから取得できなかったため、ログイン画面へ戻します。", currentUserId);
 			return "redirect:/Team20_Login";
@@ -45,11 +41,7 @@ public class Team20_menyuCon {
 		model.addAttribute("name", loginName);
 		System.out.println("ログイン中" + currentUserId);
 		log.info("[メニュー画面] ようこそ、{} さん。画面を表示します。", loginName);
-<<<<<<< HEAD
-=======
-		
 		//throw new RuntimeException("テスト用の故意に発生させた重大なシステムエラーです。");
->>>>>>> cb0abde12da5e719548f7de443c3a19b0b99be5d
 		return "team20/Team20_Menyu";
 	}
 	
