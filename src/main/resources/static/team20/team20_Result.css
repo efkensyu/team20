@@ -6,14 +6,12 @@
 
 html, body {
     height: 100%;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background: url("/kari.png") center bottom / cover no-repeat fixed;
-    padding-top: 100px;
-    padding-bottom: 100px;
 }
 
 header {
@@ -29,108 +27,124 @@ header {
     z-index: 1000;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.header h1 {
-    color: white;
-    font-weight: bold;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: clamp(18px, 3vw, 26px);
-    white-space: nowrap;
-}
-
-.header img {
-    width: clamp(60px, 8vw, 100px);
-    height: auto;
-}
-
 .main {
+    width: 100%;
+    height: calc(100% - 160px); 	
+    margin-top: 80px; 	
+    overflow-y: auto;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: calc(100vh - 160px);
+    padding: 30px 0;
 }
 
+/* 🚀 3枚のカードを広々と並べるためのワイド幅（1200px） */
 .content {
-    width: 90%;
-    max-width: 850px;
-    margin: 20px auto 120px;
-    background-color: rgba(255, 255, 255, 0.92);
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    backdrop-filter: blur(5px);
-}
-
-.content2 {
-    padding: 40px 30px;
+	width: 90%;
+	max-width: 1200px; 
+	background-color: rgba(255, 255, 255, 0.85); 
+	border: 1px solid #ccc; 
+	border-radius: 16px;
+	box-shadow: 0 8px 24px rgba(0,0,0,0.15); 
+	backdrop-filter: blur(5px);
+	padding: 40px; 
 }
 
 .box {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     color: #164a84;
-    margin-bottom: 20px;
-}
-
-.message {
-    text-align: center;
-    font-size: 18px;
     margin-bottom: 30px;
-    color: #333;
+    width: 100%;
 }
 
-.result-box h3 {
-    color: #164a84;
-    font-size: 18px;
-    margin-top: 25px;
-    margin-bottom: 8px;
-    border-left: 4px solid #164a84;
-    padding-left: 10px;
+.card-container {
+	display: flex;
+	flex-direction: row;   
+	flex-wrap: wrap;       
+	justify-content: center; 
+	gap: 25px;
+	width: 100%;
+	margin-bottom: 30px; 
 }
 
-.result-box p {
-    font-size: 17px;
-    margin-left: 10px;
-}
-
-.intro-box {
-    padding: 14px;
+/* 🚀 結果画面の「content2」はカード型（横幅280px、縦幅380px）に特化！ */
+.content2 {
     background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 17px;
-    margin-top: 5px;
+    border: 1px solid #e0e0e0;
+    padding: 25px; 
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    height: 380px;
 }
 
-.botton-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
+.content2 a {
+	text-align: left;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333333; 
+	display: block;
+	margin-bottom: 5px;
+	line-height: 1.5;
+}
+
+.content2 a:first-of-type {
+	font-size: 13px;
+	color: #888888;
+	margin-bottom: 4px;
+}
+
+.content2 a:nth-of-type(2) {
+	font-size: 22px;      
+	color: #164a84;      
+	margin-bottom: 16px;   
+	border-bottom: 1px dashed #e0e0e0; 
+	padding-bottom: 8px;
 }
 
 .button {
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 0;
-    width: 200px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s;
-    background-color: #164a84;
-    color: white;
-    border: none;
+	width: 100%;
+	padding: 12px;
+	border-radius: 6px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	background-color: transparent;
+	color: #164a84;
+	border: 2px solid #164a84;
+	margin-top: auto;
 }
 
 .button:hover {
-    background-color: #113663;
+	background-color: rgba(22, 74, 132, 0.05); 
+}
+
+.botton {
+	text-align: center;
+	width: 100%;
+}
+
+/* メニューに戻るボタンのデザイン */
+.botton input[type="submit"] {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 12px 0;
+	width: 160px; 
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.2s;
+	box-sizing: border-box;
+	background-color: transparent;
+	color: #164a84;
+	border: 2px solid #164a84;
+}
+
+.botton input[type="submit"]:hover {
+	background-color: rgba(22, 74, 132, 0.05);
 }
 
 footer {
@@ -148,22 +162,4 @@ footer {
     box-sizing: border-box;
     z-index: 1000;
 }
-
-footer p {
-    margin: 0;
-}
-
-@media (max-width: 768px) {
-    .content {
-        width: 95%;
-    }
-
-    .content2 {
-        padding: 20px 15px;
-    }
-
-    .button {
-        width: 100%;
-        max-width: 400px;
-    }
-}
+footer p { margin: 0; }
