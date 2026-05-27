@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@SessionAttributes("regForm")
+@SessionAttributes({"regForm","resultList"})
 public class Team20_RegisterResultCon {
 
 	private final Team20_RegisterResultSer registerResultSer;
@@ -81,7 +81,7 @@ public class Team20_RegisterResultCon {
 		
 		model.addAttribute("resultList", resultList);
 		model.addAttribute("loginList", loginShain);
-		return "team20/Team20_Result";
+		return "redirect:/Team20_Result";
 	}
 
 }
