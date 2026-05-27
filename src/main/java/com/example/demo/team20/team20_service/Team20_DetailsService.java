@@ -23,13 +23,14 @@ public class Team20_DetailsService {
 			log.info("  [変換前コード] rank1: {}, rank2: {}, rank3: {}", shain.getRank1(), shain.getRank2(),
 					shain.getRank3());
 
-			String h1 = repository.findHobbyname(shain.getRank1());
-			String h2 = repository.findHobbyname(shain.getRank2());
-			String h3 = repository.findHobbyname(shain.getRank3());
-			shain.setRank1(h1);
-			shain.setRank2(h2);
-			shain.setRank3(h3);
-
+			String h1 = repository.findHobbyname(shain.getRank1() != null ? shain.getRank1().trim() : null);
+			String h2 = repository.findHobbyname(shain.getRank2() != null ? shain.getRank2().trim() : null);
+			String h3 = repository.findHobbyname(shain.getRank3() != null ? shain.getRank3().trim() : null);
+			
+			
+			if (h1 != null) shain.setRank1(h1);
+			if (h2 != null) shain.setRank2(h2);
+			if (h3 != null) shain.setRank3(h3);
 			log.info("  [変換後名称] rank1: {}, rank2: {}, rank3: {}", h1, h2, h3);
 		} else {//追加
 			log.warn("[DetailsService警告] 該当する社員が存在しません。 社員コード: {}", shainCd);

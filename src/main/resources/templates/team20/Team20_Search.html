@@ -47,15 +47,14 @@
 							<tr>
 								<td>趣味</td>
 								<td>
-									<select th:field="*{hobby}" id="hobby">
-											<option value="">-- 趣味を選択してください --</option>
-											<option th:each="h : ${hobbyList}" 
-											        th:value="${h.hobby}" 
-											        th:text="${h.hobby}" 
-											        th:data-val="${h.janru}">
-											</option>
-										</select>
-								</td>
+									<select th:field="*{hobby}" id="hobby" disabled="disabled">
+																			<option value="">-- 趣味を選択してください --</option>
+																			<th:block th:each="h : ${hobbyList}">
+																				<option th:value="${h.hobby}" th:text="${h.hobby}" th:data-val="${h.janru}"></option>
+																			</th:block>
+																		</select>
+																		<span th:if="${#fields.hasErrors('hobby')}" th:errors="*{hobby}" class="error"></span>
+																	</td>
 							</tr>
 							<tr>
 								<td>職種</td>

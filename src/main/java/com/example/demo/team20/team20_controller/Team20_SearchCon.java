@@ -53,7 +53,7 @@ public class Team20_SearchCon {
 	@PostMapping(value="/Team20_Search",params="back")
 	public String send1() {
 		log.info("[検索画面ボタン] 「戻る」が押されました。メニュー画面へ戻ります。");
-		return "team20/Team20_menyu";
+		return "team20/Team20_Menyu";
 	}
 
 	@PostMapping(value="/Team20_Search",params="clear")
@@ -75,6 +75,7 @@ public class Team20_SearchCon {
 			}
 		if(result.hasErrors()) {
 			log.warn("[検索画面警告] 入力バリデーションエラーが発生しました。件数: {}", result.getErrorCount());
+			model.addAttribute("hobbyList",service2.getAllHobbies());
 			return "team20/Team20_Search";
 		}
 		System.out.println("Post実行");

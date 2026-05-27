@@ -11,7 +11,7 @@ import com.example.demo.team20.team20_entity.Team20_Shain;
 public interface Team20_DetailsRepository extends JpaRepository<Team20_Shain, String> {
 
 	
-	@Query(value="SELECT CONCAT(JANRU, '/', HOBBY) FROM TEAM20_HOBBY_TBL WHERE HOBBYCODE = :hobbyCode", nativeQuery=true)	
+	@Query(value="SELECT CONCAT(JANRU, '/', HOBBY) FROM team20_hobby_tbl WHERE upper(trim(HOBBYCODE)) =upper(trim( :hobbyCode))", nativeQuery=true)	
 	public String findHobbyname(@Param("hobbyCode") String hobbyCode);
 		}
 
