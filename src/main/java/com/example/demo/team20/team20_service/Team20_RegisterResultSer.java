@@ -153,7 +153,7 @@ public class Team20_RegisterResultSer {
 	private Team20_Hobby findHobby(String hobbyCd) {
 		if (!isNotEmpty(hobbyCd))
 			return null;
-		return hobbyrepository.findById(hobbyCd).orElse(null);
+		return hobbyrepository.findById(hobbyCd.trim()).orElse(null);
 
 	}
 
