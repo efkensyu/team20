@@ -87,6 +87,15 @@ public class Team20_SearchCon {
 				searchForm.getJob(), 
 				loginUserid
 		);
+		if (resultList == null || resultList.isEmpty()) {
+			log.info("[検索結果ゼロ] 該当者が存在しないため、メッセージを詰めて検索画面を再表示します。");
+			
+			
+			model.addAttribute("noResultMsg", "該当者がいません");
+			model.addAttribute("hobbyList", service2.getAllHobbies());
+			
+			return "team20/Team20_Search";
+		}
 		
 		log.info("[検索成功] 検索条件にマッチした社員を {} 件検知しました。結果画面へリダイレクトします。", resultList.size());
 //		System.out.println(resultList);
