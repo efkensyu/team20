@@ -19,11 +19,11 @@
 		<form method="post" th:action="@{/Team20_Result}" >
 			<div class="content2">
 				<input type="hidden" name="shainCd" th:value="${data.shainCd}">
-				<a th:text="*{i.count}"></a>
-				<a th:text="*{data.shainNm}"></a>
-	 			<a th:text="*{data.rank1}"></a>
-				<a th:text="*{data.rank2}"></a>
-				<a th:text="*{data.rank3}"></a>
+				<a th:text="${i.count}"></a>
+				<a th:text="${data.shainNm}"></a>
+	 			<a th:text="1位：+${data.rank1}"></a>
+				<a th:text="2位：+${data.rank2}"></a>
+				<a th:text="3位：+${data.rank3}"></a>
 				<input class="button" type="submit" value="詳細">
 			</div>
 		</form>
