@@ -33,7 +33,9 @@ public class Team20_menyuCon {
 		model.addAttribute("name", loginName);
 		System.out.println("ログイン中" + currentUserId);
 		log.info("[メニュー画面] ようこそ、{} さん。画面を表示します。", loginName);
-		return "team20/Team20_menyu";
+		
+		//throw new RuntimeException("テスト用の故意に発生させた重大なシステムエラーです。");
+		return "team20/Team20_Menyu";
 	}
 	
 	@PostMapping(value="/Team20_Menyu", params="register")
