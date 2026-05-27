@@ -28,6 +28,9 @@ public class Team20_ResultSer {
 		if(code == null || code.trim().isEmpty() ||"null".equals(code)) {
 			return"未設定";
 		}
+		if(code.contains("/")) {
+			return code;
+		}
 		String fullName=repository.findHobbyName(code);
 			return fullName!=null ?fullName:"未設定";
 		}

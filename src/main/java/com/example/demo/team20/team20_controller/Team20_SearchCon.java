@@ -62,7 +62,12 @@ public class Team20_SearchCon {
 		//確認
 		log.info("  [検索入力条件] 名前: {}, ジャンル: {}, 趣味: {}, 職種(Job): {}", 
 				searchForm.getName(), searchForm.getJanru(), searchForm.getHobby(), searchForm.getJob());
-		
+		if (searchForm.getName() == null && 
+			    searchForm.getJanru() == null && 
+			    searchForm.getHobby() == null && 
+			    searchForm.getJob() == null) {
+				result.rejectValue("name", "all.empty", "検索条件を1つ以上入力してください");
+			}
 		if(result.hasErrors()) {
 			log.warn("[検索画面警告] 入力バリデーションエラーが発生しました。件数: {}", result.getErrorCount());
 			return "team20/Team20_Search";

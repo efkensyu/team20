@@ -7,10 +7,10 @@
 	<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">
 </head>
 <header>
-		<div class="header">
-			<img th:src="@{/Team20logo.png}" width="100">
-		</div>
-	</header>
+	<div class="header">
+		<img th:src="@{/Team20logo.png}" width="100">
+	</div>
+</header>
 <body>
 
 	<div class="main">
@@ -21,8 +21,7 @@
 
 					<h2 class="confirm-title">登録する内容に間違いはありませんか</h2>
 					
-					
-					//全値を保持
+					」に修正 -->
 					<input type="hidden" th:field="*{name}">
 					<input type="hidden" th:field="*{code}">
 					<input type="hidden" th:field="*{janru}">
@@ -122,6 +121,6 @@
 	</div>
 </body>
 <footer>
-		<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
-	</footer>
+	<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
+</footer>
 </html>
