@@ -54,11 +54,11 @@ public class Team20_ResultCon {
 		return "redirect:/Team20_Details";
 	
 	}
-	@PostMapping(value="/Team20_Result",params="back2")
+	/*@PostMapping(value="/Team20_Menyu",params="back2")
 	public String send2(RedirectAttributes redirectAttributes) {
 		
 		log.info("[メニューに戻るボタン]メニューに戻るが選択されました");
 		return "redirect:/Team20_Menyu";
 	
-	}
+	}*/
 }

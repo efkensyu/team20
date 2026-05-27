@@ -68,4 +68,9 @@ public class Team20_menyuCon {
 		log.info("[メニュー画面] 結果画面へ userid: {}", currentUserId);
 		return "redirect:/Team20_Result";
 	}		
+	@PostMapping(value="/Team20_Menyu", params="back2")
+	public String send4() {
+		log.info("[メニュー画面] 結果画面から戻るリクエストをPOSTで受付。安全のためGETへリダイレクトします。");
+		return "redirect:/Team20_Menyu";
+	}
 }
