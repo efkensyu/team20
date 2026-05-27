@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>システムエラー | Team20</title>
-    <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fa; color: #333; text-align: center; padding: 50px; }
-        .error-container { background: white; max-width: 600px; margin: 0 auto; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        h1 { color: #dc3545; font-size: 28px; margin-bottom: 20px; }
-        p { font-size: 16px; line-height: 1.6; color: #666; }
-        .btn-back { display: inline-block; margin-top: 30px; padding: 12px 24px; background-color: #007bff; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: bold; }
-        .btn-back:hover { background-color: #0056b3; }
-        .debug-info { margin-top: 20px; font-size: 12px; color: #aaa; text-align: left; background: #eee; padding: 10px; border-radius: 4px; }
-    </style>
+<head>    
+<meta charset="UTF-8">
+<title>システムエラー</title>
+<link rel="icon" type="image/png" th:href="@{/Team20icon.png}">	
+<link rel="stylesheet" type="text/css" th:href="@{team20/team20_Error.css}">
 </head>
+<header>
+	<div class="header">
+		    <img th:src="@{/Team20logo.png}" width="100">
+		</div>
+</header>
 <body>
-
-<div class="error-container">
-    <h1>システムエラーが発生しました</h1>
-    <p th:text="${errorMsg}">エラーメッセージがここに表示されます</p>
-    <p>お手数ですが、時間をおいてから再度お試しいただくか、管理者へお問い合わせください。</p>
-    
-    <a th:href="@{/Team20_Login}" class="btn-back">ログイン画面へ戻る</a>
-    
-    <div class="debug-info">
-        <strong>発生場所 (URL):</strong> <span th:text="${url}">/example</span>
-    </div>
-</div>
-
+	<div class="main">
+		<diV class="content">
+			 <diV class="content2">
+				<h1 class="box">システムエラーが発生しました</h1>
+				<p th:text="${errorMsg}">エラーメッセージがここに表示されます</p>
+				<p>お手数ですが、時間をおいてから再度お試しいただくか、管理者へお問い合わせください。</p>
+				<a th:href="@{/Team20_Login}" class="btn-back">ログイン画面へ戻る</a>
+				<div class="debug-info">
+					<strong>発生場所 (URL):</strong> <span th:text="${url}">/example</span>
+				</div>
+			</diV>
+		</diV>
+	</div>
 </body>
+<footer>
+	<p>&copy; 2026 B-IT Inc. All rights reserved.</p>
+</footer>
 </html>

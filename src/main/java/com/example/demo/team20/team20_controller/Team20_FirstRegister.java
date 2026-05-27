@@ -37,8 +37,9 @@ public class Team20_FirstRegister {
 			return "team20/Team20_FirstRegister";
 		}
 		String userInfo = fRegisterSer.find(registerForm.getUserid()).toString();
-		String pass = "password=" + registerForm.getPassword();
-		if(userInfo.contains(pass) == true) {
+		String id = "userid=" + registerForm.getUserid();
+		System.out.println(userInfo);
+		if(userInfo.contains(id) == true) {
 			log.warn("[新規登録警告] 登録失敗 - ユーザーID: {} はすでに登録済みです", registerForm.getUserid());
 			
 			System.out.println("登録済み");
