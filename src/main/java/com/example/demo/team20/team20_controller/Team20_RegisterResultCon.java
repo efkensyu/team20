@@ -48,7 +48,7 @@ public class Team20_RegisterResultCon {
 	@PostMapping(value = "/Team20_Result", params = "back")
 	public String back(@ModelAttribute Team20_RegForm regForm) {
 		log.info("[マッチング画面ボタン] 「戻る」が押されました。プロフィール登録画面へ戻ります。");
-		return "team20/Team20_Register";
+		return "redirect:/Team20_Register";
 	}
 
 	//確定ボタン
