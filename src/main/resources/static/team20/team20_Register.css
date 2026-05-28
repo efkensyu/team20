@@ -181,6 +181,7 @@ textarea:focus {
     background-color: #113663;
 }
 
+.botton-container .button[name="clear"],
 .botton-container .button[name="edit"],
 .botton-container .button[name="back"] {
     background-color: transparent;
@@ -188,6 +189,7 @@ textarea:focus {
     border: 2px solid #164a84;
 }
 
+.botton-container .button[name="clear"]:hover,
 .botton-container .button[name="edit"]:hover,
 .botton-container .button[name="back"]:hover {
     background-color: rgba(22, 74, 132, 0.05);
