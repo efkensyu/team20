@@ -53,13 +53,14 @@ public class Team20_SearchCon {
 	@PostMapping(value="/Team20_Search",params="back")
 	public String send1() {
 		log.info("[検索画面ボタン] 「戻る」が押されました。メニュー画面へ戻ります。");
-		return "team20/Team20_Menyu";
+		return "redirect:/Team20_Menyu";
 	}
 
 	@PostMapping(value="/Team20_Search",params="clear")
 	public String send2(Model model) {
 		log.info("[検索画面ボタン] 「クリア」が押されました。検索条件をリセットします。");
 		model.addAttribute("searchForm", new Team20_SearchForm());
+		model.addAttribute("hobbyList",service2.getAllHobbies());
 		return "team20/Team20_Search";
 	}
 	@PostMapping(value="/Team20_Search",params="search")
