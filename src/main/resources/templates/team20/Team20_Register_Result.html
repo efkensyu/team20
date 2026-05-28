@@ -20,7 +20,6 @@
 				<form method="post" th:action="@{/Team20_Result}" th:object="${regForm}">
 
 					<h2 class="confirm-title">登録する内容に間違いはありませんか</h2>
-					<input type="hidden" th:field="*{name}">
 					<input type="hidden" th:field="*{code}">
 					<input type="hidden" th:field="*{janru}">
 					<input type="hidden" th:field="*{hobby}">
@@ -36,10 +35,7 @@
 					<input type="hidden" th:field="*{hobbyNm3}">
 					<input type="hidden" th:field="*{job}">
 					
-					<h3>氏名</h3>
-					<div class="confirm-box">
-						<p th:text="*{name}"></p>
-					</div>
+					
 
 					<h3>社員コード</h3>
 					<div class="confirm-box">

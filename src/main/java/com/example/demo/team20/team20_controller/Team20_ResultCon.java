@@ -40,6 +40,10 @@ public class Team20_ResultCon {
 		log.info("[結果一覧画面] 表示リクエスト受付。ログイン中のuserid: {}", userid);
 		ArrayList<Team20_Shain> list= service.ChangeHobbyList(resultList);
 		model.addAttribute("resultList",list);
+		if (list == null || list.isEmpty()) {
+			log.info("[結果ゼロ] 該当者が存在しないため、メッセージを詰めて結果画面を表示します。");
+			model.addAttribute("noResultMsg", "直近の結果はありません");
+		}
 		return "team20/Team20_Result";
 	}
 	
