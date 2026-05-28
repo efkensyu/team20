@@ -5,7 +5,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 public class Team20_GlobalExceptionHandler {
 	
-	@GetMapping("/Team20_ErrorTest")
+	/*@GetMapping("/Team20_ErrorTest")
 	public String errorTest(Model model) {
 	    // 実際のエラー発生時と同じように、テスト用のデータをModelに詰める
 	    model.addAttribute("errorMsg", "【テスト表示】データベースとの接続に失敗しました。");
@@ -21,7 +20,7 @@ public class Team20_GlobalExceptionHandler {
 	    
 	    // 表示確認したいエラー画面のHTMLパスを指定
 	    return "team20/Team20_Error";
-	}
+	}*/
 	//アプリケーション内で発生したすべての例外を一括でキャッチします。
 	@ExceptionHandler(Exception.class)
 	public String handleAllException(Exception ex, HttpServletRequest request, Model model) {
