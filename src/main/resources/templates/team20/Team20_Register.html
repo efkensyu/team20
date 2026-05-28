@@ -22,10 +22,6 @@
 			<div class="content2">
 				<form method="post" th:action="@{/Team20_Register_Result}" th:object="${regForm}">
 
-					<h3>名前</h3>
-					<input type="text" class="textbox" th:field="*{name}" size="20">
-					<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
-
 					<h3>社員番号</h3>
 					<input type="text" class="textbox" th:field="*{code}" size="20">
 					<span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" class="error"></span>

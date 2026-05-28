@@ -8,8 +8,7 @@ import lombok.Data;
 @Data
 public class Team20_RegForm {
 
-	@Size(max = 20, message = "氏名は20文字以内で入力してください。")
-	@NotEmpty(message = "ご自身の名前か、ニックネームを入力してください")
+	
 	private String name;
 	@NotEmpty(message = "ご自身の社員コードを入力して下さい。")
 	@Size(max = 5, message = "社員コードは5文字以内で入力してください。")
