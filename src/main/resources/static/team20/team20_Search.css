@@ -144,19 +144,23 @@ table.detail input[type="radio"] {
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
+	width: 100%;
 }
 
 .botton input[type="submit"] {
 	font-size: 18px;
 	font-weight: bold;
-	margin: 0 15px;
-	padding: 12px 0;
-	width: 140px;
+	margin: 0;
+	padding: 12px 15px;
 	border-radius: 6px;
 	cursor: pointer;
 	transition: all 0.2s;
 	box-sizing: border-box;
+	flex: 1;
+	max-width: 180px;
+	min-width: 0;
+	white-space: nowrap;
 }
 
 .botton input[name="search"] {
@@ -170,8 +174,8 @@ table.detail input[type="radio"] {
 }
 
 .botton input[name="clear"],
-.botton input[name="back"]{
-	margin-top: 10px;
+.botton input[name="back"] {
+	margin-top: 0 !important;
 }
 
 .botton input[name="clear"],
@@ -188,6 +192,23 @@ table.detail input[type="radio"] {
 
 .error {
 	color: #d9534f;
+	
+	@media (max-width: 768px) {
+		.botton {
+			gap: 12px;
+		}
+		
+		.botton input[type="submit"] {
+			flex: 1;
+			max-width: none;
+			font-size: 14px;
+		}
+		
+		.botton input[name="clear"],
+		.botton input[name="back"] {
+			margin-top: 0 !important;
+		}
+	}
 	font-size: 14px;
 	display: block;
 	margin-top: 5px;
