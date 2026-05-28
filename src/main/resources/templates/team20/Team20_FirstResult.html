@@ -8,7 +8,7 @@
 </head>
 <header>
 	<div class="header">
-		    <img th:src="@{/team20/Team20logo.png}" width="100">
+		    <img th:src="@{/team20/team20logo.png}" width="100">
 		</div>
 </header>
 <body>
@@ -17,15 +17,15 @@
 			<h2 class="box">ユーザー登録</h2>
 			<form method="post" th:action="@{/Team20_FirstResult}" th:object="${registerForm}">
 				<h4>以下の内容でお間違いないでしょうか。</h4>
-				<a>名前</a>
+				<a class="aaa">名前</a>
 				<br>
 				<th:block class="text" th:text="*{name} + 様"></th:block>
 				<br>
-				<a>社員番号</a>
+				<a class="aaa">社員番号</a>
 				<br>
 				<th:block class="text" th:text="*{userid}"></th:block>
 				<br>
-				<a>パスワード</a>
+				<a class="aaa">パスワード</a>
 				<br>
 				<th:block class="text" th:text="*{password}"></th:block>
 				<br>

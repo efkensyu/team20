@@ -92,6 +92,10 @@ body {
 	transition: all 0.3s;
 }
 
+.aaa {
+	font-weight: bold;
+}
+
 .textbox:focus {
 	border-color: #164a84;
 	outline: none;
@@ -128,9 +132,9 @@ body {
 .text {
 	display: block;
 	text-align: left;
-	padding: 8px 4px;             /* 左右の余白を削り、下線を強調 */
-	border-bottom: 2px solid #164a84; /* ⭕ 下側だけにテーマカラーの線を引く */
-	font-size: 18px;              /* ⭕ 文字を少し大きく */
+	padding: 8px 4px;           
+	border-bottom: 2px solid #164a84;
+	font-size: 18px;              
 	font-weight: bold;
 	color: #2d3748;
 	word-break: break-all;

@@ -39,21 +39,6 @@ header {
 	height: 100%;
 }
 
-.header h1 {
-	color: white;
-	font-weight: bold;
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	font-size: clamp(18px, 3vw, 26px);
-	white-space: nowrap;
-}
-
-.header img {
-	width: clamp(60px, 8vw, 100px);
-	height: auto;
-}
-
 footer {
 	position: fixed;
 	bottom: 0;
